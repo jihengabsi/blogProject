@@ -8,8 +8,11 @@ import CardBody from "components/Card/CardBody.js";
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Image from "./PVC-Expomoda-0005-Dark-Grey.jpg";
 import Button from "components/CustomButtons/Button.js";
+import { Link, NavLink } from 'react-router-dom';
 export default function TableList() {
-  return (     <view> <Card className="Card"> 
+  return (    <view>
+    
+     <Card className="Card"> 
   <CardBody>
   <Grid fluid>
     <Row>
@@ -19,7 +22,8 @@ export default function TableList() {
     <Col xs>
 <h4 >Description</h4>
    </Col>
-    <Col xs> <Row xs> <Button color="info">Edit </Button></Row>
+
+    <Col xs> <Row xs> <Link to={`/list/modify`}><Button color="info">Edit </Button></Link></Row>
     <Row xs><Button color="info">Hide</Button></Row>
     </Col>
     </Row>
@@ -36,8 +40,8 @@ export default function TableList() {
               <Col xs>
  <h4 >Description</h4>
              </Col>
-              <Col xs> <Row xs> <Button color="info">Edit </Button></Row>
-              <Row xs><Button color="info">Hide</Button></Row></Col>
+              <Col xs> <Row xs> <Link to={`modify`}><Button color="info">Edit </Button></Link></Row>
+              <Row xs> <Button color="info">Hide</Button></Row></Col>
               </Row>
               </Grid>
             </CardBody>

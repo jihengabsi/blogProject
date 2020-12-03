@@ -36,7 +36,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function UserProfile() {
+export default function ModifyAnnounce() {
   const classes = useStyles();
   return (
     <div>
@@ -44,7 +44,7 @@ export default function UserProfile() {
         <GridItem xs={12} sm={12} md={8}>
           <Card>
             <CardHeader color="info">
-              <h4 className={classes.cardTitleWhite}>Add an announce</h4>
+              <h4 className={classes.cardTitleWhite}>Modify an announce</h4>
             </CardHeader>
             <CardBody>
               <GridContainer>
@@ -60,7 +60,7 @@ export default function UserProfile() {
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
-                  <InputLabel style={{ color: "#AAAAAA" }}>Description</InputLabel>
+
                   <CustomInput
                     labelText="Decription.."
                     id="about-me"
@@ -74,9 +74,19 @@ export default function UserProfile() {
                   />
                 </GridItem>
               </GridContainer>
-            </CardBody>
+
+            <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
+                  <br></br>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
+                  <br></br>
+                   <input type="file" name="image"/>
+                </GridItem>
+              </GridContainer>
+              </CardBody>
+           
             <CardFooter>
-              <Button color="info">Add announce</Button>
+              <Button color="info">Modify announce</Button>
             </CardFooter>
           </Card>
         </GridItem>

@@ -1,0 +1,12 @@
+.logo{
+    text-align: center;
+    background-color:white;
+    height: 150px;
+    padding-top: 3%;
+}
+.logo a{
+    font-family: 'Traditional Arabic';
+    font-size: 50px;
+    text-decoration: none;
+    color:white;
+}

@@ -1,0 +1,15 @@
+.Card{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.postImageWrapper{
+    width: 100%;
+    overflow: hidden;
+}
+
+.postImageWrapper img{
+    height: 350px;
+    width: 100%;  
+    object-fit: cover;
+    margin-bottom: 20px;
+}
