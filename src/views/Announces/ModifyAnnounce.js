@@ -14,7 +14,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
 import avatar from "assets/img/faces/marc.jpg";
-
+import Admin from "../../layouts/Admin.js";
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -39,7 +39,8 @@ const useStyles = makeStyles(styles);
 export default function ModifyAnnounce() {
   const classes = useStyles();
   return (
-    <div>
+    <div >
+  
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
@@ -92,6 +93,8 @@ export default function ModifyAnnounce() {
         </GridItem>
     
       </GridContainer>
+      
     </div>
+
   );
 }

@@ -22,11 +22,10 @@ import Person from "@material-ui/icons/Person";
 import List from "@material-ui/icons/List";
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
-import AddAnnounce from "views/AddAnnounce/AddAnnounce.js";
+import AddAnnounce from "views/Announces/AddAnnounce.js";
 
-import ListAnnounces from "views/ListAnnounces/ListAnnounces.js";
-import Typography from "views/Typography/Typography.js";
-
+import ListAnnounces from "views/Announces/ListAnnounces.js";
+import Typography from "views/Admin/Admins.js";
 // core components/views for RTL layout
 const dashboardRoutes = [
   {
@@ -54,7 +53,7 @@ const dashboardRoutes = [
     layout: "/admin",
   },
   {
-    path: "/typography",
+    path: "/Admin's",
     name: "Admin's",
     rtlName: "طباعة",
     icon: Person,

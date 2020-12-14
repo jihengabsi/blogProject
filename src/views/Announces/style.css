@@ -1,0 +1,8 @@
+.postImageWrapper {
+    max-width: 50%;
+    height: 50%;
+    object-fit: fill;
+}
+.Card {
+    height: 50%; 
+}
