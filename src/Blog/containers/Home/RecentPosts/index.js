@@ -9,6 +9,8 @@ import {
   Button
 } from 'reactstrap';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import '../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 /**
 * @author
 * @function RecentPosts
@@ -30,7 +32,7 @@ const RecentPosts = (props) => {
         <Grid fluid>
         <Row>
           <Col xs >
-          <div className="postImageWrapper">
+          <div className="postImageWrapper2">
                 <img src={logo} alt="Post Image"/>
                 </div>
                 </Col >

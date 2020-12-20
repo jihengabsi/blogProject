@@ -7,7 +7,7 @@ import {
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
   import { Grid, Row, Col } from 'react-flexbox-grid';
-  import Logo from '../../blogPostImages/PVC-Expomoda-0005-Dark-Grey.jpg';
+
 /**
 * @author
 * @function ListPosts
@@ -26,6 +26,7 @@ const ListPosts = (props) => {
 
 
   return(
+      <div className='searchcontainer'>
       <React.Fragment >
          <div  margin-left= "20px">
          <Grid fluid>
@@ -36,11 +37,14 @@ const ListPosts = (props) => {
                             return (
                                 <Row>
                                 <Col >
-                                <div>
+                                <div className='searchcontainer'>
                                  
                                 <Card>
+                                <div style={{width:"100%"}}>
                                 <Row>
-                                <CardImg top width="20%"   src={Logo}  alt="Post Image" />
+                                <div style={{width:"30%"}}>
+                                <CardImg height="100%"  src={require('../../blogPostImages/' + post.blogImage)}  alt="Post Image" />
+                                </div>
                                 <CardBody>
                                   <CardTitle tag="h5">{post.blogTitle}</CardTitle>
                                   <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle>
@@ -51,6 +55,7 @@ const ListPosts = (props) => {
                                 </CardBody>
                                 </Row>
                                 <br></br>
+                                </div>
                               </Card>
                               
                               </div> 
@@ -65,7 +70,7 @@ const ListPosts = (props) => {
     </div>
       </React.Fragment>
     
-   )
+      </div>)
 
  }
 

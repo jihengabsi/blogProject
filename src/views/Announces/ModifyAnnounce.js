@@ -44,7 +44,7 @@ export default function ModifyAnnounce() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
-            <CardHeader color="info">
+            <CardHeader color="danger">
               <h4 className={classes.cardTitleWhite}>Modify an announce</h4>
             </CardHeader>
             <CardBody>
@@ -87,7 +87,7 @@ export default function ModifyAnnounce() {
               </CardBody>
            
             <CardFooter>
-              <Button color="info">Modify announce</Button>
+              <Button color="danger">Modify announce</Button>
             </CardFooter>
           </Card>
         </GridItem>

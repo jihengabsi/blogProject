@@ -43,7 +43,7 @@ export default function UserProfile() {
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
-            <CardHeader color="info">
+            <CardHeader color="danger">
               <h4 className={classes.cardTitleWhite}>Add an announce</h4>
             </CardHeader>
             <CardBody>
@@ -86,7 +86,7 @@ export default function UserProfile() {
               </CardBody>
            
             <CardFooter>
-              <Button color="info">Add announce</Button>
+              <Button color="danger">Add announce</Button>
             </CardFooter>
           </Card>
         </GridItem>

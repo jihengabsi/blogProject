@@ -18,6 +18,7 @@ const Post = (props) => {
   return(
         <Layout >
           <BlogPost className="Layout" {...props} />
+          <Sidebar />
         </Layout>
    )
 

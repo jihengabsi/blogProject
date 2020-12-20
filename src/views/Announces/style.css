@@ -3,6 +3,9 @@
     height: 50%;
     object-fit: fill;
 }
+.imgu{
+    width:100%
+}
 .Card {
     height: 50%; 
 }

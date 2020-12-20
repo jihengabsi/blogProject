@@ -14,9 +14,14 @@ const Home  = props => {
                     <RecentPosts className="RecentPosts" />
                         
                 <AllPosts ></AllPosts>
+                <div className="footer">
+
+                    <a>Copyright © CK Technologies 2020</a>
+                </div>
                 
 
         </div>
+        
     );
 }
 

@@ -38,7 +38,7 @@ const AllPosts = (props) => {
                                 <div>
                                     
                                 <Card>
-                                <CardImg top width="50%"   src={Logo}  alt="Post Image" />
+                                <CardImg top width="50%" height="180px"  src={require('../../blogPostImages/' + post.blogImage)} alt="Post Image" />
                                 <CardBody>
                                   <CardTitle tag="h5">{post.blogTitle}</CardTitle>
                                   <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle>

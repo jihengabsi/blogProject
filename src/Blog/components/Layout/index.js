@@ -12,12 +12,12 @@ const Layout = (props) => {
       <React.Fragment >
           <div className="container">
         {props.children}
-        <Sidebar />
+        
     </div>
     <div className="footer">
         <h1>Footer</h1>
-        <a>Something here to give the footer a purpose!</a> <br></br>
-<a>Copyright © Your Website 2020</a>
+
+<a>Copyright © CK Technologies 2020</a>
 
 
     </div>

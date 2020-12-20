@@ -34,7 +34,7 @@ ReactDOM.render(
     <Switch>
       <Route  path="/blog" component={Client} />
       <Route path="/admin" component={Admin} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Redirect from="/" to="/blog" />
     </Switch>
   </Router>,
   document.getElementById("root")
