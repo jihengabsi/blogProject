@@ -8,18 +8,17 @@ import Footer from '../../components/Footer';
 
 const Layout = (props) => {
   return(
-      <React.Fragment >
+    <div>
+  <React.Fragment >
           <div className="container">
         {props.children}
-        
+     
     </div>
-    <div className="footer">
+    
 
-
-
-    </div>
-    <Footer></Footer>
       </React.Fragment>
+       <Footer></Footer>
+    </div>
     
    )
 

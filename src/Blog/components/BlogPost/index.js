@@ -2,51 +2,50 @@ import React, { useState, useEffect } from 'react';
 import './style.css';
 import Card from '../UI/Card';
 import blogPost from '../../data/blog.json';
-
+import axios from "axios";
 /**
 * @author
 * @function BlogPost
 **/
 
-const BlogPost = (props) => {
+export default class BlogPost extends React.Component  {
+  
+    constructor(props) {
+     
+        super(props);
+        this.state = {
+            announces: [],
+            slug: props.match.params.slug
+        };
+      }
+  
 
-    const [post, setPost] = useState({
-        id: "" ,
-        blogCategory: "" ,
-        blogTitle : "" ,
-        postedOn: "" ,
-        author: "" ,
-        blogImage: "" ,
-        blogText: ""
-    });
-    const [slug, setSlug] = useState('');
-    
-    
-    useEffect(() => {
-        const slug = props.match.params.slug;
-        const post = blogPost.data.find(post => post.slug == slug);
-        setPost(post);
-        setSlug(slug)
-    }, [post, props.match.params.slug]);
-
-    if(post.blogImage == "") return null;
-
+      componentDidMount() {
+        axios.get(`http://localhost:3000/api/announces/${this.state.slug}`)
+          .then(res => {
+            const announces = res.data;
+            this.setState({ announces });
+          })
+      }
+      render() {
   return(
         <div className="blogPostContainer">
             <Card style={{ marginLeft:'150px'}}>
+            { this.state.announces.map(announce =>
                 <div className="blogHeader">
-                    <h1 className="postTitle">{post.blogTitle}</h1>
-  <span className="postedBy">posted on {post.postedOn} by {post.author}</span>
+                    <h1 className="postTitle">{announce.body.titre}</h1>
+  {/* <span className="postedBy">posted on {post.postedOn} by {post.author}</span> */}
                 </div>
+                  ) }
 
                 <div className="postImageContainer">
-                    <img src={require('../../blogPostImages/' + post.blogImage)} alt="Post Image" />
+                    {/* <img src={require('../../blogPostImages/' + post.blogImage)} alt="Post Image" /> */}
                     
                 </div>
 
                 <div className="postContent">
-  <h3>{post.blogTitle}</h3>
-  <p>{post.blogText}</p>
+  {/* <h3>{post.blogTitle}</h3>
+  <p>{post.blogText}</p> */}
                 </div>
                 
             </Card>
@@ -54,5 +53,4 @@ const BlogPost = (props) => {
    )
 
  }
-
-export default BlogPost
+}
