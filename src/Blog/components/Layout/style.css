@@ -6,19 +6,3 @@
     justify-content: space-between;
     margin: 20px 0;
 }
-.footer{
-    text-align: center;
-    padding: 15px;
-}
-.footer h1{
-    font-family: 'Traditional Arabic','bold';
-    font-size: 22px;
-    text-decoration: none;
-    color: #333;
-}
-.footer a{
-    font-family: 'Traditional Arabic','bold';
-    font-size: 22px;
-    text-decoration: none;
-    color: rgb(133, 128, 128);
-}

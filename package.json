@@ -5,8 +5,9 @@
   "private": false,
   "main": "dist/index.js",
   "dependencies": {
-    "@material-ui/core": "4.10.0",
+    "@material-ui/core": "^4.10.0",
     "@material-ui/icons": "4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "bootstrap": "^4.5.3",
     "chartist": "0.10.1",
     "classnames": "2.2.6",
@@ -14,6 +15,7 @@
     "perfect-scrollbar": "1.5.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",
+    "react-bootstrap": "^1.4.0",
     "react-chartist": "0.14.3",
     "react-datepicker": "^3.3.0",
     "react-dom": "16.13.1",
@@ -23,6 +25,7 @@
     "react-modal": "^3.12.1",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
+    "react-slideshow-image": "^3.4.3",
     "react-swipeable-views": "0.13.9",
     "reactjs-popup": "^2.0.4",
     "reactstrap": "^8.7.1"

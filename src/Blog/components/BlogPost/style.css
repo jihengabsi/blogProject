@@ -1,6 +1,8 @@
 .blogPostContainer{
     width: 100%;
-    padding-left: 5%;
+    margin-Left:100px;
+    padding-top: 5%;
+    padding-right: 5%;
 }
 
 .blogHeader{

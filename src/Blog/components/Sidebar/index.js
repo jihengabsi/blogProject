@@ -28,7 +28,7 @@ const Sidebar = (props) => {
           width: props.width
       }}>
        
-            <Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+            <Card style={{ marginLeft:'100px',marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
                 <div className="cardHeader">
                     <span>About Us</span>
                 </div>
@@ -42,7 +42,7 @@ const Sidebar = (props) => {
                 Elle a été crée en juillet 2006, et a commencé à fournir des prestations aux industriels tunisiens en septembre 2007.
                 </div>
             </Card>
-            <Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+            <Card style={{marginLeft:'100px', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
                 <div className="cardHeader">
                     <span>Recent Posts</span>
                 </div>
@@ -54,8 +54,9 @@ const Sidebar = (props) => {
                             return (
                                 <NavLink key={post.id} to={`/post/${post.slug}`}>
                                     <div className="recentPost">
+                                    <img style={{width:"100px"}} src={require('../../blogPostImages/' + post.blogImage)} alt="Post Image" />
                                         <h3>{post.blogTitle}</h3>
-                                        <span>{post.postedOn}</span>
+                                        <span >{post.blogText.slice(0, 80)}...</span>    <br></br>                                    <span>{post.postedOn}</span>
                                     </div>
                                 </NavLink>
                             );

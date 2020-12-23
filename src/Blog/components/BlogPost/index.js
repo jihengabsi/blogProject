@@ -33,7 +33,7 @@ const BlogPost = (props) => {
 
   return(
         <div className="blogPostContainer">
-            <Card>
+            <Card style={{ marginLeft:'150px'}}>
                 <div className="blogHeader">
                     <h1 className="postTitle">{post.blogTitle}</h1>
   <span className="postedBy">posted on {post.postedOn} by {post.author}</span>

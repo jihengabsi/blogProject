@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    background-color: black;
+    background-color: white;
 }
 .navbar ul{
     margin: 0;
@@ -18,7 +18,7 @@
     font-size: 20px;
     text-transform: capitalize;
     font-weight: 400;
-    color:whitesmoke;
+    color:black;
     padding: 0 10px;
 }
 .search form{

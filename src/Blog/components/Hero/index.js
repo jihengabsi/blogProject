@@ -2,7 +2,11 @@ import React from 'react';
 import './style.css';
 import Card from '../UI/Card';
 import Logo from '../logo';
-import Navbar from '../Navbar';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar';
+import { Container } from 'reactstrap';
+import Navbar1 from '../Navbar/index.js';
 
 /**
 * @author
@@ -12,7 +16,9 @@ import Navbar from '../Navbar';
 const Hero = (props) => {
   return(
         <Card >
-            <Navbar />
+         <Navbar  fixed="top"  >
+    <Navbar1></Navbar1>
+</Navbar>
             <Logo />
         </Card>
    

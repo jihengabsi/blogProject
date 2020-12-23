@@ -1,7 +1,6 @@
 import React from 'react';
 import './style.css';
-import Sidebar from '../Sidebar';
-import Hero from '../Hero';
+import Footer from '../../components/Footer';
 /**
 * @author
 * @function Layout
@@ -15,12 +14,11 @@ const Layout = (props) => {
         
     </div>
     <div className="footer">
-        <h1>Footer</h1>
 
-<a>Copyright © CK Technologies 2020</a>
 
 
     </div>
+    <Footer></Footer>
       </React.Fragment>
     
    )
