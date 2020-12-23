@@ -2,7 +2,7 @@ import React from 'react'
 import Loginbox from '../../components/loginbox';
 import './style.css'
 import Layout from '../../components/Layout';
-
+import Footer from '../../components/Footer';
 /**
 * @author
 * @function Login
@@ -14,7 +14,7 @@ const Login = (props) => {
 
           <Loginbox />
           
-
+          <Footer></Footer>
       </div>
    )
 

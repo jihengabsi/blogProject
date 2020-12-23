@@ -3,7 +3,8 @@ import './style.css';
 import Card from '../UI/Card';
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
-import {logo} from '../../assets/Images/logock.png'
+import {logo} from '../../assets/Images/logock.png';
+import Footer from '../../components/Footer';
 /**
 * @author
 * @function Loginbpx
@@ -13,6 +14,7 @@ const Loginbox = (props) => {
 
     
   return(
+      <div>
     <Grid container
     spacing={0}
     direction="column"
@@ -49,8 +51,8 @@ const Loginbox = (props) => {
     </Card>
     </Grid>
     </Grid>
-
-
+    <Footer></Footer>
+    </div>
 
 
 

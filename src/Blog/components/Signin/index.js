@@ -3,11 +3,11 @@ import './style.css'
 import Card from '../UI/Card';
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
-
+import Footer from '../../components/Footer';
 export default class SignUp extends Component {
     render() {
         return (
-
+<div>
             <Grid container
             spacing={0}
             direction="column"
@@ -57,8 +57,8 @@ export default class SignUp extends Component {
             </form></Card>
             </Grid>
             </Grid>
-
-            
+    <Footer></Footer>
+    </div>      
         );
     }
 }

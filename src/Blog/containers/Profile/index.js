@@ -15,6 +15,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import Table from "../../../components/Table/Table";
 import avatar from "assets/img/faces/user-male.png";
 import { NavLink } from "react-router-dom";
+import Footer from '../../components/Footer';
 
 const styles = {
   cardCategoryWhite: {
@@ -67,6 +68,7 @@ export default function UserProfile() {
               </Button></NavLink>
             </CardBody>
           </Card>
+          <Footer></Footer>
     </div>
   );
 }
