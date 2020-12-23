@@ -51,7 +51,7 @@ const Loginbox = (props) => {
     </Card>
     </Grid>
     </Grid>
-    <Footer></Footer>
+
     </div>
 
 
