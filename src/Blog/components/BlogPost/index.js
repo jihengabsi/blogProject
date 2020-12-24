@@ -34,7 +34,7 @@ export default class BlogPost extends React.Component  {
             { this.state.announces.map(announce =>
                 <div className="blogHeader">
                     <h1 className="postTitle">{announce.body.titre}</h1>
-  {/* <span className="postedBy">posted on {post.postedOn} by {post.author}</span> */}
+  <span className="postedBy">posted on {announce.body.date_cr} </span>
                 </div>
                   ) }
 
