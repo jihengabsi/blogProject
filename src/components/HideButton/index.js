@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from "components/CustomButtons/Button.js";
 
-
+import axios from 'axios';
 
 
 class HideControl extends React.Component {
@@ -12,10 +12,21 @@ class HideControl extends React.Component {
       this.state = {isHidden: false};
       
     }
-  
-    handleHideClick() {
+ 
+    handleHideClick= event => {
       this.setState({isHidden: true});
       {alert("L'article n'est plus visible.")}
+      event.preventDefault();
+  
+      axios.put(`http://localhost:3001/api/announces/put/visib`, { visib: true })
+        .then(res => {
+          const announces = res.data;
+          this.setState({ announces });
+          alert("success!!");
+        }).catch(error=>{
+          console.log(error.message);
+          alert("fail!!");
+        })
       
     }
   
@@ -46,7 +57,8 @@ class HideControl extends React.Component {
   
   function HideButton(props) {
     return (
-        <Button style={{ width: '100%' }}  onClick={props.onClick} type="button" color="warning">Hide</Button>
+
+        <Button   style={{ width: '100%' }}  onClick={props.onClick} type="button" color="warning">Hide</Button>
     );
   }
   
