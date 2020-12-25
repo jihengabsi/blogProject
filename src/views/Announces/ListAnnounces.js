@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from "react";
+import React, { Component,useState, useEffect }  from "react";
 // @material-ui/core components
 // core components
 
@@ -29,172 +29,104 @@ import Modal from 'react-modal';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import HideButton from "components/HideButton/index.js"
+import { render } from "react-dom";
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import { withStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(styles);
 
-export default function TableList() {
-  const classes = useStyles();
-  const customStyles = {
-    content : {
-      
-      top                   : '50%',
-      left                  : '60%',
-      right                 : '0%',
-      bottom                : 'auto',
-      transform             : 'translate(-50%, -50%)'
-    }
-  };
 
-  const [modalIsOpen,setIsOpen] = React.useState(false);
-  const [modal2IsOpen,setIsOpen2] = React.useState(false);
-  function openModal() {
-    setIsOpen(true);
+const customStyles = theme => ({
+  content : {
+    
+    top                   : '50%',
+    left                  : '60%',
+    right                 : '0%',
+    bottom                : 'auto',
+    transform             : 'translate(-50%, -50%)'
   }
-  function openModal2() {
-    setIsOpen2(true);
+});
+class TableList extends React.Component  {
+  componentDidMount() {
+    axios.get(`http://localhost:3001/api/announces/search/find`)
+      .then(res => {
+        const announces = res.data;
+        this.setState({ announces });
+      })
+  }
+
+  handleChange (event) {
+    this.setState({ date_cr: event.target.value });
+
   }
  
-  function closeModal(){
-    setIsOpen(false);
+  handleSubmit = event => {
+    event.preventDefault();
+
+    axios.get(`http://localhost:3001/api/announces/search/find/?date_cr=${Date.parse(this.state.date_cr)}`)
+      .then(res => {
+        const announces = res.data;
+        this.setState({ announces });
+        alert("success!!");
+      }).catch(error=>{
+        console.log(error.message);
+        alert("fail!!");
+      })
   }
-  function closeModal2(){
-    setIsOpen2(false);
+  constructor() {
+    super();
+    this.state = {
+      date_cr: '', 
+    announces: [],
+      openFilter:null,
+      type:null,
+     
+    };   
   }
-  const [openFilter, setopenFilter] = React.useState(null);
-  const [type, setType] = React.useState(null);
-  const handleClickFilter = event => {
-    if (openFilter && openFilter.contains(event.target)) {
-      setopenFilter(null);
-    } else {
-      setopenFilter(event.currentTarget);
-    }
-  };
-  const handleCloseFilter = () => {
-    setopenFilter(null);
-  };
-  const dateFilter = () => {
-    setopenFilter(null);
-    setType("date");
-  };
-  const textFilter = () => {
-    setopenFilter(null);
-    setType("text");
-  };
+
+
+
+
+render(){
+  const { classes } = this.props;
 
   return (   
- 
+    
      <view className="Card">
        <div className={classes.searchWrapper}>
-       <Button  color={window.innerWidth > 959 ? "transparent" : "white"}
-          justIcon={window.innerWidth > 959}
-          simple={!(window.innerWidth > 959)}
-          aria-owns={openFilter ? "notification-menu-list-grow" : null}
-          aria-haspopup="true"
-          onClick={handleClickFilter}
-          className={classes.buttonLink} >
-          <FilterListIcon/>
-        </Button>
-        <Popper
-          open={Boolean(openFilter)}
-          anchorEl={openFilter}
-          transition
-          disablePortal
-          className={
-            classNames({ [classes.popperClose]: !openFilter }) +
-            " " +
-            classes.popperNav
-          }
-          placement="bottom"
-          disablePortal={false}
-          modifiers={{
-            flip: {
-              enabled: true,
-            },
-            preventOverflow: {
-              enabled: true,
-              boundariesElement: 'scrollParent',
-            },
-            arrow: {
-              enabled: false,
-            
-            },
-          }}
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow 
-              {...TransitionProps}
-              id="notification-menu-list-grow"
-              style={{
-                transformOrigin:
-                  placement === "top" ? "center top" : "center bottom"
-              }}
-            >
-              <Paper >
-                <ClickAwayListener onClickAway={handleCloseFilter}>
-                  <MenuList  role="menu">
-                    <MenuItem
-                      onClick={textFilter}
-                      className={classes.dropdownItem}
-                    >
-                      Search by name
-                    </MenuItem>
-                    <MenuItem
-                      onClick={dateFilter}
-                      className={classes.dropdownItem}
-                    >
-                      Search by date
-                    </MenuItem>
-                  
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-        <input type={type} placeholder="" />
-        <Button color="transparent" aria-label="edit" justIcon round>
+   
+         <form onSubmit={this.handleSubmit}>
+        <input  onChange={(event)=>this.handleChange(event)} value={this.state.date_cr} type={"date"} placeholder="" />
+        <Button type="submit" color="transparent" aria-label="edit" justIcon round>
           <Search />
         </Button>
+        
+        </form>
       </div>
-     <Card > 
-        <CardBody>
-        <Grid fluid>
-        <Row>
-        <Col  xs>
-          <div className="postImageWrapper"> <img className="imgu" src={Image} alt="" /> </div>
-          </Col>
-          <Col xs>
-          <h4 >Description</h4>
-          </Col>
-
-          <Col xs={6} md={2}>
-          <Row xs><Button  style={{width:"100px"}} onClick={openModal2} color="success" >Details</Button></Row>
-          <Row xs><Button  style={{width:"100px"}} onClick={openModal}  color="info" >Edit</Button></Row>
-          <Row xs><div style={{width:"100px"}}><HideButton /></div></Row>
-          </Col>
-        </Row>
-        </Grid>
-        </CardBody>
-      </Card>
+      { this.state.announces.map(announce =>
 <Card > 
             <CardBody>
             <Grid fluid>
               <Row>
             <Col xs>
+              <h2>{announce.body.titre}</h2>
               <div className="postImageWrapper"> <img className="imgu" src={Image} alt="" /> </div>
               </Col>
               <Col xs>
-              <h4 >Description</h4>
+              <h4 >{announce.body.description}</h4>
+              <span >posted on {new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
              </Col>
               <Col xs={6} md={2}>
-              <Row xs><Button  style={{width:"100px"}} onClick={openModal2} color="success" >Details</Button></Row>
-          <Row xs><Button  style={{width:"100px"}} onClick={openModal}  color="info" >Edit</Button></Row>
+              <Row xs><Button  style={{width:"100px"}}/*onClick={openModal2} */color="success" >Details</Button></Row>
+          <Row xs><Button  style={{width:"100px"}}/* onClick={openModal} */ color="info" >Edit</Button></Row>
           <Row xs><div style={{width:"100px"}}><HideButton /></div></Row>
               </Col>
               </Row>
               </Grid>
             </CardBody>
         </Card>
-        <Modal
+          ) }
+        {/* <Modal
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
             style={customStyles}
@@ -225,8 +157,11 @@ export default function TableList() {
                 </div>
                 
           </Card2>
-        </Modal>
+        </Modal> */}
         </view>        
         
-  );
-}
+        );
+      }
+    }
+    
+    export default withStyles(styles, { withTheme: true })(TableList);

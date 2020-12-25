@@ -19,7 +19,7 @@ export default class AllPosts extends React.Component  {
     announces: [],
   }
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/announces/`)
+    axios.get(`http://localhost:3001/api/announces/`)
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
@@ -37,6 +37,7 @@ export default class AllPosts extends React.Component  {
     render() {
   return(
          <div  margin-bottom= "20px">
+           
          <Grid fluid>
         <Row>
         { this.state.announces.map(announce =>

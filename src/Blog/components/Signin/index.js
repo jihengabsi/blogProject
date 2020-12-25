@@ -5,7 +5,10 @@ import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
 export default class SignUp extends Component {
+    
     state = {
         FirstName: '',
         LastName: '',
@@ -26,19 +29,25 @@ export default class SignUp extends Component {
         event.preventDefault();
     
         const user = {
-            FirstName: this.state.FirstName,
-            LastName: this.state.LastName,
+            name: this.state.FirstName,
+            surname: this.state.LastName,
             DateBirth: this.state.DateBirth,
-            Email: this.state.Email,
-            NTel: this.state.NTel,
-            Password: this.state.Password
+            email: this.state.Email,
+            phoneNumber: this.state.NTel,
+            password: this.state.Password,
+            role:"user"
 
         };
     
-        axios.post(`http://localhost:3000/api/users/add`, { user })
+        axios.post(`http://localhost:3001/api/users/add`, { user })
           .then(res => {
             console.log(res);
             console.log(res.data);
+        
+            window.location = "/blog";
+
+          }).catch(error=>{
+            console.log(error.message);
           })
       }
     render() {

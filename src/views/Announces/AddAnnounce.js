@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -12,9 +12,9 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
-
+import axios from 'axios';
 import avatar from "assets/img/faces/marc.jpg";
-
+import { useHistory } from 'react-router-dom';
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -36,18 +36,58 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function UserProfile() {
-  const classes = useStyles();
+// const  classes = useStyles();
+export default class AddAnnounce extends Component  {
+
+ state = {
+  Title: '',
+  Description: '',
+  Image: 'test'
+
+
+}
+
+handleChange (evt, field) {
+  this.setState({ [field]: evt.target.value });
+
+}
+
+handleSubmit = event => {
+  event.preventDefault();
+
+  const announce = {
+    titre:this.state.Title,
+    description: this.state.Description,
+    image: this.state.Image,
+  
+      
+
+  };
+
+  axios.post(`http://localhost:3000/api/announces/add`, {announce} )
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+
+      window.location = "/blog";
+      alert("success!!");
+    }).catch(error=>{
+      console.log(error.message);
+    })
+}
+ render(){
   return (
     <div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
+          <form onSubmit={this.handleSubmit}>
             <CardHeader color="danger">
-              <h4 className={classes.cardTitleWhite}>Add an announce</h4>
+              <h4 >Add an announce</h4>
             </CardHeader>
             <CardBody>
               <GridContainer>
+      
                 <GridItem xs={12} sm={12} md={6}>
                   <CustomInput
                     labelText="Title"
@@ -55,6 +95,7 @@ export default function UserProfile() {
                     formControlProps={{
                       fullWidth: true,
                     }}
+                    onChange={(event)=>this.handleChange(event, "Title")} 
                   />
                 </GridItem>
               </GridContainer>
@@ -71,6 +112,7 @@ export default function UserProfile() {
                       multiline: true,
                       rows: 5,
                     }}
+                    onChange={(event)=>this.handleChange(event, "Description")} 
                   />
                 </GridItem>
               </GridContainer>
@@ -80,18 +122,20 @@ export default function UserProfile() {
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
                   <br></br>
-                   <input type="file" name="image"/>
+                   <input type="file" name="image"  onChange={(event)=>this.handleChange(event, "Image")} />
                 </GridItem>
               </GridContainer>
               </CardBody>
            
             <CardFooter>
-              <Button color="danger">Add announce</Button>
+              <Button type="submit" color="danger">Add announce</Button>
             </CardFooter>
+            </form>
           </Card>
         </GridItem>
     
       </GridContainer>
     </div>
   );
+                  }
 }

@@ -1,18 +1,51 @@
-import React from 'react';
+import React, { Component } from "react";
 import './style.css';
 import Card from '../UI/Card';
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
-import {logo} from '../../assets/Images/logock.png';
-import Footer from '../../components/Footer';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
 /**
 * @author
 * @function Loginbpx
 **/
 
-const Loginbox = (props) => {
-
+export default class Loginbox extends Component {
+    state = {
+        Email: '',
+        Password: '',
+      
+     
+      }
     
+      handleChange (evt, field) {
+        this.setState({ [field]: evt.target.value });
+    
+      }
+    
+      handleSubmit = event => {
+        event.preventDefault();
+    
+        const user = {
+            email: this.state.Email,
+            password: this.state.Password
+
+        };
+    
+        axios.post(`http://localhost:3000/api/users/login`, user )
+          .then(res => {
+            console.log(res);
+            console.log(res.data);
+            alert("success!!");
+            const history = useHistory();
+            history.push('/blog');
+          
+          }).catch(error=>{
+            console.log(error.message);
+          })
+      }
+    render() {
   return(
       <div>
     <Grid container
@@ -24,17 +57,17 @@ const Loginbox = (props) => {
 
         <Grid item xs={3}> 
     <Card style={{background:'lightgrey', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
-    <form>
+    <form onSubmit={this.handleSubmit}>
         <h3 className="cardHeader3">Login</h3>
 
         <div className="form-group">
             <label>Email</label>
-            <input type="email" className="form-control" placeholder="Enter email" />
+            <input type="email" className="form-control" onChange={(event)=>this.handleChange(event, "Email")} placeholder="Enter email" />
         </div>
 
         <div className="form-group" style={{margin: "0"}}>
             <label>Password</label>
-            <input type="password" className="form-control" placeholder="Enter password" />
+            <input type="password" className="form-control" onChange={(event)=>this.handleChange(event, "Password")}  placeholder="Enter password" />
         </div>
         <p className="forgot-password text-right">
             <a href="#">Mot de passe oublié?</a>
@@ -53,35 +86,6 @@ const Loginbox = (props) => {
     </Grid>
 
     </div>
-
-
-
-      /*<div className="loginContainer" style={{
-          width: props.width
-      }}>
-       
-            <Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
-                <div className="cardHeader2">
-                    <span>Login</span>
-                </div>
-                <div className="login">
-                <form>
-                <input type="text" classname="inputdata" placeholder="Username" />
-                <br></br>
-                <input type="text" classname="inputdata" placeholder="Password" />
-                <br></br>
-                <Button>Submit</Button>
-                </form>
-            
-                </div>
-                <div className="profileImageContainer2">
-                    <img src={logoCK} alt="!!!" />
-                </div>
-            </Card>
-      </div>*/
-    
-   )
-
- }
-
-export default Loginbox
+     );
+    }
+}
