@@ -59,20 +59,20 @@ handleSubmit = event => {
     titre:this.state.Title,
     description: this.state.Description,
     image: this.state.Image,
-  
-      
+    visib:true      
 
   };
 
-  axios.post(`http://localhost:3000/api/announces/add`, {announce} )
+  axios.post(`http://localhost:3001/api/announces/add`, {announce} )
     .then(res => {
       console.log(res);
       console.log(res.data);
-
-      window.location = "/blog";
       alert("success!!");
+      window.location = "/blog";
+     
     }).catch(error=>{
       console.log(error.message);
+      alert("fail!!");
     })
 }
  render(){
@@ -89,31 +89,20 @@ handleSubmit = event => {
               <GridContainer>
       
                 <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Title"
-                    id="first-name"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    onChange={(event)=>this.handleChange(event, "Title")} 
-                  />
+                <br></br>
+                <InputLabel style={{ color: "#AAAAAA" }}>Title</InputLabel>
+                <br></br>
+                     <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "Title")} />
+            
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
+                <br></br>
+                <InputLabel style={{ color: "#AAAAAA" }}>Description</InputLabel>
+                <br></br>
+                    <input type="text" style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }}    onChange={(event)=>this.handleChange(event, "Description")} />
 
-                  <CustomInput
-                    labelText="Decription.."
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 5,
-                    }}
-                    onChange={(event)=>this.handleChange(event, "Description")} 
-                  />
                 </GridItem>
               </GridContainer>
 
