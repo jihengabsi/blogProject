@@ -68,7 +68,7 @@ handleSubmit = event => {
       console.log(res);
       console.log(res.data);
       alert("success!!");
-      window.location = "/blog";
+      window.location = "/admin/list";
      
     }).catch(error=>{
       console.log(error.message);
@@ -100,8 +100,7 @@ handleSubmit = event => {
                 <GridItem xs={12} sm={12} md={12}>
                 <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Description</InputLabel>
-                <br></br>
-                    <input type="text" style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }}    onChange={(event)=>this.handleChange(event, "Description")} />
+                    <textarea type="text" style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ',  'height': '80px',"box-sizing": "border-box",  'resize': 'vertical'}}    onChange={(event)=>this.handleChange(event, "Description")} />
 
                 </GridItem>
               </GridContainer>
