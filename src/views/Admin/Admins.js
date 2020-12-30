@@ -13,33 +13,89 @@ import Button from "components/CustomButtons/Button.js";
 import { Link,NavLink,Switch,Route } from 'react-router-dom';
 import AddIcon from '@material-ui/icons/Add';
 import Modal from 'react-modal';
+import { withStyles } from "@material-ui/core/styles";
+import axios from 'axios';
+class Admins extends React.Component  {
+  
+handleChange (evt, field) {
+  this.setState({ [field]: evt.target.value });
 
-export default function Admins() {
-  const customStyles = {
-    content : {
-   
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
-    }
+}
+
+handleSubmit = event => {
+  event.preventDefault();
+
+  const admin = {
+    login:this.state.Login,
+    mail:this.state.Email,
+    role:this.state.Role,
+    password:this.state.Password,
+    phoneNumber:this.state.PhoneNumber, 
+
   };
-  var subtitle;
-  const [modalIsOpen,setIsOpen] = React.useState(false);
-  function openModal() {
-    setIsOpen(true);
+
+  axios.post(`http://localhost:3000/api/admins/add`, {admin })
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+      alert("success!!");
+      window.location = "/admin/Admin's";
+     
+    }).catch(error=>{
+      console.log(error.message);
+      alert("fail!!");
+    })
+}
+  componentDidMount() {
+    axios.get(`http://localhost:3000/api/admins/`)
+      .then(res => {
+        const admins = res.data;
+        this.setState({ admins });
+      })
+  }
+  constructor() {
+    super();
+    this.state = {
+    admins: [],
+    modalIsOpen:false,
+    Login:"",
+    Email:"",
+    Role:"",
+    Password:"",
+    PhoneNumber:""
+  
+    }; 
+      
+  }
+
+  openModal() {
+    this.setState({
+      modalIsOpen:true,
+    });
+       
   }
  
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#000';
+  closeModal() {
+    this.setState({
+      modalIsOpen:false,
+    });
+       
   }
  
-  function closeModal(){
-    setIsOpen(false);
-  }
+
+ 
+  render(){
+    const customStyles = {
+      content : {
+     
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+      }
+    };
   return (   
      <view>
     
@@ -47,8 +103,8 @@ export default function Admins() {
   <CardBody>
   <Grid fluid>
     <Row>
-    <Col xs className="col1">
-<h4 >List of admins <Button   onClick={openModal} color="white"><AddIcon name="add"></AddIcon>Add</Button></h4>
+    <Col  xs >
+<h4 >List of admins <Button   onClick={()=>this.openModal()} color="white"><AddIcon name="add"></AddIcon>Add</Button></h4>
 
    </Col>
   
@@ -59,12 +115,17 @@ export default function Admins() {
     <Row>
     <Table
               tableHeaderColor="gray"
-              tableHead={["Name", "Email", "Assigned", "Actions"]}
-              tableData={[
-                ["Jihen Gabsi", "Jihen@gmail.com", "11-10-2020", <Button color="danger">Delete</Button>],
-                ["AAAA", "AAAA@gmail.com", "11-11-2020", <Button color="danger">Delete</Button>]
+              tableHead={["Login", "Email", "Phone Number","Actions"]}
+              tableData={this.state.admins.map(admin =>[
+        
+               admin.body.login,admin.body.mail, admin.body.phoneNumber ,<Button color="danger">Delete</Button>
                 
-              ]}
+                ,
+               
+               
+              ]
+              )}
+              
             />
     </Row>
     </Grid>
@@ -72,51 +133,43 @@ export default function Admins() {
   </CardBody>
   
 </Card>
-<Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          style={customStyles}
-          contentLabel="Example Modal"
+<Modal isOpen={this.state.modalIsOpen}
+            onRequestClose={() => {this.closeModal()} }
+            style={customStyles}
+            contentLabel="Example Modal"
         >
  
-          <form>
-            
+ <form onSubmit={this.handleSubmit}>          
          
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>Add a new admin</h2>
-  
-          <CustomInput
-                    labelText="Name"
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 1,
-                    }}
-                  />
-                      
-          <CustomInput
-                    labelText="Email"
-                    id="about-me"
-                    formControlProps={{
-                      fullWidth: true,
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 1,
-                    }}
-                  />
+          <h2 >Add a new admin</h2>
+     
+          <br></br>
+                <InputLabel style={{ color: "#AAAAAA" }}>Login</InputLabel>
 
+                     <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "Login")} />
+                     <InputLabel style={{ color: "#AAAAAA" }}>Email</InputLabel>
+
+<input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="Email"   onChange={(event)=>this.handleChange(event, "Email")} />
+<InputLabel style={{ color: "#AAAAAA" }}>Role</InputLabel>
+
+<input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "Role")} />
+<InputLabel style={{ color: "#AAAAAA" }}>Password</InputLabel>
+
+<input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="password"   onChange={(event)=>this.handleChange(event, "Password")} />
+<InputLabel style={{ color: "#AAAAAA" }}>Phone Number</InputLabel>
+
+<input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "PhoneNumber")} />
            
             <br></br>
-            <Button>Add</Button>
+            <Button  type="submit">Add</Button>
             
-            <Button onClick={closeModal}>close</Button>
+            <Button  onClick={()=>this.closeModal()}>close</Button>
           </form>
         </Modal>
 </view>        
         
-  );
-}
+        );
+      }
+    }
+    
+    export default withStyles( { withTheme: true })(Admins);

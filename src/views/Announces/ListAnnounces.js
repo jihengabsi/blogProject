@@ -39,7 +39,7 @@ const useStyles = makeStyles(styles);
 
 class TableList extends React.Component  {
   componentDidMount() {
-    axios.get(`http://localhost:3001/api/announces/search/find`)
+    axios.get(`http://localhost:3000/api/announces/search/find`)
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
@@ -54,7 +54,7 @@ class TableList extends React.Component  {
   handleSubmit = event => {
     event.preventDefault();
 
-    axios.get(`http://localhost:3001/api/announces/search/find/?date_cr=${Date.parse(this.state.date_cr)}`)
+    axios.get(`http://localhost:3000/api/announces/search/find/?date_cr=${Date.parse(this.state.date_cr)}`)
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
@@ -76,6 +76,8 @@ class TableList extends React.Component  {
       title:"",
       desc:"",
       date:"",
+      id:"",
+      image:""
   
     }; 
       
@@ -104,21 +106,20 @@ class TableList extends React.Component  {
         }
       };
     
-   openModal(t,d,d1) {
+   openModal(id1) {
     this.setState({
       modalIsOpen:true,
-      title:t,
-      desc:d,
-      date:d1
+      id:id1
     });
        
   }
-  openModal1(t,d,d1){
+  openModal1(t,d,d1,I){
     this.setState({
       modalIsOpen1:true,
       title:t,
       desc:d,
-      date:d1
+      date:d1,
+      image:I
     });
        
   }
@@ -242,7 +243,7 @@ render(){
               <span >posted on {new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
              </Col>
               <Col xs={6} md={2}>
-              <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal1(announce.body.titre,announce.body.description,announce.body.date_cr)} }color="success" >Details</Button></Row>
+              <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal1(announce.body.titre,announce.body.description,announce.body.date_cr,announce.body.image)} }color="success" >Details</Button></Row>
           <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal(announce.id)} }  color="info" >Edit</Button></Row>
           <Row xs><div style={{width:"100px"}}><HideButton /></div></Row>
               </Col>
@@ -257,10 +258,10 @@ render(){
             style={customStyles}
             contentLabel="Example Modal"
           >
-          <Modify style={{width: "400px"}}/>
+          <Modify  message={this.state.id} style={{width: "400px"}}/>
         </Modal>
 
-        <Modal style={{height: "800px"}}
+        <Modal style={{height: "100%"}}
             isOpen={this.state.modalIsOpen1}
             onRequestClose={() => {this.closeModal1()} }
             style={customStyles}
@@ -276,7 +277,7 @@ render(){
           <p>{this.state.desc}</p>
           </div>
                 <div  className="postImageContainer">
-                    <img src={require('../../Blog/blogPostImages/tele.jpeg')} alt="Post Image" />
+                    <img src={this.state.image} alt="Post Image" />
                     
                 </div>
 

@@ -15,6 +15,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import axios from 'axios';
 import avatar from "assets/img/faces/marc.jpg";
 import { useHistory } from 'react-router-dom';
+import firebase from 'firebase';
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -42,8 +43,33 @@ export default class AddAnnounce extends Component  {
  state = {
   Title: '',
   Description: '',
-  Image: 'test'
+  Image: ''
 
+
+}
+ uploadImage() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
+    authDomain: "mini-project-incp.firebaseapp.com",
+    databaseURL: "https://mini-project-incp.firebaseio.com",
+    projectId: "mini-project-incp",
+    storageBucket: "mini-project-incp.appspot.com",
+    messagingSenderId: "268706642084",
+    appId: "1:268706642084:web:257bb963e4417ccd338e31",
+    measurementId: "G-KPWHVF4TZF"
+  };
+// Initialize Firebase
+
+  firebase.initializeApp(firebaseConfig);
+  const ref = firebase.storage().ref();
+  const file = document.querySelector("#image").files[0];
+
+  const task = ref.child(file.name).put(file);
+
+  task.then( () => {
+      document.getElementById("form").submit();
+  });
+  alert("upload image");
 
 }
 
@@ -54,16 +80,18 @@ handleChange (evt, field) {
 
 handleSubmit = event => {
   event.preventDefault();
+  const file_name = document.querySelector("#image").files[0].name;
 
-  const announce = {
+  const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";
+    const announce = {
     titre:this.state.Title,
     description: this.state.Description,
-    image: this.state.Image,
+    image:url,
     visib:true      
 
   };
 
-  axios.post(`http://localhost:3001/api/announces/add`, {announce} )
+  axios.post(`http://localhost:3000s/api/announces/add`, {announce} )
     .then(res => {
       console.log(res);
       console.log(res.data);
@@ -76,12 +104,13 @@ handleSubmit = event => {
     })
 }
  render(){
+  
   return (
     <div>
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
-          <form onSubmit={this.handleSubmit}>
+          <form  id="form" onSubmit={this.handleSubmit}>
             <CardHeader color="danger">
               <h4 >Add an announce</h4>
             </CardHeader>
@@ -110,13 +139,13 @@ handleSubmit = event => {
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
                   <br></br>
-                   <input type="file" name="image"  onChange={(event)=>this.handleChange(event, "Image")} />
+                   <input type="file" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")} />
                 </GridItem>
               </GridContainer>
               </CardBody>
            
             <CardFooter>
-              <Button type="submit" color="danger">Add announce</Button>
+              <Button type="submit"  onClick={()=>this.uploadImage()} color="danger">Add announce</Button>
             </CardFooter>
             </form>
           </Card>

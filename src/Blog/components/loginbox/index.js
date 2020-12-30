@@ -37,12 +37,12 @@ export default class Loginbox extends Component {
           .then(res => {
             console.log(res);
             console.log(res.data);
-            alert("success!!");
-            const history = useHistory();
-            history.push('/blog');
+
+        window.location = "/blog";
           
           }).catch(error=>{
             console.log(error.message);
+            alert("fail!!");
           })
       }
     render() {

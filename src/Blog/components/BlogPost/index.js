@@ -21,7 +21,7 @@ export default class BlogPost extends React.Component  {
   
 
       componentDidMount() {
-        axios.get(`http://localhost:3001/api/announces/${this.state.slug}`)
+        axios.get(`http://localhost:3000/api/announces/${this.state.slug}`)
           .then(res => {
             const announces = res.data;
             this.setState({ announces });
@@ -30,18 +30,20 @@ export default class BlogPost extends React.Component  {
       render() {
   return(
         <div className="blogPostContainer">
+             { this.state.announces.map(announce =>
             <Card style={{ marginLeft:'150px'}}>
-            { this.state.announces.map(announce =>
+         
                 <div className="blogHeader">
                     <h1 className="postTitle">{announce.body.titre}</h1>
                     <span className="postedBy">posted on {new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
                 </div>
-                  ) }
-
+                 
                 <div className="postImageContainer">
-                    {/* <img src={require('../../blogPostImages/' + post.blogImage)} alt="Post Image" /> */}
+                   <img src={announce.body.image} alt="Post Image" /> 
                     
                 </div>
+             
+
 
                 <div className="postContent">
   {/* <h3>{post.blogTitle}</h3>
@@ -49,6 +51,7 @@ export default class BlogPost extends React.Component  {
                 </div>
                 
             </Card>
+                ) }
         </div>
    )
 

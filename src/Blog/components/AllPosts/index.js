@@ -19,7 +19,7 @@ export default class AllPosts extends React.Component  {
     announces: [],
   }
   componentDidMount() {
-    axios.get(`http://localhost:3001/api/announces/`)
+    axios.get(`http://localhost:3000/api/announces/`)
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
@@ -43,14 +43,15 @@ export default class AllPosts extends React.Component  {
         { this.state.announces.map(announce =>
       
                                 <Col xs >
-                                <div>
+                                <div style={{"width":"300px","height":"400px"}}>
                                    
-                                <Card>
-                                {/* <CardImg top width="50%" height="180px"  src={require('../../blogPostImages/' + post.blogImage)} alt="Post Image" /> */}
+                                <Card style={{"width":"300px","height":"380px"}}>
+                                <CardImg top width="50%" height="180px"  src={announce.body.image} alt="Post Image" />
                                 <CardBody>
                                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>
                                   {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle> */}
-                                  <CardText>{announce.body.description}</CardText>
+                                  <CardText >{announce.body.description}</CardText>
+                                  <CardText>{announce.body.image}</CardText>
                                   <NavLink to={'/post/'+announce.id}> 
                                   <Button>Read more</Button>
                                   </NavLink>
