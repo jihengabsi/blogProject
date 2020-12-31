@@ -28,23 +28,35 @@ const Logo = (props) => {
     <div className="logo">
   
         <Slide  {...properties}>
-          <div >
-            <div style={{'backgroundImage': `url(${slideImages[0]})`,height:"300px"}}>
-              <h1 style={{"font-size": "40px",paddingTop:"40px",color:"white"}}>1</h1>
+          <div style={{height:"300px"}}>
+            <div style={{'backgroundImage': `url(${slideImages[0]})`,height:"500px" ,backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',}}>
+  
             </div>
           </div>
           <div >
-            <div style={{'backgroundImage': `url(${slideImages[1]})`,height:"300px"}}>
-            <h1 style={{"font-size": "40px",paddingTop:"40px",color:"white"}}>2</h1>
+            <div style={{'backgroundImage': `url(${slideImages[1]})`,height:"500px" ,backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',}}>
+  
             </div>
           </div>
           <div>
-            <div style={{'backgroundImage': `url(${slideImages[2]})`,height:"300px"}}>
-            <h1 style={{"font-size": "40px",paddingTop:"40px",color:"white"}}>3</h1>
+            <div style={{'backgroundImage': `url(${slideImages[2]})`,height:"500px" ,backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',}}>
+ 
             </div>
           </div>
         </Slide>
-    </div>
+        
+        <div  style={{borderBottomWidth:'10px',borderColor:"beige",columns: "2 auto",fontSize:"12px",width:"90%",position:"left",paddingLeft:"12%",paddingTop:"50px",textAlign: "left"}}>
+         
+        <h2>CK MÉTROLOGIE est une Société Anonyme au capital de 400,000 Dinars.</h2> 
+        <br></br>
+        <h3 >L’investissement globale s'élève à un million cent dinars, bouclé avec le concours de la BFPME et la BIAT. Elle a été crée en juillet 2006, et a commencé à fournir des prestations aux industriels tunisiens en septembre 2007.</h3>
+     
+        </div>
+   
+         </div>
    )
 
  }

@@ -10,19 +10,25 @@ class HideControl extends React.Component {
       this.handleHideClick = this.handleHideClick.bind(this);
       this.handleUnhideClick = this.handleUnhideClick.bind(this);
       this.state = {isHidden: false};
-      
+     
     }
  
     handleHideClick= event => {
       this.setState({isHidden: true});
       {alert("L'article n'est plus visible.")}
       event.preventDefault();
-  
-      axios.put(`http://localhost:3001/api/announces/put/visib`, { visib: true })
+      const announce = {
+        id:this.props.message,
+        visib:false,
+        token:localStorage.getItem('token')
+    
+      };
+      axios.put(`http://localhost:3000/api/announces/put/visib`, announce)
         .then(res => {
-          const announces = res.data;
-          this.setState({ announces });
-          alert("success!!");
+          console.log(res);
+          console.log(res.data);
+          alert(announce.id);
+          window.location = "/admin/list";
         }).catch(error=>{
           console.log(error.message);
           alert("fail!!");

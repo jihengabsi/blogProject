@@ -2,7 +2,7 @@ import React from "react";
 // @material-ui/core components
 // core components
 
-
+import './style.css';
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import Table from "components/Table/Table";
@@ -21,7 +21,27 @@ handleChange (evt, field) {
   this.setState({ [field]: evt.target.value });
 
 }
+delete= event => {
+  event.preventDefault();
 
+  const admin = {
+    id:this.state.Id,
+    uid:this.state.Uid,
+    token:localStorage.getItem('token'), 
+  };
+  
+  axios.delete(`http://localhost:3000/api/admins/delete`,admin)
+    .then(res => {
+      console.log(res);
+      console.log(res.data);
+      alert("success!!");
+      window.location = "/admin/Admin's";
+     
+    }).catch(error=>{
+      console.log(error.message);
+      alert("fail!!");
+    })
+}
 handleSubmit = event => {
   event.preventDefault();
 
@@ -31,7 +51,6 @@ handleSubmit = event => {
     role:this.state.Role,
     password:this.state.Password,
     phoneNumber:this.state.PhoneNumber, 
-
   };
 
   axios.post(`http://localhost:3000/api/admins/add`, {admin })
@@ -58,12 +77,14 @@ handleSubmit = event => {
     this.state = {
     admins: [],
     modalIsOpen:false,
+    modal1IsOpen:false,
     Login:"",
     Email:"",
     Role:"",
     Password:"",
-    PhoneNumber:""
-  
+    PhoneNumber:"",
+    Id:"",
+    Uid:""
     }; 
       
   }
@@ -71,10 +92,24 @@ handleSubmit = event => {
   openModal() {
     this.setState({
       modalIsOpen:true,
+    
     });
        
   }
- 
+  openModal1(id,uid) {
+    this.setState({
+      modal1IsOpen:true,
+      Id:id,
+      Uid:uid
+    });
+       
+  }
+  closeModal1() {
+    this.setState({
+      modal1IsOpen:false,
+    });
+       
+  }
   closeModal() {
     this.setState({
       modalIsOpen:false,
@@ -99,7 +134,7 @@ handleSubmit = event => {
   return (   
      <view>
     
-     <Card className="Card"> 
+     <Card > 
   <CardBody>
   <Grid fluid>
     <Row>
@@ -118,7 +153,7 @@ handleSubmit = event => {
               tableHead={["Login", "Email", "Phone Number","Actions"]}
               tableData={this.state.admins.map(admin =>[
         
-               admin.body.login,admin.body.mail, admin.body.phoneNumber ,<Button color="danger">Delete</Button>
+               admin.body.login,admin.body.mail, admin.body.phoneNumber ,<Button onClick={()=>this.openModal1(admin.id,admin.body.uid)}  color="danger">Delete</Button>
                 
                 ,
                
@@ -133,6 +168,18 @@ handleSubmit = event => {
   </CardBody>
   
 </Card>
+<Modal isOpen={this.state.modal1IsOpen}
+            onRequestClose={() => {this.closeModal1()} }
+            style={customStyles}
+            contentLabel="Example Modal"
+        >
+<form onSubmit={this.delete}>   
+<h2 >Delete an admin</h2>
+<Button  type="submit">Delete</Button>
+            
+            <Button  onClick={()=>this.closeModal1()}>Cancel</Button>
+</form>
+          </Modal>
 <Modal isOpen={this.state.modalIsOpen}
             onRequestClose={() => {this.closeModal()} }
             style={customStyles}

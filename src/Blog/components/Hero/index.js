@@ -19,7 +19,7 @@ const Hero = (props) => {
          <Navbar  fixed="top"  >
     <Navbar1></Navbar1>
 </Navbar>
-            <Logo />
+         
         </Card>
    
    )

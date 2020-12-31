@@ -28,17 +28,18 @@ export default class Loginbox extends Component {
         event.preventDefault();
     
         const user = {
-            email: this.state.Email,
+            mail: this.state.Email,
             password: this.state.Password
 
         };
     
-        axios.post(`http://localhost:3001/api/users/login`, user )
+        axios.post(`http://localhost:3000/api/admins/login`, user )
           .then(res => {
             console.log(res);
             console.log(res.data);
-
-        window.location = "/blog";
+            localStorage.setItem('token', res.data.posted.token);
+         
+        window.location = "/admin";
           
           }).catch(error=>{
             console.log(error.message);

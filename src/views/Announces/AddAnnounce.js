@@ -91,7 +91,7 @@ handleSubmit = event => {
 
   };
 
-  axios.post(`http://localhost:3000s/api/announces/add`, {announce} )
+  axios.post(`http://localhost:3000/api/announces/add`, {announce} )
     .then(res => {
       console.log(res);
       console.log(res.data);

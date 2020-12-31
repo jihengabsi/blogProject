@@ -28,7 +28,7 @@ const Sidebar = (props) => {
           width: props.width
       }}>
        
-            <Card style={{ marginLeft:'100px',marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+            <Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
                 <div className="cardHeader">
                     <span>About Us</span>
                 </div>
@@ -42,7 +42,7 @@ const Sidebar = (props) => {
                 Elle a été crée en juillet 2006, et a commencé à fournir des prestations aux industriels tunisiens en septembre 2007.
                 </div>
             </Card>
-            <Card style={{marginLeft:'100px', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+            <Card style={{ marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
                 <div className="cardHeader">
                     <span>Recent Posts</span>
                 </div>

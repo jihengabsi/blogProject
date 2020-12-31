@@ -77,7 +77,8 @@ class TableList extends React.Component  {
       desc:"",
       date:"",
       id:"",
-      image:""
+      image:"",
+     
   
     }; 
       
@@ -113,13 +114,14 @@ class TableList extends React.Component  {
     });
        
   }
-  openModal1(t,d,d1,I){
+  openModal1(t,d,d1,I,Token){
     this.setState({
       modalIsOpen1:true,
       title:t,
       desc:d,
       date:d1,
-      image:I
+      image:I,
+     
     });
        
   }
@@ -155,6 +157,7 @@ render(){
        <div className={classes.searchWrapper}>
   
          <form onSubmit={this.handleSubmit}>
+           
          <Button  color={window.innerWidth > 959 ? "transparent" : "white"}
           justIcon={window.innerWidth > 959}
           simple={!(window.innerWidth > 959)}
@@ -243,9 +246,9 @@ render(){
               <span >posted on {new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
              </Col>
               <Col xs={6} md={2}>
-              <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal1(announce.body.titre,announce.body.description,announce.body.date_cr,announce.body.image)} }color="success" >Details</Button></Row>
+              <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal1(announce.body.titre,announce.body.description,announce.body.date_cr,announce.body.image,announce.token)} }color="success" >Details</Button></Row>
           <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal(announce.id)} }  color="info" >Edit</Button></Row>
-          <Row xs><div style={{width:"100px"}}><HideButton /></div></Row>
+          <Row xs><div style={{width:"100px"}}><HideButton message={announce.id}/></div></Row>
               </Col>
               </Row>
               </Grid>

@@ -14,10 +14,10 @@ const Layout = (props) => {
         {props.children}
      
     </div>
-    
+    <Footer></Footer>
 
       </React.Fragment>
-       <Footer></Footer>
+ 
     </div>
     
    )

@@ -19,7 +19,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
-
+import Signin from "./Blog/containers/Login";
 // core components
 import Admin from "layouts/Admin.js";
 import Client from "./Blog/App.js";
@@ -32,9 +32,11 @@ const hist = createBrowserHistory();
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
+    <Route  path="/signin" component={Signin} />
       <Route  path="/blog" component={Client} />
       <Route path="/admin" component={Admin} />
       <Redirect from="/" to="/blog" />
+
     </Switch>
   </Router>,
   document.getElementById("root")

@@ -1,45 +1,84 @@
+
 .navbar{
+    flex: 1;
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
+    padding:  0;
     background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.Menu{
+    flex: 1;
+    justify-items: center;
+    background-color: red;
+    width: 90px;
+    height: 90px;
+    color:white;
+    text-align: center;
+    align-items: center;
+    font-size: 24px;
+    padding-top: 17px;
+}
+
 .navbar ul{
     margin: 0;
     padding: 0;
 }
 .navbar ul li{
+ 
     list-style: none;
     display: inline-block;
 }
 .navbar ul li a{
     text-decoration: none;
     display: block;
-    font-size: 20px;
+
     text-transform: capitalize;
-    font-weight: 400;
+
     color:black;
     padding: 0 10px;
 }
-.search form{
-    display: flex;
-    margin: 0 10px;
-}
 
-.searchInput{
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 50px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 10px;
+    }
+
+    .search_input{
+    color: black;
     border: 0;
+    outline: 0;
+    background: none;
     width: 0;
-    transition: width 0.1s ease-in;
-}
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
 
-.searchInput.active{
-    width: 150px;
-}
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
 
-.searchInput:focus{
-    outline: none;
-}
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
 
-.searchIcon{
-    cursor: pointer;
-}
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }

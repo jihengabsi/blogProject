@@ -31,7 +31,7 @@ export default class BlogPost extends React.Component  {
   return(
         <div className="blogPostContainer">
              { this.state.announces.map(announce =>
-            <Card style={{ marginLeft:'150px'}}>
+            <Card >
          
                 <div className="blogHeader">
                     <h1 className="postTitle">{announce.body.titre}</h1>
@@ -46,8 +46,8 @@ export default class BlogPost extends React.Component  {
 
 
                 <div className="postContent">
-  {/* <h3>{post.blogTitle}</h3>
-  <p>{post.blogText}</p> */}
+
+  <p>{announce.body.description}</p> 
                 </div>
                 
             </Card>

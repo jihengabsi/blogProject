@@ -13,10 +13,10 @@ import {
   import { makeStyles } from '@material-ui/core/styles';
 /**
 * @author
-* @function AllPosts
+* @function SearchResult
 **/
 
-export default class AllPosts extends React.Component  {
+export default class SearchResult extends React.Component  {
   constructor(props) {
     super(props);
   this.state = {
