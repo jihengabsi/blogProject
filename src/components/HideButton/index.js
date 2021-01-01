@@ -18,9 +18,10 @@ class HideControl extends React.Component {
       {alert("L'article n'est plus visible.")}
       event.preventDefault();
       const announce = {
+        token:localStorage.getItem('token'),
         id:this.props.message,
-        visib:false,
-        token:localStorage.getItem('token')
+        visib:false
+      
     
       };
       axios.put(`http://localhost:3000/api/announces/put/visib`, announce)

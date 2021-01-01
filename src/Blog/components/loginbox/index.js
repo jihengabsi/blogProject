@@ -27,13 +27,13 @@ export default class Loginbox extends Component {
       handleSubmit = event => {
         event.preventDefault();
     
-        const user = {
+        const admin = {
             mail: this.state.Email,
             password: this.state.Password
 
         };
     
-        axios.post(`http://localhost:3000/api/admins/login`, user )
+        axios.post(`http://localhost:3000/api/admins/login`, admin )
           .then(res => {
             console.log(res);
             console.log(res.data);

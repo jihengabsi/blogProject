@@ -14,6 +14,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 import { withStyles } from "@material-ui/core/styles";
 import axios from 'axios';
+import firebase from 'firebase';
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -43,6 +44,31 @@ class ModifyAnnounce extends React.Component {
         this.setState({ announces });
       })
   }
+  uploadImage() {
+    const firebaseConfig = {
+      apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
+      authDomain: "mini-project-incp.firebaseapp.com",
+      databaseURL: "https://mini-project-incp.firebaseio.com",
+      projectId: "mini-project-incp",
+      storageBucket: "mini-project-incp.appspot.com",
+      messagingSenderId: "268706642084",
+      appId: "1:268706642084:web:257bb963e4417ccd338e31",
+      measurementId: "G-KPWHVF4TZF"
+    };
+  // Initialize Firebase
+  
+    firebase.initializeApp(firebaseConfig);
+    const ref = firebase.storage().ref();
+    const file = document.querySelector("#image").files[0];
+  
+    const task = ref.child(file.name).put(file);
+  
+    task.then( () => {
+        document.getElementById("form").submit();
+    });
+    alert("upload image");
+  
+  }
   constructor() {
     super();
     this.state = {
@@ -62,17 +88,19 @@ class ModifyAnnounce extends React.Component {
   
   handleSubmit = event => {
     event.preventDefault();
-  
+    const file_name = document.querySelector("#image").files[0].name;
+
+    const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";
     const announce = {
+      token:localStorage.getItem('token'),
       id:this.props.message,
       titre:this.state.Title,
       description: this.state.Description,
-      image: "test",
-      token:localStorage.getItem('token')
+      image: url    
   
     };
 
-    axios.put(`http://localhost:3001/api/announces/put`, announce)
+    axios.put(`http://localhost:3000/api/announces/put`, announce)
       .then(res => {
         console.log(res);
         console.log(res.data);
@@ -94,7 +122,7 @@ class ModifyAnnounce extends React.Component {
      
      
           <Card>
-          <form onSubmit={this.handleSubmit}>
+          <form id="form" onSubmit={this.handleSubmit}>
             <CardHeader color="danger">
               
               <h4 className={classes.cardTitleWhite}>Modify an announce</h4>
@@ -116,12 +144,12 @@ class ModifyAnnounce extends React.Component {
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
                   <br></br>
-                   <input type="file" name="image"/>
+                   <input type="file" name="image" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")}/>
          
               </CardBody>
            
             <CardFooter>
-              <Button type="submit" color="danger">Modify announce</Button>
+              <Button type="submit"  onClick={()=>this.uploadImage()} color="danger">Modify announce</Button>
             </CardFooter>
             </form>
           </Card>
