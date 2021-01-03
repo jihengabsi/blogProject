@@ -6,10 +6,11 @@
 .postImageWrapper2{
     width: 100%;
     overflow: hidden;
+    background-size: 'cover',
 }
 
 .postImageWrapper2 img{
-    height: 350px;
+    height: 100%;
     width: 100%;  
     object-fit: cover;
     margin-bottom: 20px;

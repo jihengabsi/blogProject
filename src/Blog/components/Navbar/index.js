@@ -28,18 +28,27 @@ const Navbar = (props) => {
   return(
     <div className="navbar">
         <ul className="navbarMenu">
-        <li> <div className="Menu">
-            <MenuIcon style={{ fontSize: 45 }}></MenuIcon>
-            <a>Menu</a>
-            </div> 
-        </li>
-            <li><NavLink to="/blog"><img style={{height:"50px",marginTop:"-60px"}} src={Logo} alt="logo" /> </NavLink></li>
+
+        <li class="dropdown">
+        <a  class="Menu" > 
+        <MenuIcon   href="javascript:void(0)" class="dropbtn" ></MenuIcon>
+   
+    </a>
+    <div class="dropdown-content">
+      <a href="/blog/login">Connecter</a>
+      <a href="/blog/signup">Créer une compte</a>
+      <a href="/blog/profile">Profile</a>
+    </div>
+  </li>
+      
+            <li><NavLink to="/blog"><img style={{height:"50px",marginLeft:"20px"}} src={Logo} alt="logo" /> </NavLink></li>
+            <li>  <li><NavLink to="/blog">Home</NavLink></li></li>
 
         
         </ul>
         <div className="search">
         <ul className="navbarMenu">
-        <li><NavLink to="/blog/profile">Profile</NavLink></li>
+      
        <li>  
        <div className="container h-100">
         <div className="d-flex justify-content-center h-100">

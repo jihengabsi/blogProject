@@ -95,7 +95,7 @@ handleSubmit = event => {
     .then(res => {
       console.log(res);
       console.log(res.data);
-      alert("success!!");
+      alert("Announce added successfully!");
       window.location = "/admin/list";
      
     }).catch(error=>{

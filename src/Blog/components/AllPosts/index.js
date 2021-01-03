@@ -23,7 +23,7 @@ export default class AllPosts extends React.Component  {
     data: [],
     offset: 0,
     perPage: 3,
-    currentPage: 0
+    currentPage: 1
   }
   this.handlePageClick = this
           .handlePageClick
@@ -58,9 +58,9 @@ receivedData() {
                                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>
                                   {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle> */}
                                   <CardText >{announce.body.description}</CardText>
-                                  <CardText>{announce.body.image}</CardText>
+                
                                   <NavLink to={'/post/'+announce.id}> 
-                                  <Button>Lire la suite</Button>
+                                  <Button  color="danger" >Lire la suite</Button>
                                   </NavLink>
                                 </CardBody>
                               </Card>

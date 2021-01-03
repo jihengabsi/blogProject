@@ -4,7 +4,7 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import Red1 from  '../../assets/red1.jpg';
 import Red2 from  '../../assets/red2.jpg';
-import Red3 from  '../../assets/red3.jpeg';
+import Red3 from  '../../assets/red1.jpg';
 /**
 * @author
 * @function Logo
@@ -48,7 +48,7 @@ const Logo = (props) => {
           </div>
         </Slide>
         
-        <div  style={{borderBottomWidth:'10px',borderColor:"beige",columns: "2 auto",fontSize:"12px",width:"90%",position:"left",paddingLeft:"12%",paddingTop:"50px",textAlign: "left"}}>
+        <div  style={{borderBottomWidth:'10px',borderColor:"beige",columns: "2 auto",fontSize:"12px",width:"82%",position:"left",paddingLeft:"12%",paddingTop:"50px",textAlign: "left"}}>
          
         <h2>CK MÉTROLOGIE est une Société Anonyme au capital de 400,000 Dinars.</h2> 
         <br></br>

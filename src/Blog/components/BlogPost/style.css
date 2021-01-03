@@ -1,8 +1,9 @@
 .blogPostContainer{
-    width: 400%;
-    margin-Left:-10%;
+    width: 200%;
+    margin-Left:-5%;
     padding-top: 10%;
     padding-right: 5%;
+   
 }
 
 .blogHeader{
@@ -30,10 +31,13 @@
 }
 
 .postImageContainer{
-    width: 100%;
-    height: 500px;
-    padding: 10px;
+    width: 200%;
+   padding-left: 20%;
+
     box-sizing: border-box;
+    height: 100%;
+    
+    object-fit: cover;
 }
 
 .postImageContainer img{

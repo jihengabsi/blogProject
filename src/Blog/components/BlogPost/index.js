@@ -3,6 +3,8 @@ import './style.css';
 import Card from '../UI/Card';
 import blogPost from '../../data/blog.json';
 import axios from "axios";
+import logoCK from '../../assets/Images/logock.png';
+import { NavLink } from 'react-router-dom';
 /**
 * @author
 * @function BlogPost
@@ -35,7 +37,7 @@ export default class BlogPost extends React.Component  {
          
                 <div className="blogHeader">
                     <h1 className="postTitle">{announce.body.titre}</h1>
-                    <span className="postedBy">posted on {new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
+                    <span className="postedBy">{new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
                 </div>
                  
                 <div className="postImageContainer">
@@ -52,6 +54,8 @@ export default class BlogPost extends React.Component  {
                 
             </Card>
                 ) }
+                  
+      
         </div>
    )
 

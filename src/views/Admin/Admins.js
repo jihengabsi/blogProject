@@ -24,22 +24,25 @@ handleChange (evt, field) {
 delete= event => {
   event.preventDefault();
 
-  const admin = {
+  const admin1 = {
+    admin : {
     id:this.state.Id,
     uid:this.state.Uid,
     token:localStorage.getItem('token'), 
+    }
   };
-  
-  axios.delete(`http://localhost:3000/api/admins/delete`,admin)
+  console.log(admin1);
+  axios.put(`http://localhost:3000/api/admins/delete`,admin1)
     .then(res => {
       console.log(res);
       console.log(res.data);
-      alert("success!!");
+      alert("Admin successfully deleted!");
       window.location = "/admin/Admin's";
      
     }).catch(error=>{
+
       console.log(error.message);
-      alert("fail!!");
+      alert(this.state.Id);
     })
 }
 handleSubmit = event => {
@@ -57,7 +60,7 @@ handleSubmit = event => {
     .then(res => {
       console.log(res);
       console.log(res.data);
-      alert("success!!");
+      alert("Administrator added successfully!");
       window.location = "/admin/Admin's";
      
     }).catch(error=>{
@@ -174,7 +177,7 @@ handleSubmit = event => {
             contentLabel="Example Modal"
         >
 <form onSubmit={this.delete}>   
-<h2 >Delete an admin</h2>
+<h2 >Delete an admin {this.state.Id}</h2>
 <Button  type="submit">Delete</Button>
             
             <Button  onClick={()=>this.closeModal1()}>Cancel</Button>

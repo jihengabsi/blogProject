@@ -43,15 +43,17 @@ export default class RecentPosts extends React.Component  {
           <Col xs >
           <div className="postImageWrapper2">
         
-                <img src={logo} alt="Post Image"/>
+                <img src={announce.body.image} alt="Post Image"/>
                 </div>
                 </Col >
                 <Col xs> 
                 <span></span>
-                <h2>Title</h2>
+                <h2>{announce.body.titre}</h2>
               
-                <p>Midst first it, you're multiply divided. There don't, second his one given the he one third rule fruit, very. Fill. Seed give firm... Extremity direction existence as Dashwood's do up. Securing Marianne led welcomed offended but offering six rapt...</p>
-
+                <p>{announce.body.description}</p>
+                <NavLink to={'/post/'+announce.id}> 
+                                  <Button color="danger">Lire la suite</Button>
+                                  </NavLink>
   
                 </Col>
   

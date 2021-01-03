@@ -39,7 +39,7 @@ const useStyles = makeStyles(styles);
 
 class TableList extends React.Component  {
   componentDidMount() {
-    axios.get(`http://localhost:3000/api/announces/search/find`)
+    axios.get(`http://localhost:3000/api/announces/`)
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
@@ -114,7 +114,7 @@ class TableList extends React.Component  {
     });
        
   }
-  openModal1(t,d,d1,I,Token){
+  openModal1(t,d,d1,I){
     this.setState({
       modalIsOpen1:true,
       title:t,
@@ -239,16 +239,17 @@ render(){
               <Row>
             <Col xs>
               <h2>{announce.body.titre}</h2>
-              <div className="postImageWrapper"> <img className="imgu" src={Image} alt="" /> </div>
+              
+              <div className="postImageWrapper"> <img className="imgu" src={announce.body.image} alt="" /> </div>
               </Col>
               <Col xs>
               <h4 >{announce.body.description}</h4>
-              <span >posted on {new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
+              <span >posted on {new Date(announce.body.date_cr).toString().replace(/T/, ' ').replace(/\..+/, '') } </span>
              </Col>
               <Col xs={6} md={2}>
               <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal1(announce.body.titre,announce.body.description,announce.body.date_cr,announce.body.image,announce.token)} }color="success" >Details</Button></Row>
           <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal(announce.id)} }  color="info" >Edit</Button></Row>
-          <Row xs><div style={{width:"100px"}}><HideButton message={announce.id}/></div></Row>
+          <Row xs><div style={{width:"100px"}}><HideButton message2={announce.body.visib} message={announce.id}/></div></Row>
               </Col>
               </Row>
               </Grid>

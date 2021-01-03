@@ -17,7 +17,7 @@ const Post = (props) => {
 
   return(
         <Layout >
-          <BlogPost className="Layout" {...props} />
+          <BlogPost className="Layout" {...props} ></BlogPost>
           <Sidebar />
         </Layout>
    )

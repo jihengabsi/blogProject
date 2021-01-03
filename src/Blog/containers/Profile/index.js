@@ -41,9 +41,9 @@ const useStyles = makeStyles(styles);
 export default function UserProfile() {
   const classes = useStyles();
   return (
-    <div>
+    <div style={{paddingTop:"110px"}}>
 
-          <Card profile>
+          <Card  profile>
             <CardAvatar profile>
             
                 <img src={avatar} alt="..." />

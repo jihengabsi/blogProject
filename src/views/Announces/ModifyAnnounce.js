@@ -66,7 +66,7 @@ class ModifyAnnounce extends React.Component {
     task.then( () => {
         document.getElementById("form").submit();
     });
-    alert("upload image");
+    
   
   }
   constructor() {
@@ -104,7 +104,7 @@ class ModifyAnnounce extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
-        alert(announce.id);
+        alert("Announce updated successfully!");
         window.location = "/admin/list";
        
       }).catch(error=>{

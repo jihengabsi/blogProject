@@ -39,7 +39,7 @@ export default class SignUp extends Component {
 
         };
     
-        axios.post(`http://localhost:3001/api/users/add`, { user })
+        axios.post(`http://localhost:3000/api/users/add`, { user })
           .then(res => {
             console.log(res);
             console.log(res.data);
@@ -52,7 +52,7 @@ export default class SignUp extends Component {
       }
     render() {
         return (
-<div>
+<div style={{paddingTop:"110px"}}>
             <Grid container
             spacing={0}
             direction="column"
@@ -63,7 +63,7 @@ export default class SignUp extends Component {
                 <Grid item xs={3}> 
             <Card style={{background:'lightgrey', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
             <form onSubmit={this.handleSubmit}>
-                <h3 className="cardHeader3">Register</h3>
+                <h3 className="cardHeader3">Créer une compte</h3>
                 
                 <div className="form-group">
                     <label>First name</label>
@@ -97,7 +97,7 @@ export default class SignUp extends Component {
 
                 <button type="submit" style={{margin: "20px 0 0"}} className="btn btn-dark btn-lg btn-block">Register</button>
                 <p className="forgot-password text-right">
-                    Already registered? <NavLink to="/blog/login">log in.</NavLink>
+                    Already registered? <NavLink to="/blog/login">Créer</NavLink>
                 </p>
             </form></Card>
             </Grid>
