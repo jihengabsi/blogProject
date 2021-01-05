@@ -7,71 +7,71 @@ import {
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
   import { Grid, Row, Col } from 'react-flexbox-grid';
-
+  import axios from "axios";
+  
 /**
 * @author
 * @function ListPosts
 **/
-
-const ListPosts = (props) => {
+export default class ListPosts extends React.Component  {
+  componentDidMount() {
     
-    const [posts, setPosts] = useState([]);
-    
-    
-    useEffect(() => {
-        const posts = blogPost.data;
-        setPosts(posts);
-    }, [posts]);
+    axios.get(`http://localhost:3000/api/announces/`)
+      .then(res => {
+        const announces = res.data;
+        this.setState({ announces });
+      })
+  }
+  constructor(props) {
+    super(props);
+    this.state = {
+        announces: [],
+        keyWord: localStorage.getItem('keyWord')
+    };
+      
+  }
 
-
-
+ render(){
+ 
   return(
       <div className='searchcontainer'>
       <React.Fragment >
          <div  margin-left= "20px">
          <Grid fluid>
+     
       
-      
-      {
-                        posts.map(post => {
-                            return (
-                                <Row>
-                                <Col >
-                                <div className='searchcontainer'>
-                                 
-                                <Card>
-                                <div style={{width:"100%"}}>
-                                <Row>
-                                <div style={{width:"30%"}}>
-                                <CardImg height="100%"  src={require('../../blogPostImages/' + post.blogImage)}  alt="Post Image" />
-                                </div>
-                                <CardBody>
-                                  <CardTitle tag="h5">{post.blogTitle}</CardTitle>
-                                  <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle>
-                                  <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                                  <NavLink key={post.id} to={`/post/${post.slug}`}>
-                                  <Button>Read more</Button>
+         { this.state.announces.map(announce =>
+                        
+                        <Card > 
+                        <CardBody>
+                        <Grid fluid>
+                          <Row>
+                        <Col xs>
+                        <h1>{this.state.keyWord}</h1>
+                          <h2>{announce.body.titre}</h2>
+                          
+                          <div className="postImageWrapper"> <img className="imgu" src={announce.body.image} alt="" /> </div>
+                          </Col>
+                          <Col xs>
+                          <h4 >{announce.body.description}</h4>
+                          <span >posted on {new Date(announce.body.date_cr).toString().replace(/T/, ' ').replace(/\..+/, '') } </span>
+                         </Col>
+                          <Col xs={6} md={2}>
+                          <NavLink to={'/post/'+announce.id}> 
+                                  <Button  color="danger" >Lire la suite</Button>
                                   </NavLink>
-                                </CardBody>
-                                </Row>
-                                <br></br>
-                                </div>
-                              </Card>
-                              
-                              </div> 
-                              </Col>  
-                              </Row>
-                            );
-                        })
-                    }
-                  
+                          </Col>
+                          </Row>
+                          </Grid>
+                        </CardBody>
+                    </Card>
+                          ) }
                     </Grid>
 
     </div>
       </React.Fragment>
     
       </div>)
-
+ }
  }
 
-export default ListPosts

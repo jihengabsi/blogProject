@@ -47,7 +47,7 @@ receivedData() {
     const data = res.data;
           const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
           const postData = slice.map(announce => 
-       
+            announce.body.visib ? 
         <Col xs >
           
                                 <div style={{"width":"300px","height":"400px"}}>
@@ -67,7 +67,7 @@ receivedData() {
                               </div> 
                               </Col>  
       
-              
+      :true
         )
 
           this.setState({

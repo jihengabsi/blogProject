@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.css';
 import Search from '../../assets/icons/search.png';
@@ -10,21 +10,29 @@ import MenuIcon from '@material-ui/icons/Menu';
 * @function Navbar
 **/
 
-const Navbar = (props) => {
+export default class Navbar extends Component {
+  state = {
+      keyWord:"",
+   
+  }
+  handleChange (evt, field) {
+    this.setState({ [field]: evt.target.value });
 
-    const [keyWord, setKeyWord] = useState("");
+  }
 
-    const history = useHistory();
-    const submitSearch = (e) => {
-        e.preventDefault();
-     
-        history.push('/listPosts/'+keyWord);
+  handleSubmit = event => {
+    event.preventDefault();
 
-    }
+   const keyWord=this.state.keyWord;
+    localStorage.setItem('keyWord',keyWord);
+         
+    window.location = "/blog/listPosts";
+
+    };
 
 
 
-
+render(){
   return(
     <div className="navbar">
         <ul className="navbarMenu">
@@ -53,9 +61,9 @@ const Navbar = (props) => {
        <div className="container h-100">
         <div className="d-flex justify-content-center h-100">
           <div >
-          <form className="searchbar" onSubmit={submitSearch}>
-            <input className="search_input" type="text"  onChange={setKeyWord}  placeholder="Rechercher..." />
-            <a href={'/listPosts'} className="search_icon"><img src={Search}/></a>
+          <form className="searchbar" onSubmit={this.handleSubmit}>
+            <input className="search_input" type="text" onChange={(event)=>this.handleChange(event, "keyWord")}  placeholder="Rechercher..." />
+            <button type="submit" className="search_icon"><img src={Search}/></button>
             </form>
         
           </div>
@@ -66,8 +74,6 @@ const Navbar = (props) => {
             </ul>
         </div>
     </div>
-   )
-
- }
-
-export default Navbar
+ );
+}
+}

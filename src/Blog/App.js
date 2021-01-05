@@ -13,7 +13,7 @@ import Sign from './containers/Signin';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import UserProfile from './containers/Profile/index';
 import UpdateProfile from './containers/Profile/update';
-import SearchResult from './components/SearchResult';
+
 function App() {
   return (
 
@@ -23,9 +23,9 @@ function App() {
         
         <Route path="/blog" exact component={Home} />
         <Route path="/blog/contact-us"  component={ContactUS}/>
-        <Route path="/blog/searchResult"  component={SearchResult}/>
+     
         <Route path="/post/:slug" component={Post} />
-        <Route path="/listPosts/:slug" component={ListPosts} />
+        <Route path="/blog/listPosts" component={ListPosts} />
         <Route path="/blog/login" component={Login} />
         <Route path="/blog/profile" component={UserProfile} />
         <Route path="/blog/update" component={UpdateProfile} />

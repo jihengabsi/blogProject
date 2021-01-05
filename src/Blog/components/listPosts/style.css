@@ -1,4 +1,16 @@
 .searchcontainer {
+    padding-top: 10%;
     width: 90%;
     margin: 0 auto;
+}
+.postImageWrapper {
+    max-width: 50%;
+    height: 50%;
+    object-fit: fill;
+}
+.imgu{
+    width:100%
+}
+.Card {
+    height: 50%; 
 }

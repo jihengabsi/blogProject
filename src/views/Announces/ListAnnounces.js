@@ -233,6 +233,7 @@ render(){
         </form>
       </div>
       { this.state.announces.map(announce =>
+    
 <Card > 
             <CardBody>
             <Grid fluid>
@@ -255,7 +256,8 @@ render(){
               </Grid>
             </CardBody>
         </Card>
-          ) }
+        
+  ) }
         <Modal
             isOpen={this.state.modalIsOpen}
             onRequestClose={() => {this.closeModal()} }
