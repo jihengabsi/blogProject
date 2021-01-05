@@ -14,9 +14,10 @@ import {
 * @function ListPosts
 **/
 export default class ListPosts extends React.Component  {
+
   componentDidMount() {
     
-    axios.get(`http://localhost:3000/api/announces/`)
+    axios.get(`http://localhost:3000/api/announces/search/find/?keywords=${this.state.keyWord}`)
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
@@ -47,7 +48,7 @@ export default class ListPosts extends React.Component  {
                         <Grid fluid>
                           <Row>
                         <Col xs>
-                        <h1>{this.state.keyWord}</h1>
+                       
                           <h2>{announce.body.titre}</h2>
                           
                           <div className="postImageWrapper"> <img className="imgu" src={announce.body.image} alt="" /> </div>
