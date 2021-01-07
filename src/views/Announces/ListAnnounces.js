@@ -1,4 +1,4 @@
-import React, { Component,useState, useEffect }  from "react";
+import React from "react";
 // @material-ui/core components
 // core components
 
@@ -9,30 +9,34 @@ import MenuList from "@material-ui/core/MenuList";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import Hidden from "@material-ui/core/Hidden";
 import Popper from "@material-ui/core/Popper";
-import Divider from "@material-ui/core/Divider";
 import Card from "components/Card/Card.js";
 import Card2 from '../../Blog/components/UI/Card/index.js'
 import CardBody from "components/Card/CardBody.js";
 import { Grid, Row, Col } from 'react-flexbox-grid';
-import Image from "./PVC-Expomoda-0005-Dark-Grey.jpg";
 import Button from "components/CustomButtons/Button.js";
 //import CustomInput from "components/CustomInput/CustomInput.js";
-import { Link,NavLink,Switch,Route } from 'react-router-dom';
 import Search from "@material-ui/icons/Search";
 import FilterListIcon from '@material-ui/icons/FilterList';
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Modify from "./ModifyAnnounce.js";
 import Modal from 'react-modal';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import HideButton from "components/HideButton/index.js"
-import { render } from "react-dom";
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBModalFooter,
+  MDBIcon,
+  MDBCardHeader,
+  MDBBtn
+} from "mdbreact";
 const useStyles = makeStyles(styles);
 
 
@@ -53,7 +57,7 @@ class TableList extends React.Component  {
  
   handleSubmit = event => {
     event.preventDefault();
-
+if(this.state.type=="date"){
     axios.get(`http://localhost:3000/api/announces/search/find/?date_cr=${Date.parse(this.state.date_cr)}`)
       .then(res => {
         const announces = res.data;
@@ -63,6 +67,18 @@ class TableList extends React.Component  {
         console.log(error.message);
         alert("fail!!");
       })
+    }
+    else{
+       
+    axios.get(`http://localhost:3000/api/announces/search/find/?keywords=${this.state.date_cr}`)
+    .then(res => {
+      const announces = res.data;
+      this.setState({ announces });
+    }).catch(error=>{
+      console.log(error.message);
+      alert("fail!!");
+    })
+    }
   }
   constructor() {
     super();
@@ -88,6 +104,7 @@ class TableList extends React.Component  {
         this.setState({ openFilter:null});
      
       };
+
      textFilter ()  {
         this.setState({ openFilter:null});
         this.setState({ type:"text"});
@@ -168,12 +185,12 @@ render(){
           <FilterListIcon/>
         </Button>
         <Popper
-          open={Boolean(this.openFilter)}
-          anchorEl={this.openFilter}
+          open={Boolean(this.state.openFilter)}
+          anchorEl={this.state.openFilter}
           transition
           disablePortal
           className={
-            classNames({ [classes.popperClose]: !this.openFilter }) +
+            classNames({ [classes.popperClose]: !this.state.openFilter }) +
             " " +
            classes.popperNav
           }
@@ -224,7 +241,7 @@ render(){
             </Grow>
           )}
         </Popper>
-        <input  onChange={(event)=>this.handleChange(event)} value={this.state.date_cr} type={"date"} placeholder="" />
+        <input  onChange={(event)=>this.handleChange(event)} value={this.state.date_cr} type={this.state.type} placeholder="" />
       
         <Button type="submit" color="transparent" aria-label="edit" justIcon round>
           <Search />

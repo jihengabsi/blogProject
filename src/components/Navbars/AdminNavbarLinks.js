@@ -49,7 +49,7 @@ export default function AdminNavbarLinks() {
   };
   return (
     <div>
-     
+{/*      
       <Button
         color={window.innerWidth > 959 ? "transparent" : "white"}
         justIcon={window.innerWidth > 959}
@@ -203,7 +203,7 @@ export default function AdminNavbarLinks() {
             </Grow>
           )}
         </Poppers>
-      </div>
+      </div> */}
     </div>
   );
 }

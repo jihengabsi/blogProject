@@ -33,10 +33,10 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
     <Route  path="/signin" component={Signin} />
-    <Route  path="/login" component={Login} />
+    <Route  path="/admin/signin" component={Login} />
       <Route  path="/blog" component={Client} />
       <Route path="/admin" component={Admin} />
-      <Redirect from="/" to="/blog" />
+      <Redirect from="/" to="/admin/signin" />
 
     </Switch>
   </Router>,
