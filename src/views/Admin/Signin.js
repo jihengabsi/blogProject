@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './style.css';
-import Card from '../UI/Card';
+import Card from '../../Blog/components/UI/Card';
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -27,19 +27,19 @@ export default class Loginbox extends Component {
       handleSubmit = event => {
         event.preventDefault();
     
-        const user = {
-            email: this.state.Email,
+        const admin = {
+            mail: this.state.Email,
             password: this.state.Password
 
         };
     
-        axios.post(`http://localhost:3000/api/users/login`, user )
+        axios.post(`http://localhost:3000/api/admins/login`, admin )
           .then(res => {
             console.log(res);
             console.log(res.data);
-            localStorage.setItem('ID', res.data.posted.id);
-            localStorage.setItem('token1', res.data.posted.token);
-            window.location = "/blog";
+
+            localStorage.setItem('token', res.data.posted.token);
+            window.location = "/admin";
             
           }).catch(error=>{
             console.log(error.message);
@@ -48,7 +48,7 @@ export default class Loginbox extends Component {
       }
     render() {
   return(
-      <div style={{paddingTop:"110px"}}>
+      <div style={{paddingTop:"10px"}}>
     <Grid container
     spacing={0}
     direction="column"
@@ -80,7 +80,7 @@ export default class Loginbox extends Component {
         </p>
     </form>
     <div className="profileImageContainer2">
-                    <img className="ckl" src={require('../../assets/Images/logock.png')} alt="!!!" />
+                    <img className="ckl" src={require('../../assets/img/logock.png')} alt="!!!" />
                 </div>
     </Card>
     </Grid>

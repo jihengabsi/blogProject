@@ -23,7 +23,7 @@ import Signin from "./Blog/containers/Login";
 // core components
 import Admin from "layouts/Admin.js";
 import Client from "./Blog/App.js";
-
+import Login from "views/Admin/Signin.js";
 
 import "assets/css/material-dashboard-react.css?v=1.9.0";
 
@@ -33,6 +33,7 @@ ReactDOM.render(
   <Router history={hist}>
     <Switch>
     <Route  path="/signin" component={Signin} />
+    <Route  path="/login" component={Login} />
       <Route  path="/blog" component={Client} />
       <Route path="/admin" component={Admin} />
       <Redirect from="/" to="/blog" />

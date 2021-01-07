@@ -41,12 +41,12 @@ export default class RecentPosts extends React.Component  {
         <Row>
 
           <Col xs >
-          <div className="postImageWrapper2">
+          <div className="postImageWrapper">
         
-                <img src={announce.body.image} alt="Post Image"/>
+                <img className="imgu" src={announce.body.image} alt="Post Image"/>
                 </div>
                 </Col >
-                <Col xs> 
+                <Col xs style={{marginRight: "15%"}}> 
                 <span></span>
                 <h2>{announce.body.titre}</h2>
               

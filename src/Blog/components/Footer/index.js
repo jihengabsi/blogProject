@@ -20,7 +20,7 @@ const Footer  = props => {
                 <div className="pr-xl-4"><a className="brand" href="index.html"><img className="brand-logo-light" src={logo} alt="" width={140} height={80} srcSet="images/agency/logo-retina-inverse-280x74.png 2x" /></a>
                  
                   {/* Rights*/}
-                  <p className="rights"><span>©&nbsp; </span><span className="copyright-year">2020</span><span>© 2020 Made With &#10084;&#65039;  By Inceptum </span></p>
+                  <p className="rights"><span>©&nbsp; </span><span className="copyright-year">2020</span><span> Made With &#10084;&#65039;  By Inceptum </span></p>
                 </div>
               </div>
               <div className="col-md-4">

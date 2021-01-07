@@ -48,7 +48,7 @@ const Logo = (props) => {
           </div>
         </Slide>
         
-        <div  style={{borderBottomWidth:'10px',borderColor:"beige",columns: "2 auto",fontSize:"12px",width:"82%",position:"left",paddingLeft:"12%",paddingTop:"50px",textAlign: "left"}}>
+        <div  style={{borderBottomWidth:'10px',borderColor:"beige",columns: "2 auto",fontSize:"12px", maxwidth: "100%",width:"80%",position:"left",paddingLeft:"18%",paddingTop:"40px",textAlign: "left"}}>
          
         <h2>CK MÉTROLOGIE est une Société Anonyme au capital de 400,000 Dinars.</h2> 
         <br></br>

@@ -1,0 +1,43 @@
+.loginContainer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.cardHeader2{
+    text-transform: uppercase;
+    font-size: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    letter-spacing: 2px;
+    color: #333 ;
+    padding: 20px;
+}
+.profileImageContainer2
+{   
+    padding: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ckl{
+
+    width:100%;
+}
+.Card{
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.inputdata{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px;
+}
+

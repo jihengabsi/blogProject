@@ -41,7 +41,14 @@ class ModifyAnnounce extends React.Component {
     axios.get(`http://localhost:3000/api/announces/${this.props.message}`)
       .then(res => {
         const announces = res.data;
+        
         this.setState({ announces });
+        const Title=this.state.announces.map(announce =>announce.body.titre);
+        this.setState({ Title });
+        const Description=this.state.announces.map(announce =>announce.body.description);
+        this.setState({ Description });
+        const Image=this.state.announces.map(announce =>announce.body.image);
+        this.setState({ Image });
       })
   }
   uploadImage() {
@@ -75,7 +82,7 @@ class ModifyAnnounce extends React.Component {
     announces: [],
     Title: '',
     Description: '',
-    Image: 'test',
+    Image: '',
    
      
     }; 
@@ -132,19 +139,19 @@ class ModifyAnnounce extends React.Component {
                 <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Title</InputLabel>
                 <br></br>
-                <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} value={this.state.announces.map(announce =>announce.body.titre)} type="text"   onChange={(event)=>this.handleChange(event, "Title")} />
+                <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} value={this.state.Title} type="text"   onChange={(event)=>this.handleChange(event, "Title")} />
                 
               <br></br>
                 <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Description</InputLabel>
-                <textarea type="text" value={this.state.announces.map(announce =>announce.body.description)} style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ',  'height': '80px',"box-sizing": "border-box",  'resize': 'vertical'}}    onChange={(event)=>this.handleChange(event, "Description")} />
+                <textarea type="text" value={this.state.Description} style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ',  'height': '80px',"box-sizing": "border-box",  'resize': 'vertical'}}    onChange={(event)=>this.handleChange(event, "Description")} />
             
 
     
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
                   <br></br>
-                   <input type="file" name="image" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")}/>
+                   <input type="file"   id="image"  onChange={(event)=>this.handleChange(event, "Image")}/>
          
               </CardBody>
            
