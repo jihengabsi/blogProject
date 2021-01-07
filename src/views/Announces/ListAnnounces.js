@@ -26,17 +26,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import HideButton from "components/HideButton/index.js"
 import axios from 'axios';
 import { withStyles } from "@material-ui/core/styles";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBModalFooter,
-  MDBIcon,
-  MDBCardHeader,
-  MDBBtn
-} from "mdbreact";
+
 const useStyles = makeStyles(styles);
 
 
