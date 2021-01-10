@@ -19,7 +19,7 @@ import Button from "components/CustomButtons/Button.js";
 import Search from "@material-ui/icons/Search";
 import FilterListIcon from '@material-ui/icons/FilterList';
 import styles from "assets/jss/material-dashboard-react/components/headerLinksStyle.js";
-import { makeStyles } from "@material-ui/core/styles";
+
 import Modify from "./ModifyAnnounce.js";
 import Modal from 'react-modal';
 import "react-datepicker/dist/react-datepicker.css";
@@ -27,7 +27,6 @@ import HideButton from "components/HideButton/index.js"
 import axios from 'axios';
 import { withStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(styles);
 
 
 

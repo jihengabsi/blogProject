@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './style.css';
-import blogPost from '../../data/blog.json';
+
 import { NavLink } from 'react-router-dom';
 import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button
+    Card,  CardBody,
+   Button
   } from 'reactstrap';
   import { Grid, Row, Col } from 'react-flexbox-grid';
   import axios from "axios";

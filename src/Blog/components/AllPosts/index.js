@@ -45,6 +45,7 @@ receivedData() {
   axios.get(`http://localhost:3000/api/announces/`)
   .then(res => {
     const data = res.data;
+   
           const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
           const postData = slice.map(announce => 
             announce.body.visib ? 

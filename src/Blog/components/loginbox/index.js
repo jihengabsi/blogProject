@@ -4,7 +4,6 @@ import Card from '../UI/Card';
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
 
 /**
 * @author
