@@ -52,6 +52,7 @@ class ModifyAnnounce extends React.Component {
       })
   }
   uploadImage() {
+    try {
     const firebaseConfig = {
       apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
       authDomain: "mini-project-incp.firebaseapp.com",
@@ -73,7 +74,13 @@ class ModifyAnnounce extends React.Component {
     task.then( () => {
         document.getElementById("form").submit();
     });
-    
+  }
+ catch (exception) {
+  this.setState({
+    Url: this.state.Image
+  });
+  
+}
   
   }
   constructor() {
@@ -83,6 +90,7 @@ class ModifyAnnounce extends React.Component {
     Title: '',
     Description: '',
     Image: '',
+    Url:''
    
      
     }; 
@@ -94,16 +102,27 @@ class ModifyAnnounce extends React.Component {
   }
   
   handleSubmit = event => {
+   
     event.preventDefault();
+    try {
     const file_name = document.querySelector("#image").files[0].name;
 
-    const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";
+    
+    this.setState({
+      Url: "https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media"
+    });
+  }
+  catch (exception) {
+   this.setState({
+     Url: this.state.Image
+   });
+ }
     const announce = {
       token:localStorage.getItem('token'),
       id:this.props.message,
       titre:this.state.Title,
       description: this.state.Description,
-      image: url    
+      image: this.state.Url    
   
     };
 
@@ -118,6 +137,7 @@ class ModifyAnnounce extends React.Component {
         console.log(error.message);
         alert("fail!!");
       })
+   
   }
   render(){
     const { classes } = this.props;
