@@ -5,7 +5,7 @@ import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 export default class SignUp extends Component {
     
@@ -52,52 +52,52 @@ export default class SignUp extends Component {
       }
     render() {
         return (
-<div style={{paddingTop:"110px"}}>
+    <div style={{paddingTop:"110px"}}>
             <Grid container
             spacing={0}
             direction="column"
             alignItems="center"
             justify="center"
-            style={{width:'70%', margin: "auto auto"}}>
+            style={{width:'50%', margin: "auto auto"}}>
 
                 <Grid item xs={3}> 
-            <Card style={{background:'lightgrey', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+            <Card style={{background:'white', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
             <form onSubmit={this.handleSubmit}>
                 <h3 className="cardHeader3">Créer une compte</h3>
                 
                 <div className="form-group">
-                    <label>First name</label>
-                    <input type="text" className="form-control" name="FirstName" onChange={(event)=>this.handleChange(event, "FirstName")}  placeholder="First name" />
+                    <input type="text" className="form-control" name="FirstName" onChange={(event)=>this.handleChange(event, "FirstName")}  placeholder="Prénom" />
                 </div>
 
                 <div className="form-group">
-                    <label>Last name</label>
-                    <input type="text" className="form-control"  name="LastName" onChange={(event)=>this.handleChange(event, "LastName")} placeholder="Last name" />
+                    <input type="text" className="form-control"  name="LastName" onChange={(event)=>this.handleChange(event, "LastName")} placeholder="Nom" />
+                </div>
+                
+
+                <div className="form-group">
+                    <input type="email" className="form-control" name="Email" onChange={(event)=>this.handleChange(event, "Email")} placeholder="Email" />
                 </div>
 
                 <div className="form-group">
-                    <label>Date de naissance</label>
-                    <input type="date" className="form-control"  name="DateBirth" onChange={(event)=>this.handleChange(event, "DateBirth")} placeholder="" />
+                    <input type="text" className="form-control"  name="NTel" onChange={(event)=>this.handleChange(event, "NTel")}  placeholder="Numéro" />
                 </div>
 
                 <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" name="Email" onChange={(event)=>this.handleChange(event, "Email")} placeholder="Enter email" />
+                    <input type="password" className="form-control"  name="Password" onChange={(event)=>this.handleChange(event, "Password")}  placeholder="Mot de Passe" />
                 </div>
 
-                <div className="form-group">
-                    <label>N° de téléphone</label>
-                    <input type="text" className="form-control"  name="NTel" onChange={(event)=>this.handleChange(event, "NTel")}  placeholder="Enter Numéro" />
+                {/* Date doesn't support placeholder so a label is necessary*/}
+                <div style={{display: 'flex',flexDirection:'row'}} className="form-group"> 
+                    <label style={{display:"block",margin:"auto",width:"47%",fontSize:"16px",marginLeft:"3%"}}>Date de Naissance :</label>
+                    <input type="date" style={{width:'50%'}} className="form-control"  name="DateBirth" onChange={(event)=>this.handleChange(event, "DateBirth")} placeholder="jj/mm/aaaa" />
                 </div>
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control"  name="Password" onChange={(event)=>this.handleChange(event, "Password")}  placeholder="Enter password" />
-                </div>
-
-                <button type="submit" style={{margin: "20px 0 0"}} className="btn btn-dark btn-lg btn-block">Register</button>
+                <Button type="submit" style={{width:"100%",display:"block",
+                                      margin:"auto",fontSize:"16px",fontWeight:"bold"}}
+                                      color="danger" >
+                Inscription</Button>
                 <p className="forgot-password text-right">
-                    Already registered? <NavLink to="/blog/login">Créer</NavLink>
+                    Déjà inscrit? <NavLink to="/blog/login">Se connecter.</NavLink>
                 </p>
             </form></Card>
             </Grid>

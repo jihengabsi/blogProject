@@ -4,6 +4,8 @@ import Card from '../UI/Card';
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import {Button} from 'reactstrap'
 
 /**
 * @author
@@ -53,34 +55,42 @@ export default class Loginbox extends Component {
     direction="column"
     alignItems="center"
     justify="center"
-    style={{width:'50%', margin: "auto auto"}}>
+    style={{width:'30%', margin: "auto auto"}}>
 
         <Grid item xs={3}> 
-    <Card style={{background:'lightgrey', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+    <Card style={{background:'white', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
     <form onSubmit={this.handleSubmit}>
-        <h3 className="cardHeader3">Login</h3>
+    <div className="profileImageContainer3">
+                    <img style={{width:"80%",display:"block",margin:"auto"}} className="ckl" src={require('../../assets/Images/logock.png')} alt="!!!" />
+    </div>
+        <h3 className="cardHeader3">Se Connecter</h3>
 
         <div className="form-group">
-            <label>Email</label>
-            <input type="email" className="form-control" onChange={(event)=>this.handleChange(event, "Email")} placeholder="Enter email" />
+           { //<label htmlFor='mail'>Email</label>
+            }
+            <input name="mail" type="email" className="form-control" onChange={(event)=>this.handleChange(event, "Email")} placeholder="Email" />
         </div>
 
-        <div className="form-group" style={{margin: "0"}}>
-            <label>Password</label>
-            <input type="password" className="form-control" onChange={(event)=>this.handleChange(event, "Password")}  placeholder="Enter password" />
+        <div className="form-group">
+        { //<label htmlFor='pw'>Password</label>
+        }
+            <input name="pw" type="password" className="form-control" onChange={(event)=>this.handleChange(event, "Password")}  placeholder="Mot de Passe" />
         </div>
+        
+        
+        <Button type="submit" style={{width:"100%",display:"block",
+                                      margin:"auto",fontSize:"16px",fontWeight:"bold"}}
+                                      color="danger" >
+        Connexion</Button>
         <p className="forgot-password text-right">
         <NavLink to="/blog/reset">Mot de passe oublié?</NavLink>
         </p>
-
-        <button type="submit" className="btn btn-dark btn-lg btn-block">Login</button>
-        <p className="forgot-password text-right">
+        <h5 className="createacc">
             Pas de compte? <NavLink to="/blog/signup">S'inscrire.</NavLink>
-        </p>
+        </h5>
     </form>
-    <div className="profileImageContainer2">
-                    <img className="ckl" src={require('../../assets/Images/logock.png')} alt="!!!" />
-                </div>
+    
+    
     </Card>
     </Grid>
     </Grid>
@@ -89,3 +99,4 @@ export default class Loginbox extends Component {
      );
     }
 }
+//<button style={{width:"40%",height:"12%",display:"block",margin:"auto",fontSize:"14px"}} type="submit" className="btn btn-dark btn-lg btn-block">Login</button>
