@@ -122,31 +122,36 @@ const styles = {
     render(){
       const { classes } = this.props;
   return (
-    <div style={{width:"80%",right: '37%',paddingTop:"110px"}}>
-  
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={8}>
-          <Card style={{width:"100%",left: '50%',}}>
-          <form id="form" onSubmit={this.handleSubmit}>
-            <CardHeader color="white">
-              <h4 className={classes.cardTitleBlack}>Modifier le profile</h4>
-            </CardHeader>
-            <CardBody>
-            
-              <div className="form-group">
-                    <label>
-Prénom
-</label>
-                    <input type="text" className="form-control" value={this.state.name} placeholder="Prénom"  onChange={(event)=>this.handleChange(event, "name")}  />
+    <div style={{ paddingTop: "110px" }}>
+
+      <GridContainer
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ width: '100%', margin: "auto auto" }}>
+        <GridItem xs={6}>
+          <Card style={{ background: 'white', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+            <form id="form" onSubmit={this.handleSubmit}>
+              <CardHeader color="white">
+                <h4 className="cardHeader3">Modifier le profile</h4>
+              </CardHeader>
+              <CardBody>
+
+                <div className="form-group">
+                  <label>
+                    Prénom
+                  </label>
+                  <input type="text" className="form-control" value={this.state.name} placeholder="Prénom" onChange={(event) => this.handleChange(event, "name")} />
                 </div>
 
                 <div className="form-group">
-                    <label>Nom</label>
-                    <input type="text" className="form-control" value={this.state.surname}  placeholder="Nom" onChange={(event)=>this.handleChange(event, "surname")}  />
+                  <label>Nom</label>
+                  <input type="text" className="form-control" value={this.state.surname} placeholder="Nom" onChange={(event) => this.handleChange(event, "surname")} />
                 </div>
-                
 
-{/*               
+
+                {/*               
                 <div className="form-group">
                     <label>Email</label>
                     <input type="email" className="form-control" placeholder="Email" />
@@ -158,22 +163,30 @@ Prénom
                 </div>
 
                  */}
-                  <br></br>
-                  <InputLabel style={{ color: "#AAAAAA" }}>Choisir une image</InputLabel>
-                  <br></br>
-                  <input type="file" name="image" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")}/>
-   
+                <div style={{marginBottom:"0px"}} className="form-group">
+                <label htmlFor="image">Choisir une Photo :</label>
+
+                </div>
+                <div  className="form-group">
+                <input type="file"  name="image" id="image" onChange={(event) => this.handleChange(event, "Image")} />
+                </div>
               </CardBody>
-           
-            <CardFooter>
-              <Button type="submit"  onClick={()=>this.uploadImage()} color="white">Modifier le profile</Button>
-            </CardFooter>
+
+              <CardFooter>
+              <Button type="submit" onClick={() => this.uploadImage()} style={{
+                      width: "97%", display: "block",
+                      margin: "auto", fontSize: "16px", fontWeight: "bold"
+                    }}
+                      color="danger" >
+                      Modification</Button>
+                {/* <Button type="submit" onClick={() => this.uploadImage()} color="white">Modifier le profile</Button> */}
+              </CardFooter>
             </form>
           </Card>
         </GridItem>
-    
+
       </GridContainer>
-      
+
     </div>
 
 )

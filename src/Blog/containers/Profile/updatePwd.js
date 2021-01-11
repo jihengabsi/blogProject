@@ -81,49 +81,61 @@ const styles = {
     
     render(){
       const { classes } = this.props;
-  return (
-    <div style={{width:"80%",right: '37%',paddingTop:"110px"}}>
-  
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={8}>
-          <Card style={{width:"100%",left: '50%',}}>
-          <form id="form" onSubmit={this.handleSubmit}>
-            <CardHeader color="white">
-              <h4 className={classes.cardTitleBlack}>Modifier le mot de passe</h4>
-            </CardHeader>
-            <CardBody>
-            <div className="form-group">
-                    <label>
-Email
-</label>
-                    <input type="email" className="form-control" placeholder="Email"  onChange={(event)=>this.handleChange(event, "mail")}  />
-                </div>
-              <div className="form-group">
-                    <label>
-Ancin mot de passe
-</label>
-                    <input type="password" className="form-control" placeholder="Ancien mot de passe"  onChange={(event)=>this.handleChange(event, "oldPwd")}  />
-                </div>
+      return (
+        <div style={{paddingTop: "110px" }}>
 
-              
-                <div className="form-group">
-                    <label>
-Nouveau mot de passe
-</label>
-                    <input type="password" className="form-control" placeholder="Nouveau mot de passe"  onChange={(event)=>this.handleChange(event, "newPwd")}  />
-                </div>
-              </CardBody>
-           
-            <CardFooter>
-              <Button type="submit"  color="white">Modifier le mot de passe</Button>
-            </CardFooter>
-            </form>
-          </Card>
-        </GridItem>
-    
-      </GridContainer>
-      
-    </div>
+          <GridContainer
+          spacing={0}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ width: '100%', margin: "auto auto" }}>
+            <GridItem xs={6}>
+              <Card style={{ background: 'white', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+                <form id="form" onSubmit={this.handleSubmit}>
+                  <CardHeader color="white">
+                    <h4 className="cardHeader3">Modifier le mot de passe</h4>
+                  </CardHeader>
+                  <CardBody>
+                    <div className="form-group">
+                      {/* <label>
+                        Email
+                      </label> */}
+                      <input type="email" className="form-control" placeholder="Email" onChange={(event) => this.handleChange(event, "mail")} />
+                    </div>
+                    <div className="form-group">
+                      {/* <label>
+                        Ancin mot de passe
+                      </label> */}
+                      <input type="password" className="form-control" placeholder="Ancien Mot de Passe" onChange={(event) => this.handleChange(event, "oldPwd")} />
+                    </div>
+
+
+                    <div className="form-group">
+                      {/* <label>
+                        Nouveau mot de passe
+                      </label> */}
+                      <input type="password" className="form-control" placeholder="Nouveau Mot de Passe" onChange={(event) => this.handleChange(event, "newPwd")} />
+                    </div>
+                    <Button type="submit" style={{
+                      width: "100%", display: "block",
+                      margin: "auto", fontSize: "16px", fontWeight: "bold"
+                    }}
+                      color="danger" >
+                      Modification</Button>
+                  </CardBody>
+
+                  {/* <CardFooter>
+                    
+                    <Button type="submit" color="white">Modifier le mot de passe</Button>
+                  </CardFooter> */}
+                </form>
+              </Card>
+            </GridItem>
+
+          </GridContainer>
+
+        </div>
 
 )
 }
