@@ -5,6 +5,7 @@ import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import {Button} from 'reactstrap';
 
 /**
 * @author
@@ -53,12 +54,17 @@ export default class Reset extends Component {
     direction="column"
     alignItems="center"
     justify="center"
-    style={{width:'50%', margin: "auto auto"}}>
+    style={{width:'30%', margin: "auto auto"}}>
 
         <Grid item xs={3}> 
-    <Card style={{background:'lightgrey', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+    <Card style={{background:'white', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
     <form onSubmit={this.handleSubmit}>
+    <div className="profileImageContainer3">
+                <img style={{ width: "80%", display: "block", margin: "auto" }} className="ckl" src={require('../../assets/Images/logock.png')} alt="!!!" />
+              </div>
         <h3 className="cardHeader3">Reset Password</h3>
+
+        
 
         <div className="form-group">
             <label>Email</label>
@@ -67,15 +73,16 @@ export default class Reset extends Component {
 
       
       
+        <Button type="submit" style={{
+                width: "100%", display: "block",
+                margin: "auto", fontSize: "16px", fontWeight: "bold"
+              }}
+                color="danger" >
+                Envoyer</Button>
 
-        <button type="submit" className="btn btn-dark btn-lg btn-block">Submit</button>
-        <p className="forgot-password text-right">
-            Pas de compte? <NavLink to="/blog/signup">S'inscrire.</NavLink>
-        </p>
+        
     </form>
-    <div className="profileImageContainer2">
-                    <img className="ckl" src={require('../../assets/Images/logock.png')} alt="!!!" />
-                </div>
+    
     </Card>
     </Grid>
     </Grid>
