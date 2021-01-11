@@ -5,7 +5,8 @@ import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import Login from '../../Blog/components/loginbox/index.js'
+import {Button} from 'reactstrap';
+
 /**
 * @author
 * @function Loginbpx
@@ -48,46 +49,59 @@ export default class Loginbox extends Component {
       }
     render() {
   return(
-    // <div style={{ paddingTop: "10px" }}>
-    //   <Grid container
-    //     spacing={0}
-    //     direction="column"
-    //     alignItems="center"
-    //     justify="center"
-    //     style={{ width: '50%', margin: "auto auto" }}>
+    <div style={{ paddingTop: "10px" }}>
+      <Grid container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ width: '30%', margin: "auto auto" }}>
 
-    //     <Grid item xs={3}>
-    //       <Card style={{ background: 'lightgrey', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
-    //         <form onSubmit={this.handleSubmit}>
-    //           <h3 className="cardHeader3">Login</h3>
+        <Grid item xs={3}>
+          <Card style={{ background: 'white', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+            <form onSubmit={this.handleSubmit}>
+            <div className="profileImageContainer3">
+                <img style={{ width: "80%", display: "block", margin: "auto" }} className="ckl" src={require('../../assets/img/logock.png')} alt="!!!" />
+              </div>
+              <h3 className="cardHeader3">Login</h3>
 
-    //           <div className="form-group">
-    //             <label>Email</label>
-    //             <input type="email" className="form-control" onChange={(event) => this.handleChange(event, "Email")} placeholder="Enter email" />
-    //           </div>
+              <div className="form-group">
+                {/* <label>Email</label> */}
+                <input type="email" className="form-control" onChange={(event) => this.handleChange(event, "Email")} placeholder="Enter email" />
+              </div>
 
-    //           <div className="form-group" style={{ margin: "0" }}>
-    //             <label>Password</label>
-    //             <input type="password" className="form-control" onChange={(event) => this.handleChange(event, "Password")} placeholder="Enter password" />
-    //           </div>
-    //           <p className="forgot-password text-right">
-    //             <NavLink to="/blog/reset">Mot de passe oublié?</NavLink>
-    //           </p>
+              <div className="form-group">
+                {/* <label>Password</label> */}
+                <input type="password" className="form-control" onChange={(event) => this.handleChange(event, "Password")} placeholder="Enter password" />
+              </div>
+              {/* <p className="forgot-password text-right">
+                <NavLink to="/blog/reset">Mot de passe oublié?</NavLink>
+              </p> */}
+              <Button type="submit" style={{
+                backgroundColor:"#f44336",borderBlockColor:"#f44336",
+                width: "100%", display: "block",
+                margin: "auto", fontSize: "16px", fontWeight: "bold"
+              }}
+                color="danger" >
+                Connexion</Button>
+                <p className="forgot-password text-right">
+                <NavLink to="/blog/reset">Mot de passe oublié?</NavLink>
+              </p>
+              {/* <button type="submit" className="btn btn-dark btn-lg btn-block">Login</button> */}
+              {/* <p className="forgot-password text-right">
+                Pas de compte? <NavLink to="/blog/signup">S'inscrire.</NavLink>
+              </p> */}
+              <h5 className="createacc">
+                Pas de compte? <NavLink to="/blog/signup">S'inscrire.</NavLink>
+              </h5>
+            </form>
+            
+          </Card>
+        </Grid>
+      </Grid>
 
-    //           <button type="submit" className="btn btn-dark btn-lg btn-block">Login</button>
-    //           <p className="forgot-password text-right">
-    //             Pas de compte? <NavLink to="/blog/signup">S'inscrire.</NavLink>
-    //           </p>
-    //         </form>
-    //         <div className="profileImageContainer2">
-    //           <img className="ckl" src={require('../../assets/img/logock.png')} alt="!!!" />
-    //         </div>
-    //       </Card>
-    //     </Grid>
-    //   </Grid>
-
-    // </div>
-      <Login />
+    </div>
+      
      );
     }
 }
