@@ -17,16 +17,10 @@ const Home  = props => {
         <Logo />
         
         <div  className="Home">
-<<<<<<< HEAD
-        <br></br><br></br>
-                    <RecentPosts />
-                    <br></br>
-=======
         
                 <br></br><br></br>
                     <RecentPosts />
                     <br></br>     
->>>>>>> 0fb36a6a5ad70e7e60fb1f2b1321c20a9961e784
                 <AllPosts className="RecentPosts"  ></AllPosts>
              
                 <br></br>
