@@ -34,8 +34,12 @@
     "react-slideshow-image": "^3.4.3",
     "react-swipeable-views": "0.13.9",
     "reactjs-popup": "^2.0.4",
+<<<<<<< HEAD
     "reactstrap": "^8.7.1",
     "rsuite": "^4.8.7"
+=======
+    "reactstrap": "^8.8.1"
+>>>>>>> 0fb36a6a5ad70e7e60fb1f2b1321c20a9961e784
   },
   "scripts": {
     "start": "react-scripts start",

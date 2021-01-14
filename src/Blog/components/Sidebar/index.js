@@ -59,9 +59,9 @@ export default class Sidebar extends React.Component  {
                    
                         <div className="recentPost">
                             
-                        <img style={{paddingLeft:"30%",width:"70%"}} src={announce.body.image} alt="Post Image" />
+                        <img style={{paddingLeft:"20%",width:"80%", maxHeight:"150px"}} src={announce.body.image} alt="Post Image" />
                             <h3 >{announce.body.titre}</h3>
-                            <span >{announce.body.description.slice(0, 80)}...</span>    <br></br> 
+                            <span >{announce.body.description.slice(0, 70)}...</span>    <br></br> 
                            
                         </div>
                   

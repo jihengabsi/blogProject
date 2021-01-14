@@ -15,6 +15,7 @@ import UserProfile from './containers/Profile/index';
 import UpdateProfile from './containers/Profile/update';
 import UpdatePwd from './containers/Profile/updatePwd';
 import Reset from './components/Reset';
+
 function App() {
   return (
 
