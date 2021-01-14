@@ -69,7 +69,7 @@ export default class AddAnnounce extends Component  {
   task.then( () => {
       document.getElementById("form").submit();
   });
-  alert("upload image");
+ 
 
 }
 
@@ -100,7 +100,7 @@ handleSubmit = event => {
      
     }).catch(error=>{
       console.log(error.message);
-      alert("fail!!");
+
     })
 }
  render(){

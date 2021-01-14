@@ -130,12 +130,12 @@ class ModifyAnnounce extends React.Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
-        alert("Announce updated successfully!");
+        alert("Announce modified successfully!")
         window.location = "/admin/list";
        
       }).catch(error=>{
         console.log(error.message);
-        alert("fail!!");
+
       })
    
   }

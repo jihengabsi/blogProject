@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import './style.css';
+
 import Search from '../../assets/icons/search.png';
 import { useHistory } from "react-router-dom";
 import Logo from '../../assets/Images/logock.png';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import Script from 'react-load-script'
 /**
 * @author
 * @function Navbar
@@ -34,27 +37,43 @@ export default class Navbar extends Component {
 
 render(){
   return(
-    <div className="navbar">
-        <ul className="navbarMenu">
 
-        <li class="dropdown">
-        <a  class="Menu" > 
-        <MenuIcon   href="javascript:void(0)" class="dropbtn" ></MenuIcon>
-   
-    </a>
-    <div class="dropdown-content">
-      <a href="/blog/login">Connecter</a>
-      <a href="/blog/signup">Créer une compte</a>
-      <a href="/blog/profile">Profile</a>
-    </div>
-  </li>
-      
-            <li><NavLink to="/blog"><img style={{height:"50px",marginLeft:"20px"}} src={Logo} alt="logo" /> </NavLink></li>
-            <li>  <li><NavLink to="/blog">Home</NavLink></li></li>
+        <ul>
+            <li>
+            <nav role="navigation" class="primary-navigation">
+  <ul>
+  <li><NavLink to="/blog"><img style={{height:"50px",marginLeft:"20px"}} src={Logo} alt="logo" /> </NavLink></li>
+    <li><a href="#">Home</a></li>
+    
+    <li><a href="#">Nos prestations </a>
+      <ul class="dropdown">
+        <li><a href="#">Etalonnage et vérification</a></li>
+        <li><a href="#">Formation</a></li>
+        <li><a href="#">Conseil</a></li>
+     
+      </ul>
+    </li>
+    <li><a href="#">Nos accréditations</a>
+    <ul class="dropdown">
+        <li><a href="#">Electricité & Magnétisme</a></li>
+        <li><a href="#">Temps & Fréquence</a></li>
+        <li><a href="#">Température</a></li>
+        <li><a href="#">Pesage</a></li>
+        <li><a href="#">Pression</a></li>
+        <li><a href="#">Dimensionnel</a></li>
+        <li><a href="#">Masse</a></li>
+        <li><a href="#">Conseil National d’Accréditation TUNAC</a></li>
+      </ul>
+    </li>
+    <li><a href="#">Nos partenaires</a></li>
+    
 
-        
-        </ul>
-        <div className="search">
+  </ul>
+  
+</nav>
+            </li>
+            <li>
+            <div className="search">
         <ul className="navbarMenu">
       
        <li>  
@@ -68,12 +87,13 @@ render(){
         
           </div>
         </div>
-      </div>
-        </li>
-         
-            </ul>
-        </div>
-    </div>
+      </div>   
+      </li>
+      </ul>
+      </div> 
+            </li>
+        </ul>
+  
  );
 }
 }

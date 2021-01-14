@@ -51,10 +51,10 @@ if(this.state.type=="date"){
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
-        alert("success!!");
+
       }).catch(error=>{
         console.log(error.message);
-        alert("fail!!");
+
       })
     }
     else{
@@ -65,7 +65,7 @@ if(this.state.type=="date"){
       this.setState({ announces });
     }).catch(error=>{
       console.log(error.message);
-      alert("fail!!");
+
     })
     }
   }

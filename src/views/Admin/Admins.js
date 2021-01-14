@@ -42,7 +42,7 @@ delete= event => {
     }).catch(error=>{
 
       console.log(error.message);
-      alert(this.state.Id);
+    
     })
 }
 handleSubmit = event => {
@@ -177,7 +177,7 @@ handleSubmit = event => {
             contentLabel="Example Modal"
         >
 <form onSubmit={this.delete}>   
-<h2 >Delete an admin {this.state.Id}</h2>
+<h2 >Delete an admin</h2>
 <Button  type="submit">Delete</Button>
             
             <Button  onClick={()=>this.closeModal1()}>Cancel</Button>

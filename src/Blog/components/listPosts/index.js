@@ -42,7 +42,7 @@ export default class ListPosts extends React.Component  {
      
       
          { this.state.announces.map(announce =>
-                        
+                        announce.body.visib ?    
                         <Card > 
                         <CardBody>
                         <Grid fluid>
@@ -66,6 +66,7 @@ export default class ListPosts extends React.Component  {
                           </Grid>
                         </CardBody>
                     </Card>
+                    :true
                           ) }
                     </Grid>
 

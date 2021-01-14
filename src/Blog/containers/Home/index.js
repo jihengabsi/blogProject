@@ -18,9 +18,9 @@ const Home  = props => {
 
 <Logo />
         <div  className="Home">
- 
+        <br></br><br></br>
                     <RecentPosts />
-                        
+                    <br></br>
                 <AllPosts className="RecentPosts"  ></AllPosts>
              
                 <br></br>

@@ -44,7 +44,7 @@ export default class Loginbox extends Component {
             
           }).catch(error=>{
             console.log(error.message);
-            alert("fail!!");
+
           })
       }
     render() {

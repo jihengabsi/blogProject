@@ -43,7 +43,7 @@ export default class Reset extends Component {
           
           }).catch(error=>{
             console.log(error.message);
-            alert("fail!!");
+
           })
       }
     render() {

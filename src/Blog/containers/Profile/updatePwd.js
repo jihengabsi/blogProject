@@ -75,7 +75,7 @@ const styles = {
          
         }).catch(error=>{
           console.log(error.message);
-          alert("fail!!");
+
         })
     }
     
