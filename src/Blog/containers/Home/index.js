@@ -7,7 +7,6 @@ import fb from '../../assets/facebook-logo.png';
 import AllPosts from '../../components/AllPosts';
 import Footer from '../../components/Footer';
 
-
 import Logo from '../../components/logo';
 
 
@@ -15,12 +14,13 @@ const Home  = props => {
    
     return (
       <div>
-
-<Logo />
+        <Logo />
+        
         <div  className="Home">
- 
+        
+                <br></br><br></br>
                     <RecentPosts />
-                        
+                    <br></br>     
                 <AllPosts className="RecentPosts"  ></AllPosts>
              
                 <br></br>
@@ -28,6 +28,7 @@ const Home  = props => {
         </div>
         <div className="footer">
               <Footer></Footer>
+              
                 
 
         </div>

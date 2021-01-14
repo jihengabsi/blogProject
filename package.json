@@ -27,12 +27,13 @@
     "react-google-maps": "9.4.5",
     "react-modal": "^3.12.1",
     "react-paginate": "^7.0.0",
+    "react-responsive-animate-navbar": "^1.1.8",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
     "react-slideshow-image": "^3.4.3",
     "react-swipeable-views": "0.13.9",
     "reactjs-popup": "^2.0.4",
-    "reactstrap": "^8.7.1"
+    "reactstrap": "^8.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

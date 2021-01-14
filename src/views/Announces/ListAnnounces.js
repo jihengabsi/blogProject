@@ -247,7 +247,7 @@ render(){
             <Col xs>
               <h2>{announce.body.titre}</h2>
               
-              <div className="postImageWrapper1"> <img className="imgu" src={announce.body.image} alt="" /> </div>
+              <div className="postImageWrapper1"> <img className="imgu2" src={announce.body.image} alt="" /> </div>
               </Col>
               <Col xs>
               <h4 >{announce.body.description}</h4>
@@ -279,23 +279,24 @@ render(){
             style={customStyles}
             contentLabel="Example Modal2"
           >
-          <Card2 style={{height: "400px"}}>
-                <div className="blogHeader">
-                    <h1 className="postTitle">{this.state.title}</h1>
-                <span className="postedBy">posted on {new Date(this.state.date).toString().replace(/T/, ' ').replace(/\..+/, '') }</span>
-                </div>
-                <div className="postContent">
-          
-          <p>{this.state.desc}</p>
+        <Card2>
+          <div className="blogHeader">
+            <h1 className="postTitle">{this.state.title}</h1>
+            <span className="postedBy">posted on {new Date(this.state.date).toString().replace(/T/, ' ').replace(/\..+/, '')}</span>
           </div>
-                <div  className="postImageContainer">
-                    <img src={this.state.image} alt="Post Image" />
-                    
-                </div>
+          <div style={{ height: "100%" }} className="postImageContainer">
+            <img className="imgu2" src={this.state.image} alt="Post Image" />
 
-              
-                
-          </Card2>
+          </div>
+          <div className="postContent">
+
+            <p style={{ paddingBottom: "0px" }}>{this.state.desc}</p>
+          </div>
+
+
+
+
+        </Card2>
         </Modal>
         </view>        
         
