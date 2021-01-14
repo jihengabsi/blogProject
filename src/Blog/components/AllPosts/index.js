@@ -53,7 +53,7 @@ receivedData() {
           
                                 <div style={{"width":"300px","height":"400px"}}>
                                    
-                                <Card style={{  overflow: "auto","width":"300px","height":"380px"}}>
+                                <Card style={{  overflow: "auto","width":"300px","height":"380px",borderColor:"transparent"}}>
                                 <CardImg   top width="50%" height="180px"  src={announce.body.image} alt="Post Image" />
                                 <CardBody>
                                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>

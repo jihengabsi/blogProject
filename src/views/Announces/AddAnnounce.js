@@ -133,13 +133,39 @@ handleSubmit = event => {
 
                 </GridItem>
               </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
+                <br></br>
+                <InputLabel style={{ color: "#AAAAAA" }}>Rubrique</InputLabel>
+              
+                  
+              
+                  <select  className="form-control"  style={{width:'30%'}} id="signup" name="signup">
+  <option value="Etalonnage et vérification">Etalonnage et vérification</option>
+  <option value="Formation">Formation</option>
+  <option value="Conseil">Conseil</option>
+  <option value="Electricité & Magnétisme">Electricité & Magnétisme</option>
+  <option value="Temps & Fréquence">Temps & Fréquence</option>
+  <option value="Température">Température</option>
+  <option value="Pesage">Pesage</option>
+  <option value="Pression">Pression</option>
+  <option value="Dimensionnel">Dimensionnel</option>
+  <option value="Masse">Masse</option>
+  <option value="Conseil National d’Accréditation TUNAC">Conseil National d’Accréditation TUNAC</option>
+  <option value="Offres d’emploi">Offres d’emploi</option>
+  <option value="Stages de Projet de fin d’étude">Stages de Projet de fin d’étude</option>
+  <option value="Stages d’été">Stages d’été</option>
+</select>
+                </GridItem>
+              </GridContainer>
+              
 
             <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <br></br>
-                  <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Upload file</InputLabel>
                   <br></br>
-                   <input type="file" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")} />
+                   <input  accept=".jpeg, .pdf" type="file" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")} />
                 </GridItem>
               </GridContainer>
               </CardBody>

@@ -81,17 +81,30 @@ export default class SignUp extends Component {
                 <div className="form-group">
                     <input type="text" className="form-control"  name="NTel" onChange={(event)=>this.handleChange(event, "NTel")}  placeholder="Numéro" />
                 </div>
-
                 <div className="form-group">
                     <input type="password" className="form-control"  name="Password" onChange={(event)=>this.handleChange(event, "Password")}  placeholder="Mot de Passe" />
                 </div>
+                <div style={{display: 'flex',flexDirection:'row'}} className="form-group"> 
+                    <label style={{display:"block",margin:"auto",width:"47%",fontSize:"16px",marginLeft:"3%"}}>Type d'inscription :</label>
+                  
+              
+                    <select  className="form-control"  style={{width:'50%'}} id="signup" name="signup">
+    <option value="Client">Client</option>
+    <option value="Prospect">Prospect</option>
+    <option value="Autre">Autre</option>
+
+  </select>
+
+              
+</div>
+               
 
                 {/* Date doesn't support placeholder so a label is necessary*/}
                 <div style={{display: 'flex',flexDirection:'row'}} className="form-group"> 
                     <label style={{display:"block",margin:"auto",width:"47%",fontSize:"16px",marginLeft:"3%"}}>Date de Naissance :</label>
                     <input type="date" style={{width:'50%'}} className="form-control"  name="DateBirth" onChange={(event)=>this.handleChange(event, "DateBirth")} placeholder="jj/mm/aaaa" />
                 </div>
-
+               
                 <Button type="submit" style={{width:"100%",display:"block",
                                       margin:"auto",fontSize:"16px",fontWeight:"bold"}}
                                       color="danger" >

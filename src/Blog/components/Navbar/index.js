@@ -43,7 +43,7 @@ render(){
             <nav role="navigation" class="primary-navigation">
   <ul>
   <li><NavLink to="/blog"><img style={{height:"50px",marginLeft:"20px"}} src={Logo} alt="logo" /> </NavLink></li>
-    <li><a href="#">Home</a></li>
+    <li><a href="#">Accueil</a></li>
     
     <li><a href="#">Nos prestations </a>
       <ul class="dropdown">
@@ -67,7 +67,16 @@ render(){
     </li>
     <li><a href="#">Nos partenaires</a></li>
     
-
+    <li><a href="#">Nous contacter</a></li>
+    <li><a href="#">Nous rejoindre</a>
+    <ul class="dropdown">
+        <li><a href="#">Offres d’emploi</a></li>
+        <li><a href="#">Stages de Projet de fin d’étude</a></li>
+        <li><a href="#">Stages d’été</a></li>
+      </ul>
+    
+    </li>
+    
   </ul>
   
 </nav>
