@@ -48,10 +48,9 @@ const Logo = (props) => {
           </div>
         </Slide>
         
-        <div  style={{borderBottomWidth:'10px',borderColor:"beige",columns: "2 auto",fontSize:"12px", maxwidth: "100%",width:"80%",position:"left",paddingLeft:"18%",paddingTop:"40px",textAlign: "left"}}>
+        <div  style={{overflow:"auto",borderBottomWidth:'10px',borderColor:"beige", maxHeight: "600px",fontSize:"12px",width:"80%",position:"left",paddingLeft:"20%",paddingRight:"0%",paddingTop:"40px",textAlign: "left", height:"400px"}}>
          
         <h2>CK MÉTROLOGIE est une Société Anonyme au capital de 400,000 Dinars.</h2> 
-        <br></br>
         <h3 >L’investissement globale s'élève à un million cent dinars, bouclé avec le concours de la BFPME et la BIAT. Elle a été crée en juillet 2006, et a commencé à fournir des prestations aux industriels tunisiens en septembre 2007.</h3>
      
         </div>
