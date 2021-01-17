@@ -23,7 +23,8 @@ export default class AllPosts extends React.Component  {
     data: [],
     offset: 0,
     perPage: 3,
-    currentPage: 1
+    currentPage: 1,
+    visib:0,
   }
   this.handlePageClick = this
           .handlePageClick
@@ -32,7 +33,7 @@ export default class AllPosts extends React.Component  {
 handlePageClick = (e) => {
   const selectedPage = e.selected;
   const offset = selectedPage * this.state.perPage;
-
+ 
   this.setState({
       currentPage: selectedPage,
       offset: offset
@@ -44,8 +45,9 @@ handlePageClick = (e) => {
 receivedData() {
   axios.get(`http://localhost:3000/api/announces/`)
   .then(res => {
+    
     const data = res.data;
-   
+
           const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
           const postData = slice.map(announce => 
             announce.body.visib ? 
@@ -53,7 +55,7 @@ receivedData() {
           
                                 <div style={{"width":"300px","height":"400px"}}>
                                    
-                                <Card style={{  overflow: "auto","width":"300px","height":"380px",borderColor:"transparent"}}>
+                                <Card style={{  overflow: "auto","width":"100%","height":"90%",borderColor:"transparent"}}>
                                 <CardImg   top width="50%" height="180px"  src={announce.body.image} alt="Post Image" />
                                 <CardBody>
                                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>
@@ -70,9 +72,16 @@ receivedData() {
       
       :true
         )
+        var visib=0;
+        data.map(announce => announce.body.visib ? 
+          this.setState({ visib: visib++})
+          :true
 
+          )
+          console.log(this.state.visib)
           this.setState({
-              pageCount: Math.ceil(data.length / this.state.perPage),
+           
+              pageCount: Math.ceil(data.length / this.state.perPage)-1,
              
               postData
           })
@@ -99,7 +108,7 @@ componentDidMount() {
     render() {
       const { classes } = this.props;
   return(
-         <div  style={{paddingLeft:"80px"}}>
+         <div  style={{paddingLeft:"5%"}}>
       
              <Grid fluid>
         <Row>

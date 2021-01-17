@@ -16,7 +16,7 @@ export default class SignUp extends Component {
         Email: '',
         NTel: '',
         Password: '',
-      
+        Type:'',
      
       }
     
@@ -35,7 +35,8 @@ export default class SignUp extends Component {
             email: this.state.Email,
             phoneNumber: this.state.NTel,
             password: this.state.Password,
-            role:"user"
+            role:"user",
+            type:this.state.Type
 
         };
     
@@ -61,7 +62,9 @@ export default class SignUp extends Component {
             style={{width:'50%', margin: "auto auto"}}>
 
                 <Grid item xs={3}> 
+
             <Card style={{background:'white', marginBottom: '20px', padding: '20px', boxSizing: 'border-box' }}>
+                
             <form onSubmit={this.handleSubmit}>
                 <h3 className="cardHeader3">Créer une compte</h3>
                 
@@ -88,13 +91,13 @@ export default class SignUp extends Component {
                     <label style={{display:"block",margin:"auto",width:"47%",fontSize:"16px",marginLeft:"3%"}}>Type d'inscription :</label>
                   
               
-                    <select  className="form-control"  style={{width:'50%'}} id="signup" name="signup">
+                    <select  className="form-control"  value={this.state.Type} 
+       onChange={(event)=>this.handleChange(event, "Type")}   style={{width:'50%'}} id="signup" name="signup">
     <option value="Client">Client</option>
     <option value="Prospect">Prospect</option>
     <option value="Autre">Autre</option>
 
   </select>
-
               
 </div>
                

@@ -1,10 +1,10 @@
 {
-  "name": "material-dashboard-react",
+  "name": "Ck métrologie",
   "homepage": "https://github.com/creativetimofficial/material-dashboard-react",
   "authors": [
-    "creative-tim"
+    "Inceptum"
   ],
-  "description": "A Badass Material-UI Kit based on Material Design",
+  "description": "A blog site and a dashboard",
   "main": "public/index.html",
   "keywords": [
     "material",
@@ -15,7 +15,7 @@
     "google",
     "twitter"
   ],
-  "license": "Creative TIM License",
+  "license": "Inceptum License",
   "ignore": [
     "**/.*",
     "node_modules",

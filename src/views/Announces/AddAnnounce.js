@@ -39,8 +39,15 @@ const useStyles = makeStyles(styles);
 
 // const  classes = useStyles();
 export default class AddAnnounce extends Component  {
-
+  componentDidMount() {
+    axios.get(`http://localhost:3000/api/rubriques/`)
+      .then(res => {
+        const rubriques = res.data;
+        this.setState({ rubriques });
+      })
+  }
  state = {
+  rubriques:[],
   Title: '',
   Description: '',
   Image: ''
@@ -163,9 +170,17 @@ handleSubmit = event => {
             <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <br></br>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
+                  <br></br>
+                   <input  type="file" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")} />
+                </GridItem>
+              </GridContainer>
+              <GridContainer>
+                <GridItem xs={12} sm={12} md={12}>
+                  <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload file</InputLabel>
                   <br></br>
-                   <input  accept=".jpeg, .pdf" type="file" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")} />
+                   <input  type="file" accept=".pdf" name="file" id="file"  onChange={(event)=>this.handleChange(event, "File")} />
                 </GridItem>
               </GridContainer>
               </CardBody>

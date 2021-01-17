@@ -16,6 +16,7 @@ import Script from 'react-load-script'
 export default class Navbar extends Component {
   state = {
       keyWord:"",
+      Lang:""
    
   }
   handleChange (evt, field) {
@@ -43,7 +44,7 @@ render(){
             <nav role="navigation" class="primary-navigation">
   <ul>
   <li><NavLink to="/blog"><img style={{height:"50px",marginLeft:"20px"}} src={Logo} alt="logo" /> </NavLink></li>
-    <li><a href="#">Accueil</a></li>
+    <li><a href="/blog">Accueil</a></li>
     
     <li><a href="#">Nos prestations </a>
       <ul class="dropdown">
@@ -76,7 +77,15 @@ render(){
       </ul>
     
     </li>
-    
+    <li>
+    <select  className="form-control"  value={this.state.Lang} 
+       onChange={(event)=>this.handleChange(event, "Lang")}  style={{width:'100%'}} id="lang" name="lang">
+  <option value="FR">FR</option>
+  <option value="ENG">ENG</option>
+  <option value="AR">AR</option>
+  </select>
+  
+    </li>
   </ul>
   
 </nav>

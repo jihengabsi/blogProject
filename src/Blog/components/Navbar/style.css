@@ -36,7 +36,14 @@ a
  
     padding: 10px;
     }
-
+    select::-ms-expand {	display: none; }
+    select{
+  
+        -webkit-appearance: none;
+        appearance: none;
+        color: #000;
+    }
+ 
     .search_input{
     color: black;
     border: 0;
@@ -45,14 +52,15 @@ a
     width: 0;
     caret-color:transparent;
     line-height: 40px;
-    transition: width 0.4s linear;
+    transition: width 0.6s linear;
     }
 
     .searchbar:hover > .search_input{
     padding: 0 10px;
-    width: 450px;
+    width: 80%;
+    max-width: 200px;
     caret-color:red;
-    transition: width 0.4s linear;
+    transition: width 0.6s linear;
     }
 
     .searchbar:hover > .search_icon{
