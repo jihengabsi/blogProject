@@ -15,6 +15,7 @@ import UserProfile from './containers/Profile/index';
 import UpdateProfile from './containers/Profile/update';
 import UpdatePwd from './containers/Profile/updatePwd';
 import Reset from './components/Reset';
+import Partenaires from './containers/Partenaires';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/blog/update" component={UpdateProfile} />
         <Route path="/blog/updatePwd" component={UpdatePwd} />
         <Route path="/blog/signup" component={Sign} />
+        <Route path="/blog/partenaires" component={Partenaires} />
       </div>
     </Router>
     
