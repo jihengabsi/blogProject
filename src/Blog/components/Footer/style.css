@@ -50,3 +50,22 @@ ul, ol {
 .container{
     padding-left: 20%;
 }
+
+a.youtube {
+    color: #eb3223;
+  }
+  
+  a.facebook {
+    color: #4968ad;
+  }
+  
+  a.twitter {
+    color: #49a1eb;
+  }
+  
+  a.instagram {
+    color: black;
+  }
+
+
+
