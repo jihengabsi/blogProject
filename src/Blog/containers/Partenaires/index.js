@@ -14,7 +14,7 @@ import Layout from '../../components/Layout';
 
 const Partenaires = (props) => {
   return(
-      <div className="Home">
+      <div>
           <br></br><br></br><br></br><br></br><br></br>
 
     <Layout >

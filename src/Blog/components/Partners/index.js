@@ -41,6 +41,7 @@ const styles = theme => ({
     const {classes} = this.props;
   return (
     <div>
+
        <h1> Nos Partenaires : </h1>
     <div className={classes.root}>
       <Grid container spacing={3}>

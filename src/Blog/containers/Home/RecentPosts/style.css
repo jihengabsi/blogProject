@@ -4,6 +4,12 @@
     padding-top:400px;
     max-width: 100%;
 }
+.Card2{
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    /* padding-top:400px; */
+    max-width: 100%;
+}
 .postImageWrapper {
     max-width: 50%;
     height: 50%;

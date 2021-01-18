@@ -35,7 +35,7 @@ export default class RecentPosts extends React.Component  {
     <div >
           { this.state.announces.reverse().slice(-1).map((announce) =>
           
-        <Card className="Card" >
+        <Card className="Card2" >
         <Grid fluid>
         <hr style={{height: "2px"}} width="20%" color="black"/>
        

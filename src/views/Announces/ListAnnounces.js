@@ -247,7 +247,7 @@ render(){
             <Col xs>
               <h2>{announce.body.titre}</h2>
               
-              <div className="postImageWrapper1"> <img className="imgu2" src={announce.body.image} alt="" /> </div>
+              <div className="postImageWrapper1"> <img title={announce.body.titre} className="imgu2" src={announce.body.image} alt="" /> </div>
               </Col>
               <Col xs>
               <h4 >{announce.body.description}</h4>
