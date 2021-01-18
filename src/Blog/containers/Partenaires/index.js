@@ -19,7 +19,7 @@ const Partenaires = (props) => {
 
     <Layout >
         
-        <Partner />
+        <Partner /> {/* test github*/ }
     </Layout>
   
              
