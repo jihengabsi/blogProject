@@ -7,13 +7,13 @@ import { useHistory } from "react-router-dom";
 import Logo from '../../assets/Images/logock.png';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import Script from 'react-load-script'
 /**
 * @author
 * @function Navbar
 **/
 
 export default class Navbar extends Component {
+  
   state = {
       keyWord:"",
       Lang:""
@@ -33,12 +33,11 @@ export default class Navbar extends Component {
     window.location = "/blog/listPosts";
 
     };
-
-
-
+  
+  
 render(){
   return(
-
+<div>
         <ul>
             <li>
             <nav role="navigation" class="primary-navigation">
@@ -78,6 +77,8 @@ render(){
     
     </li>
     <li>
+    <br />
+
     <select  className="form-control"  value={this.state.Lang} 
        onChange={(event)=>this.handleChange(event, "Lang")}  style={{width:'100%'}} id="lang" name="lang">
   <option value="FR">FR</option>
@@ -111,7 +112,10 @@ render(){
       </div> 
             </li>
         </ul>
-  
+        
+
+
+</div>
  );
 }
 }

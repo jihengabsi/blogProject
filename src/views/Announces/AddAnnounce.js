@@ -123,13 +123,11 @@ handleSubmit = event => {
             </CardHeader>
             <CardBody>
               <GridContainer>
-      
                 <GridItem xs={12} sm={12} md={6}>
                 <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Title</InputLabel>
                 <br></br>
                      <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "Title")} />
-            
                 </GridItem>
               </GridContainer>
               <GridContainer>
@@ -137,17 +135,13 @@ handleSubmit = event => {
                 <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Description</InputLabel>
                     <textarea type="text" style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ',  'height': '80px',"box-sizing": "border-box",  'resize': 'vertical'}}    onChange={(event)=>this.handleChange(event, "Description")} />
-
                 </GridItem>
               </GridContainer>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                 <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Rubrique</InputLabel>
-              
-                  
-              
-                  <select  className="form-control"  style={{width:'30%'}} id="signup" name="signup">
+  <select  className="form-control"  style={{width:'30%'}} id="signup" name="signup">
   <option value="Etalonnage et vérification">Etalonnage et vérification</option>
   <option value="Formation">Formation</option>
   <option value="Conseil">Conseil</option>
@@ -162,11 +156,9 @@ handleSubmit = event => {
   <option value="Offres d’emploi">Offres d’emploi</option>
   <option value="Stages de Projet de fin d’étude">Stages de Projet de fin d’étude</option>
   <option value="Stages d’été">Stages d’été</option>
-</select>
+  </select>
                 </GridItem>
               </GridContainer>
-              
-
             <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <br></br>
