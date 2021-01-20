@@ -1,5 +1,5 @@
 import React from 'react'
-import BeforeAfterReact from 'before-after-react'
+
 import './style.css'
 
 import Login from './../../../components/loginbox'

@@ -39,20 +39,63 @@ const useStyles = makeStyles(styles);
 
 // const  classes = useStyles();
 export default class AddAnnounce extends Component  {
+  fileObj = [];
+  fileArray = [];
+
   componentDidMount() {
+
     axios.get(`http://localhost:3000/api/rubriques/`)
       .then(res => {
-        const rubriques = res.data;
-        this.setState({ rubriques });
+        const Rubriques = res.data;
+        this.setState({ Rubriques });
+        console.log(Rubriques);
       })
+
   }
- state = {
-  rubriques:[],
+
+constructor(props) {
+  super(props)
+  this.state = {
+  rubriqueID:'',
+  Rubriques:[],
   Title: '',
   Description: '',
-  Image: ''
+  Image: '',
+  file: []
+  }
+  this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
+  this.uploadFiles = this.uploadFiles.bind(this)
+}
 
+uploadMultipleFiles(e) {
+  const firebaseConfig = {
+    apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
+    authDomain: "mini-project-incp.firebaseapp.com",
+    databaseURL: "https://mini-project-incp.firebaseio.com",
+    projectId: "mini-project-incp",
+    storageBucket: "mini-project-incp.appspot.com",
+    messagingSenderId: "268706642084",
+    appId: "1:268706642084:web:257bb963e4417ccd338e31",
+    measurementId: "G-KPWHVF4TZF"
+  };
+// Initialize Firebase
 
+  firebase.initializeApp(firebaseConfig);
+  this.fileObj.push(e.target.files)
+  for (let i = 0; i < this.fileObj[0].length; i++) {
+
+    const ref = firebase.storage().ref();
+   ref.child(this.fileObj[0][i].name).put(this.fileObj[0][i]);
+
+    this.fileArray.push( "https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+this.fileObj[0][i].name+"?alt=media")
+  }
+  this.setState({ file: this.fileArray })
+}
+
+uploadFiles(e) {
+  
+  e.preventDefault()
+  console.log(this.state.file)
 }
  uploadImage() {
   const firebaseConfig = {
@@ -69,6 +112,7 @@ export default class AddAnnounce extends Component  {
 
   firebase.initializeApp(firebaseConfig);
   const ref = firebase.storage().ref();
+
   const file = document.querySelector("#image").files[0];
 
   const task = ref.child(file.name).put(file);
@@ -90,11 +134,15 @@ handleSubmit = event => {
   const file_name = document.querySelector("#image").files[0].name;
 
   const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";
+ 
+ 
     const announce = {
     titre:this.state.Title,
     description: this.state.Description,
     image:url,
-    visib:true      
+    visib:true,
+    rubriqueId:this.state.rubriqueID,
+    files:this.state.file 
 
   };
 
@@ -114,6 +162,8 @@ handleSubmit = event => {
   
   return (
     <div>
+  
+    
       <GridContainer>
         <GridItem xs={12} sm={12} md={8}>
           <Card>
@@ -141,21 +191,11 @@ handleSubmit = event => {
                 <GridItem xs={12} sm={12} md={12}>
                 <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Rubrique</InputLabel>
-  <select  className="form-control"  style={{width:'30%'}} id="signup" name="signup">
-  <option value="Etalonnage et vérification">Etalonnage et vérification</option>
-  <option value="Formation">Formation</option>
-  <option value="Conseil">Conseil</option>
-  <option value="Electricité & Magnétisme">Electricité & Magnétisme</option>
-  <option value="Temps & Fréquence">Temps & Fréquence</option>
-  <option value="Température">Température</option>
-  <option value="Pesage">Pesage</option>
-  <option value="Pression">Pression</option>
-  <option value="Dimensionnel">Dimensionnel</option>
-  <option value="Masse">Masse</option>
-  <option value="Conseil National d’Accréditation TUNAC">Conseil National d’Accréditation TUNAC</option>
-  <option value="Offres d’emploi">Offres d’emploi</option>
-  <option value="Stages de Projet de fin d’étude">Stages de Projet de fin d’étude</option>
-  <option value="Stages d’été">Stages d’été</option>
+               
+  <select value={this.state.rubriqueID} onChange={(event)=>this.handleChange(event, "rubriqueID")}   className="form-control"  style={{width:'30%'}} >
+  { this.state.Rubriques.map(rubrique =>
+  <option value={rubrique.id}>{rubrique.body.titre}</option>
+  ) }
   </select>
                 </GridItem>
               </GridContainer>
@@ -164,7 +204,7 @@ handleSubmit = event => {
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
                   <br></br>
-                   <input  type="file" name="image" id="image"  onChange={(event)=>this.handleChange(event, "Image")} />
+                   <input  type="file" name="image" id="image"   />
                 </GridItem>
               </GridContainer>
               <GridContainer>
@@ -172,7 +212,7 @@ handleSubmit = event => {
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload file</InputLabel>
                   <br></br>
-                   <input  type="file" accept=".pdf" name="file" id="file"  onChange={(event)=>this.handleChange(event, "File")} />
+                   <input  type="file" accept=".pdf" name="file" id="file" multiple  onChange={this.uploadMultipleFiles} /*onChange={(event)=>this.handleChange(event, "File")}*/ />
                 </GridItem>
               </GridContainer>
               </CardBody>

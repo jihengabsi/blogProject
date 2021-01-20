@@ -33,12 +33,12 @@
     "react-load-script": "0.0.6",
     "react-modal": "^3.12.1",
     "react-paginate": "^7.0.0",
+    "react-popup": "^0.10.0",
     "react-responsive-animate-navbar": "^1.1.8",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
     "react-slideshow-image": "^3.4.3",
     "react-swipeable-views": "0.13.9",
-    "reactjs-popup": "^2.0.4",
     "reactstrap": "^8.8.1",
     "translate-google-api": "^1.0.4"
   },

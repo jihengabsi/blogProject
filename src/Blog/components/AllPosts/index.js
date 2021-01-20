@@ -47,10 +47,11 @@ receivedData() {
   .then(res => {
     
     const data = res.data;
-
-          const slice = data.slice(this.state.offset, this.state.offset + this.state.perPage)
+    const data1 = data.filter((announce) => announce.body.visib !== false);
+          const slice = data1.slice(this.state.offset, this.state.offset + this.state.perPage)
+       
           const postData = slice.map(announce => 
-            announce.body.visib ? 
+       
         <Col xs >
           
                                 <div style={{"width":"300px","height":"400px"}}>
@@ -70,18 +71,13 @@ receivedData() {
                               </div> 
                               </Col>  
       
-      :true
+  
         )
-        var visib=0;
-        data.map(announce => announce.body.visib ? 
-          this.setState({ visib: visib++})
-          :true
-
-          )
-          console.log(this.state.visib)
+     
+   
           this.setState({
            
-              pageCount: Math.ceil(data.length / this.state.perPage)-1,
+              pageCount: Math.ceil(data1.length / this.state.perPage)-1,
              
               postData
           })

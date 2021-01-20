@@ -250,7 +250,18 @@ render(){
               <div className="postImageWrapper1"> <img title={announce.body.titre} className="imgu2" src={announce.body.image} alt="" /> </div>
               </Col>
               <Col xs>
+             
+               
+         
               <h4 >{announce.body.description}</h4>
+              {(announce.body.files || []).map(url => (
+                      <div>
+ <a href={url}>{url.split('/').pop().split('#')[0].split('?')[0]}</a>
+                      <br></br>
+                    
+                      </div>
+                     
+                    ))}
               <span >posted on {new Date(announce.body.date_cr).toString().replace(/T/, ' ').replace(/\..+/, '') } </span>
              </Col>
               <Col xs={6} md={2}>
