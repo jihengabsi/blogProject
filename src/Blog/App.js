@@ -16,6 +16,7 @@ import UpdateProfile from './containers/Profile/update';
 import UpdatePwd from './containers/Profile/updatePwd';
 import Reset from './components/Reset';
 import Partenaires from './containers/Partenaires';
+import Rubrique from './containers/Rubrique'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/blog/updatePwd" component={UpdatePwd} />
         <Route path="/blog/signup" component={Sign} />
         <Route path="/blog/partenaires" component={Partenaires} />
+        <Route path="/blog/Rubrique" component={Rubrique} />
       </div>
     </Router>
     

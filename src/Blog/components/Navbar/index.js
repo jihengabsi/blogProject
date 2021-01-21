@@ -79,7 +79,7 @@ render(){
                 <li><a href="#">Conseil National d’Accréditation TUNAC</a></li>
               </ul>
             </li>
-            <li><a href="#">Nos partenaires</a></li>
+            <li><a href="/blog/partenaires">Nos partenaires</a></li>
 
             <li><a href="#">Nous contacter</a></li>
             <li><a href="#">Nous rejoindre</a>

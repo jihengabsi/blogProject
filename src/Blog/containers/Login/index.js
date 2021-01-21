@@ -12,10 +12,10 @@ const Login = (props) => {
   return(
     <div>
 
-          <Loginbox />
-          
-          <Footer></Footer>
-      </div>
+      <Loginbox />
+
+      <Footer></Footer>
+    </div>
    )
 
  }

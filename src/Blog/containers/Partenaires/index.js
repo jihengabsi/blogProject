@@ -4,7 +4,7 @@ import Partner from '../../components/Partners';
 import './style.css';
 import Logo from '../../components/logo';
 import Layout from '../../components/Layout';
-
+import Footer from '../../components/Footer';
 
 
 /**
@@ -13,22 +13,23 @@ import Layout from '../../components/Layout';
 **/
 
 const Partenaires = (props) => {
-  return(
-      <div>
-          <br></br><br></br><br></br><br></br><br></br>
+  return (
+    <div>
+      <div style={{
+        width: "80%",
+        margin: "0 auto",
+        backgroundColor: "white"
+      }}>
 
-    <Layout >
-        
-        <Partner /> {/* test github*/ }
-    </Layout>
-  
-             
+        <div style={{ width: "95%", position: "left", paddingLeft: "5%", paddingBottom:"50px"}}>
+          <Partner />
+        </div>
+      </div>
+      <Footer />
 
     </div>
-    
+  )
 
-   )
-
- }
+}
 
 export default Partenaires
