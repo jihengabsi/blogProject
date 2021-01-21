@@ -16,6 +16,8 @@ import UpdateProfile from './containers/Profile/update';
 import UpdatePwd from './containers/Profile/updatePwd';
 import Reset from './components/Reset';
 import Partenaires from './containers/Partenaires';
+import Rubrique from './containers/Rubrique'
+import Search from './containers/Search'
 
 function App() {
   return (
@@ -28,13 +30,14 @@ function App() {
         <Route path="/blog/contact-us"  component={ContactUS}/>
         <Route path="/blog/reset" component={Reset} />
         <Route path="/post/:slug" component={Post} />
-        <Route path="/blog/listPosts" component={ListPosts} />
+        <Route path="/blog/listPosts" component={Search} />
         <Route path="/blog/login" component={Login} />
         <Route path="/blog/profile" component={UserProfile} />
         <Route path="/blog/update" component={UpdateProfile} />
         <Route path="/blog/updatePwd" component={UpdatePwd} />
         <Route path="/blog/signup" component={Sign} />
         <Route path="/blog/partenaires" component={Partenaires} />
+        <Route path="/blog/Rubrique" component={Rubrique} />
       </div>
     </Router>
     

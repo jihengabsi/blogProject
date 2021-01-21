@@ -13,10 +13,10 @@ import {
   import { makeStyles } from '@material-ui/core/styles';
 /**
 * @author
-* @function AllPosts
+* @function AllPostsRubrique
 **/
 
-export default class AllPosts extends React.Component  {
+export default class AllPostsRubrique extends React.Component  {
   constructor(props) {
     super(props);
   this.state = {

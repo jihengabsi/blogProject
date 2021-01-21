@@ -104,7 +104,7 @@ render(){
         </nav>
       </li>
       <li>
-        <div className="search">
+        <div style={{margin:"auto 0"}} className="search">
           <ul className="navbarMenu">
 
             <li>

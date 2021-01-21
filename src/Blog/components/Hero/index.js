@@ -15,13 +15,14 @@ import Navbar1 from '../Navbar/index.js';
 
 const Hero = (props) => {
   return(
-        <Card >
-         <Navbar  fixed="top"  >
-    <Navbar1></Navbar1>
-</Navbar>
-         
-        </Card>
-   
+    <div>
+      <Navbar fixed="top"  >
+        <Navbar1></Navbar1>
+      </Navbar>
+
+      {/* <div class="godown-60" id="godown"></div> */}
+    </div>
+
    )
 
  }

@@ -5,14 +5,15 @@ import './style.css';
 import Logo from '../../components/logo';
 import Layout from '../../components/Layout';
 import Footer from '../../components/Footer';
+import ListPosts from 'Blog/components/listPosts';
 
 
 /**
 * @author
-* @function Partenaires
+* @function Search
 **/
 
-const Partenaires = (props) => {
+const Search = (props) => {
   return (
     <div>
       <div style={{
@@ -22,7 +23,7 @@ const Partenaires = (props) => {
       }}>
 
         <div style={{ width: "95%", position: "left", paddingLeft: "5%", paddingBottom:"50px"}}>
-          <Partner />
+          <ListPosts />
         </div>
       </div>
       <Footer />
@@ -32,4 +33,4 @@ const Partenaires = (props) => {
 
 }
 
-export default Partenaires
+export default Search

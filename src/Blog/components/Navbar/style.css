@@ -30,10 +30,10 @@ a
     .searchbar{
     margin-bottom: auto;
     margin-top: auto;
+
     height: 50px;
     background-color: white;
     border-radius: 30px;
- 
     padding: 10px;
     }
     select::-ms-expand {	display: none; }
@@ -49,6 +49,7 @@ a
     border: 0;
     outline: 0;
     background: none;
+    
     width: 0;
     caret-color:transparent;
     line-height: 40px;
@@ -58,9 +59,9 @@ a
     .searchbar:hover > .search_input{
     padding: 0 10px;
     width: 80%;
-    max-width: 200px;
-    caret-color:red;
-    transition: width 0.6s linear;
+    max-width: 186px;
+    caret-color:#dc3545;
+
     }
 
     .searchbar:hover > .search_icon{
@@ -77,7 +78,7 @@ a
     justify-content: center;
     align-items: center;
     border-radius: 100%;
-    color:red;
+    color:#dc3545;
     text-decoration:none;
     }
     .dropdown li a,button, .dropbtn {
@@ -89,7 +90,7 @@ a
       }
       
       .dropdown  li a:hover .dropdown:hover .dropbtn {
-        background-color: red;
+        background-color: #dc3545;
         
       }
     
@@ -123,7 +124,7 @@ a
       .Menu{
         flex: 1;
         justify-items: center;
-        background-color: red;
+        background-color:#dc3545;
         width: 90px;
         height: 90px;
         color:white;
@@ -143,9 +144,9 @@ a
     nav.primary-navigation ul li {
       list-style: none;
       margin: 0 auto;
-      border-left: 2px solid red;
+      border-left: 2px solid#dc3545;
       display: inline-block;
-      padding: 0 30px;
+      padding: 0 18px;
       position: relative;
       text-decoration: none;
       text-align: center;
@@ -155,7 +156,7 @@ a
       color: black;
    }
     nav.primary-navigation li a:hover {
-      color: red;
+      color: #dc3545;
    }
     nav.primary-navigation li:hover {
       cursor: pointer;
@@ -168,12 +169,13 @@ a
       left: 0;
       display: none;
       background: white;
+
    }
     nav.primary-navigation ul li:hover > ul, nav.primary-navigation ul li ul:hover {
       visibility: visible;
       opacity: 1;
       display: block;
-      min-width: 250px;
+      min-width: 200px;
       text-align: left;
       padding-top: 20px;
       box-shadow: 0px 3px 5px -1px #ccc;
@@ -187,14 +189,14 @@ a
    }
     nav.primary-navigation ul li ul li a:hover {
       padding-left: 10px;
-      border-left: 2px solid red;
+      border-left: 2px solid #dc3545;
       transition: all 0.3s ease;
    }
     a {
       text-decoration: none;
    }
     a:hover {
-      color: red;
+      color: #dc3545;
    }
     ul li ul li a {
       transition: all 0.5s ease;

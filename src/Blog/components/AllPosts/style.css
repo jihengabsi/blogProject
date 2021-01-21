@@ -8,18 +8,18 @@
     outline: none;
   }
   .pagination > .active > a{
-    background-color: #de5e47 ;
-    border-color: #de5e47 ;
+    background-color: #dc3545 ;
+    border-color: #dc3545 ;
     color: #fff;
   }
   .pagination > li > a{
-    border: 1px solid #de5e47 ;
+    border: 1px solid #dc3545 ;
     padding: 5px 10px;
     outline: none;
     cursor: pointer;
   }
   .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
-    background-color: #de5e47 ;
-    border-color: #de5e47;
+    background-color: #dc3545 ;
+    border-color: #dc3545;
     outline: none ;
   }
