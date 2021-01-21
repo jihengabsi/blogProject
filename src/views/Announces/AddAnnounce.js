@@ -142,7 +142,8 @@ handleSubmit = event => {
     image:url,
     visib:true,
     rubriqueId:this.state.rubriqueID,
-    files:this.state.file 
+    files:this.state.file,
+    visib:false
 
   };
 
