@@ -35,7 +35,9 @@ export default class ListPosts extends React.Component  {
  render(){
  
   return(
+
       <div className='searchcontainer'>
+        <br></br><br></br><br></br><br></br>
       <React.Fragment >
          <div  margin-left= "20px">
          <Grid fluid>
@@ -45,7 +47,7 @@ export default class ListPosts extends React.Component  {
                this.state.announces.length != 0? 
           this.state.announces.map(announce =>
                         announce.body.visib ?    
-                        <Card > 
+                        <Card style={{marginTop:"30px"}}> 
                         <CardBody>
                         <Grid fluid>
                           <Row>
@@ -53,7 +55,7 @@ export default class ListPosts extends React.Component  {
                        
                           <h2>{announce.body.titre}</h2>
                           
-                          <div className="postImageWrapper"> <img className="imgu" src={announce.body.image} alt="" /> </div>
+                          <div className="postImageWrapper1"> <img title={announce.body.titre} className="imgu2" src={announce.body.image} alt="" /> </div>
                           </Col>
                           <Col xs>
                           <h4 >{announce.body.description}</h4>
