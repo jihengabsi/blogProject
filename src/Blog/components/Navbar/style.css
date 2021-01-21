@@ -30,10 +30,10 @@ a
     .searchbar{
     margin-bottom: auto;
     margin-top: auto;
+
     height: 50px;
     background-color: white;
     border-radius: 30px;
- 
     padding: 10px;
     }
     select::-ms-expand {	display: none; }
@@ -49,6 +49,7 @@ a
     border: 0;
     outline: 0;
     background: none;
+    
     width: 0;
     caret-color:transparent;
     line-height: 40px;
@@ -58,9 +59,9 @@ a
     .searchbar:hover > .search_input{
     padding: 0 10px;
     width: 80%;
-    max-width: 200px;
+    max-width: 186px;
     caret-color:#dc3545;
-    transition: width 0.6s linear;
+
     }
 
     .searchbar:hover > .search_icon{
@@ -145,7 +146,7 @@ a
       margin: 0 auto;
       border-left: 2px solid#dc3545;
       display: inline-block;
-      padding: 0 30px;
+      padding: 0 18px;
       position: relative;
       text-decoration: none;
       text-align: center;
@@ -168,12 +169,13 @@ a
       left: 0;
       display: none;
       background: white;
+
    }
     nav.primary-navigation ul li:hover > ul, nav.primary-navigation ul li ul:hover {
       visibility: visible;
       opacity: 1;
       display: block;
-      min-width: 250px;
+      min-width: 200px;
       text-align: left;
       padding-top: 20px;
       box-shadow: 0px 3px 5px -1px #ccc;

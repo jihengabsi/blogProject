@@ -79,7 +79,7 @@ render(){
                 <li><a href="#">Conseil National d’Accréditation TUNAC</a></li>
               </ul>
             </li>
-            <li><a href="/blog/partenaires">Nos partenaires</a></li>
+            <li><a href="#">Nos partenaires</a></li>
 
             <li><a href="#">Nous contacter</a></li>
             <li><a href="#">Nous rejoindre</a>
@@ -104,7 +104,7 @@ render(){
         </nav>
       </li>
       <li>
-        <div className="search">
+        <div style={{margin:"auto 0"}} className="search">
           <ul className="navbarMenu">
 
             <li>
