@@ -43,6 +43,7 @@ export default class ModifyAnnounce extends Component  {
 constructor(props) {
   super(props)
   this.state = {
+    announces:[],
   rubriqueID:'',
   Rubriques:[],
   Title: '',
@@ -71,6 +72,7 @@ constructor(props) {
         
         this.setState({ announces });
         const Title=this.state.announces.map(announce =>announce.body.titre);
+
         this.setState({ Title });
         const Description=this.state.announces.map(announce =>announce.body.description);
         this.setState({ Description });
@@ -147,7 +149,7 @@ constructor(props) {
     this.setState({ [field]: evt.target.value });
   
   }
-  
+  removeItem(item){}
   handleSubmit = event => {
    
     event.preventDefault();
@@ -189,6 +191,7 @@ constructor(props) {
       })
    
   }
+
   render(){
     const { classes } = this.props;
     
@@ -240,6 +243,16 @@ constructor(props) {
                 <GridItem xs={12} sm={12} md={12}>
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload file</InputLabel>
+               
+                  { this.state.announces.map(announce =>(announce.body.files || []).map(url => (
+                     <div>
+ <a href={url}>{url.split('/').pop().split('#')[0].split('?')[0]}</a> 
+ <Button type="submit"  onClick={()=>this.uploadImage()} class="btn btn-danger btn-sm" color="danger">+</Button>
+ <br></br>
+ </div>
+                     
+                     
+                    )))}
                   <br></br>
                   <input  type="file" accept=".pdf" name="file" id="file" multiple  onChange={this.uploadMultipleFiles} /*onChange={(event)=>this.handleChange(event, "File")}*/ />
                 </GridItem>

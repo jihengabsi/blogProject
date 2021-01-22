@@ -148,7 +148,7 @@ render(){
   const { classes } = this.props;
   const customStyles = ({
     content : {
-      
+      height:'100vh ' ,
       top                   : '50%',
       left                  : '60%',
       right                 : '0%',
@@ -276,6 +276,7 @@ render(){
         
   ) }
         <Modal
+      scrollable={true}
             isOpen={this.state.modalIsOpen}
             onRequestClose={() => {this.closeModal()} }
             style={customStyles}

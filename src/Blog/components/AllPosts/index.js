@@ -52,6 +52,7 @@ receivedData() {
           const slice = data1.slice(this.state.offset, this.state.offset + this.state.perPage)
        
           const postData = slice.map(announce =>
+            
         <Col xs >
           
                                 <div style={{"width":"300px","height":"400px"}}>

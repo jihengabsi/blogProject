@@ -61,7 +61,8 @@ constructor(props) {
   Title: '',
   Description: '',
   Image: '',
-  file: []
+  file: [],
+  url:""
   }
   this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
   this.uploadFiles = this.uploadFiles.bind(this)
@@ -131,33 +132,43 @@ handleChange (evt, field) {
 
 handleSubmit = event => {
   event.preventDefault();
+  try {
   const file_name = document.querySelector("#image").files[0].name;
-
-  const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";
- 
+  this.setState({
+Url:"https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media"
+});
+}
+catch (exception) {
+ this.setState({
+   Url: this.state.Image
+ });
+}
  
     const announce = {
     titre:this.state.Title,
     description: this.state.Description,
-    image:url,
+    image:this.state.url,
     visib:true,
     rubriqueId:this.state.rubriqueID,
     files:this.state.file,
     visib:false
 
   };
+try{  axios.post(`http://localhost:3000/api/announces/add`, {announce} )
+.then(res => {
+  console.log(res);
+  console.log(res.data);
+  alert("Announce added successfully!");
+  window.location = "/admin/list";
+ 
+}).catch(error=>{
+  console.log(error.message);
 
-  axios.post(`http://localhost:3000/api/announces/add`, {announce} )
-    .then(res => {
-      console.log(res);
-      console.log(res.data);
-      alert("Announce added successfully!");
-      window.location = "/admin/list";
-     
-    }).catch(error=>{
-      console.log(error.message);
-
-    })
+})}
+catch(error){
+  alert("Announce already added!");
+}
+ 
 }
  render(){
   
