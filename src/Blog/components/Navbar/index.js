@@ -47,7 +47,7 @@ render(){
 
             <li><a href="#">Nos prestations </a>
               <ul class="dropdown">
-                <li><a href="#">Etalonnage et vérification   </a>
+                <li><a href="#">Etalonnage et vérification </a>
                 <ul style={{marginLeft:"100%"}}>
                 <li><a href="#">Electricité & Magnétisme</a></li>
                 <li><a href="#">Temps & Fréquence</a></li>
@@ -79,7 +79,7 @@ render(){
                 <li><a href="#">Conseil National d’Accréditation TUNAC</a></li>
               </ul>
             </li>
-            <li><a href="#">Nos partenaires</a></li>
+            <li><a href="/blog/partenaires">Nos partenaires</a></li>
 
             <li><a href="#">Nous contacter</a></li>
             <li><a href="#">Nous rejoindre</a>

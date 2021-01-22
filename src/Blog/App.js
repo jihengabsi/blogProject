@@ -37,7 +37,8 @@ function App() {
         <Route path="/blog/updatePwd" component={UpdatePwd} />
         <Route path="/blog/signup" component={Sign} />
         <Route path="/blog/partenaires" component={Partenaires} />
-        <Route path="/blog/Rubrique" component={Rubrique} />
+        <Route path="/blog/Rubrique/:slug" component={Rubrique} />
+
       </div>
     </Router>
     

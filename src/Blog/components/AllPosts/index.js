@@ -46,17 +46,17 @@ receivedData() {
   axios.get(`http://localhost:3000/api/announces/`)
   .then(res => {
     
+
     const data = res.data;
     const data1 = data.filter((announce) => announce.body.visib !== false);
           const slice = data1.slice(this.state.offset, this.state.offset + this.state.perPage)
        
-          const postData = slice.map(announce => 
-       
+          const postData = slice.map(announce =>
         <Col xs >
           
                                 <div style={{"width":"300px","height":"400px"}}>
                                    
-                                <Card style={{  overflow: "auto","width":"100%","height":"100%",borderColor:"transparent"}}>
+                                <Card style={{  overflow: "auto","width":"100%","height":"90%",borderColor:"transparent"}}>
                                 <CardImg  title={announce.body.titre} top width="50%" height="180px"  src={announce.body.image} alt="Post Image" />
                                 <CardBody>
                                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>
@@ -77,7 +77,7 @@ receivedData() {
    
           this.setState({
            
-              pageCount: Math.ceil(data1.length / this.state.perPage)-1,
+              pageCount: Math.ceil(data.length / this.state.perPage)-1,
              
               postData
           })

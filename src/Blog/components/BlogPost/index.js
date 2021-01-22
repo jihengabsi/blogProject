@@ -17,7 +17,10 @@ export default class BlogPost extends React.Component  {
         super(props);
         this.state = {
             announces: [],
-            slug: props.match.params.slug
+            slug: props.match.params.slug,
+            rubriques:[],
+            id:"",
+            name:""
         };
       }
   
@@ -27,7 +30,16 @@ export default class BlogPost extends React.Component  {
           .then(res => {
             const announces = res.data;
             this.setState({ announces });
+            const id=this.state.announces.map(announce =>announce.body.rubriqueId);       
+          axios.get(`http://localhost:3000/api/rubriques/${id}`)
+          .then(res => {
+            const rubriques = res.data;
+            this.setState({ rubriques });
+            const name= rubriques.map(rubrique =>rubrique.body.titre);
+            console.log(name);
+            this.setState({name});
           })
+        })
       }
       render() {
   return(
@@ -36,7 +48,9 @@ export default class BlogPost extends React.Component  {
             <Card >
          
                 <div className="blogHeader">
-                    <h1 className="postTitle">{announce.body.titre}</h1>
+                  <br></br>
+                    <h1 className="postTitle">{announce.body.titre} </h1>
+                    <h1 className="postTitle">{this.state.name} </h1>
                     <span className="postedBy">{new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
                 </div>
                  

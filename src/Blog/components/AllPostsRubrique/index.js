@@ -62,8 +62,7 @@ receivedData() {
                                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>
                                   {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle> */}
                                   <CardText >{announce.body.description.slice(0, 60)}...</CardText>
-                
-                                  <NavLink to={'/post/'+announce.id}> 
+                                        <NavLink to={'/post/'+announce.id}> 
                                   <Button  color="danger" >Lire la suite</Button>
                                   </NavLink>
                                 </CardBody>
@@ -107,6 +106,7 @@ componentDidMount() {
          <div  style={{paddingLeft:"5%"}}>
       
              <Grid fluid>
+            
         <Row>
                     {this.state.postData}
                     </Row>
