@@ -49,7 +49,8 @@ constructor(props) {
   Title: '',
   Description: '',
   Image: '',
-  file: []
+  file: [],
+  Url:''
 
       
   }
@@ -138,7 +139,7 @@ constructor(props) {
   }
  catch (exception) {
   this.setState({
-    Image: this.state.Image
+    Url: this.state.Image
   });
   
 }
@@ -153,25 +154,15 @@ constructor(props) {
   handleSubmit = event => {
    
     event.preventDefault();
-    try {
     const file_name = document.querySelector("#image").files[0].name;
 
-    
-    this.setState({
-      Url: "https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media"
-    });
-  }
-  catch (exception) {
-   this.setState({
-     Url: this.state.Image
-   });
- }
+    const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";	
     const announce = {
       token:localStorage.getItem('token'),
       id:this.props.message,
       titre:this.state.Title,
-      description: this.state.Description,
-      image: this.state.Image,
+      description: this.state.Descriptions,
+      image: url,
       rubriqueId:this.state.rubriqueID,
       files:this.state.file 
       
