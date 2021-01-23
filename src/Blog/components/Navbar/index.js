@@ -6,7 +6,7 @@ import Search from '../../assets/icons/search.png';
 import { useHistory } from "react-router-dom";
 import Logo from '../../assets/Images/logock.png';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import axios from 'axios';
 /**
 * @author
 * @function Navbar
@@ -33,7 +33,23 @@ export default class Navbar extends Component {
     window.location = "/blog/listPosts";
 
     };
+    componentDidMount() {
+
+      axios.get(`http://localhost:3000/api/rubriques/`)
+        .then(res => {
+          const Rubriques = res.data;
+          this.setState({ Rubriques });
+          console.log(Rubriques);
+        })
   
+    }
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+    rubriqueID:'',
+    Rubriques:[],
+    }}
   
 render(){
   return(
@@ -67,7 +83,15 @@ render(){
 
               </ul>
             </li>
-            <li><a href="#">Nos accréditations</a>
+            <li><a href="#">Nos rubriques</a>
+              <ul class="dropdown">
+              { this.state.Rubriques.map(rubrique =>
+               <li><a href={"/blog/rubrique/"+rubrique.id}>{rubrique.body.titre}</a></li>
+  
+  ) }
+                             </ul>
+            </li>
+            {/* <li><a href="#">Nos accréditations</a>
               <ul class="dropdown">
                 <li><a href="#">Electricité & Magnétisme</a></li>
                 <li><a href="#">Temps & Fréquence</a></li>
@@ -78,7 +102,7 @@ render(){
                 <li><a href="#">Masse</a></li>
                 <li><a href="#">Conseil National d’Accréditation TUNAC</a></li>
               </ul>
-            </li>
+            </li> */}
             <li><a href="/blog/partenaires">Nos partenaires</a></li>
 
             <li><a href="#">Nous contacter</a></li>
@@ -99,6 +123,10 @@ render(){
               </select>
 
             </li>
+            <li>
+              
+            </li>
+
           </ul>
 
         </nav>
@@ -106,7 +134,6 @@ render(){
       <li>
         <div style={{margin:"auto 0"}} className="search">
           <ul className="navbarMenu">
-
             <li>
               <div className="container h-100">
                 <div className="d-flex justify-content-center h-100">
