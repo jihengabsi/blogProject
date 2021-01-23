@@ -22,6 +22,8 @@ export default class RecentPosts extends React.Component  {
   state = {
     announces: [],
     data1: [],
+    data2: [],
+    test: [],
   }
   componentDidMount() {
     axios.get(`http://localhost:3000/api/announces/`)
@@ -29,7 +31,11 @@ export default class RecentPosts extends React.Component  {
         const announces = res.data;
         this.setState({ announces });
         const data1 = announces.filter((announce) => announce.body.visib !== false);
+
         this.setState({ data1 });
+
+
+       
       })
   }
   render() {
