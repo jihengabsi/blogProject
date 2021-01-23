@@ -21,19 +21,21 @@ import CardBody from 'components/Card/CardBody';
 export default class RecentPosts extends React.Component  {
   state = {
     announces: [],
+    data1: [],
   }
   componentDidMount() {
     axios.get(`http://localhost:3000/api/announces/`)
       .then(res => {
         const announces = res.data;
         this.setState({ announces });
-     
+        const data1 = announces.filter((announce) => announce.body.visib !== false);
+        this.setState({ data1 });
       })
   }
   render() {
   return(
     <div >
-          { this.state.announces.reverse().slice(-1).map((announce) =>
+          { this.state.data1.reverse().slice(-1).map((announce) =>
           
         <Card className="Card2" >
         <Grid fluid>
