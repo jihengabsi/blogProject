@@ -18,6 +18,7 @@
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
 import Add from "@material-ui/icons/Add";
+import ExitToApp from"@material-ui/icons/ExitToApp";
 import Person from "@material-ui/icons/Person";
 import List from "@material-ui/icons/List";
 // core components/views for Admin layout
@@ -60,6 +61,14 @@ const dashboardRoutes = [
     component: Typography,
     layout: "/admin",
   },
+  {
+    path: "/signin",
+    name: "Logout",
+    rtlName: "طباعة",
+    icon: ExitToApp,
+    component: Typography,
+    layout: "/admin",
+  }
 ];
 
 export default dashboardRoutes;

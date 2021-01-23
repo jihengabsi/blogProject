@@ -27,11 +27,12 @@ import HideButton from "components/HideButton/index.js"
 import axios from 'axios';
 import { withStyles } from "@material-ui/core/styles";
 
-
+import {Redirect} from 'react-router-dom'
 
 
 class TableList extends React.Component  {
   componentDidMount() {
+    setInterval(()=>this.currentTime(),1000)
     axios.get(`http://localhost:3000/api/announces/`)
       .then(res => {
         const announces = res.data;
@@ -70,8 +71,18 @@ if(this.state.type=="date"){
     }
   }
   constructor() {
+    const token=localStorage.getItem("token")
+
+    let LoggedIn=true
+  
+    if(token==null){
+        LoggedIn=false
+    }
     super();
     this.state = {
+      LoggedIn,
+      navigate:false,
+      time:new Date(),
       date_cr: '', 
     announces: [],
       openFilter:null,
@@ -88,6 +99,14 @@ if(this.state.type=="date"){
     }; 
       
   }
+
+
+
+currentTime(){
+  this.setState({
+    time:new Date()
+  })
+}
     handleCloseFilter() {
    
         this.setState({ openFilter:null});
@@ -156,7 +175,17 @@ render(){
       transform             : 'translate(-50%, -50%)'
     }
   });
- 
+  const {navigate}=this.state;
+  if(navigate){
+    alert("Connectez vous s'il vous plais")
+      return <Redirect to="/" push={true} />
+  }
+  
+  if(this.state.LoggedIn===false){
+    alert("Connectez vous s'il vous plais")
+      return <Redirect to="/"/>
+  }
+       
   return (   
     
      <view className="Card">

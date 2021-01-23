@@ -19,10 +19,12 @@ import axios from 'axios';
 import Chart from "react-google-charts";
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
+import {Redirect} from 'react-router-dom'
 
 class Dashboard extends React.Component  {
   
   componentDidMount() {
+    setInterval(()=>this.currentTime(),1000)
     axios.get(`http://localhost:3000/api/users/`)
     .then(res => {
       const users = res.data;
@@ -78,7 +80,20 @@ class Dashboard extends React.Component  {
         
       })
   }
+  
+currentTime(){
+  this.setState({
+    time:new Date()
+  })
+}
   constructor() {
+    const token=localStorage.getItem("token")
+
+    let LoggedIn=true
+  
+    if(token==null){
+        LoggedIn=false
+    }
     var month=[];
     for ( var i = 0; i < 12; i++){
       month.push({
@@ -89,6 +104,9 @@ class Dashboard extends React.Component  {
   }
     super();
     this.state = {
+      LoggedIn,
+      navigate:false,
+      time:new Date(),
     announces: [],
    month:[],
    users:[],
@@ -99,6 +117,17 @@ class Dashboard extends React.Component  {
   }
   render(){
     const { classes } = this.props;
+    const {navigate}=this.state;
+    if(navigate){
+      alert("Connectez vous s'il vous plais")
+        return <Redirect to="/" push={true} />
+    }
+    
+    if(this.state.LoggedIn===false){
+      alert("Connectez vous s'il vous plais")
+        return <Redirect to="/"/>
+    }
+       
   return (
 
       <div>
