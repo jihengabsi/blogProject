@@ -5,6 +5,7 @@ import './style.css';
 import Logo from '../../components/logo';
 import Layout from '../../components/Layout';
 import AllPostsRubrique from 'Blog/components/AllPostsRubrique';
+import Footer from '../../components/Footer';
 
 
 
@@ -17,18 +18,18 @@ const Rubrique = (props) => {
 
   console.log(props);
   return(
-      <div>
-          <br></br><br></br><br></br><br></br><br></br>
+      <div >
+          <br></br><br></br><br></br>
 
           
 
-    <Layout >
-        
+    <div className="Home">
+        <Layout>
         <AllPostsRubrique  {...props}></AllPostsRubrique>
     </Layout>
-  
+  </div>
              
-
+        <Footer></Footer>
     </div>
     
 

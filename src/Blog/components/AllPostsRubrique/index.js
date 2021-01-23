@@ -63,18 +63,21 @@ export default class AllPostsRubrique extends React.Component {
 
           <Col xs >
 
-            <div style={{ "width": "300px", "height": "400px" }}>
+            <div style={{ "width": "300px", "height": "400px" ,}}>
 
-              <Card style={{ overflow: "auto", "width": "100%", "height": "100%", borderColor: "transparent" }}>
+              <Card className="rubcard" style={{ overflow: "auto", "width": "100%", "height": "100%",
+               backgroundColor:"#ededed"}}>
                 <CardImg title={announce.body.titre} top width="50%" height="180px" src={announce.body.image} alt="Post Image" />
                 <CardBody>
                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>
                   {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle> */}
-                  <CardText >{announce.body.description.slice(0, 60)}...{this.state.name}!</CardText>
-                  <NavLink to={'/post/' + announce.id}>
-                    <Button color="danger" >Lire la suite</Button>
-                  </NavLink>
+                  <CardText >{announce.body.description.slice(0, 60)}...</CardText>
+                  
                 </CardBody>
+                <NavLink to={'/post/' + announce.id}>
+                    <div className='card__actions'>
+                    <Button color="danger" >Lire la suite</Button></div>
+                  </NavLink>
               </Card>
             </div>
           </Col>
@@ -142,15 +145,16 @@ export default class AllPostsRubrique extends React.Component {
     const { classes } = this.props;
     return (
       <div style={{ paddingLeft: "5%" }}>
-        <h1>{this.state.name}</h1>
+        <h1 className="rubriqueTitle">{this.state.name}</h1>
+        <div className="rubriquedescription">Les annonces centenus dans cette rubriques incluent :</div>
         <Grid fluid>
 
           <Row>
             {this.state.postData}
           </Row>
         </Grid>
-        {this.state.id}
-        {this.state.name}
+        {/* {this.state.id}
+        {this.state.name} */}
         <ReactPaginate
 
           previousLabel={"prev"}
