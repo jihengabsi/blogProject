@@ -20,7 +20,7 @@ const Rubrique = (props) => {
 
     <Layout >
         
-        <AllPostsRubrique {...props}  /> 
+        <AllPostsRubrique/> 
     </Layout>
   
              

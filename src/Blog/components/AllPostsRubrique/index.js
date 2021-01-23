@@ -47,7 +47,8 @@ receivedData() {
   .then(res => {
     
     const data = res.data;
-    const data1 = data.filter((announce) => announce.body.visib !== false);
+    const data1 = data.filter((announce) => announce.body.rubriqueId == 'lVHZDFplP9i9R5PI0BBH');
+    console.log(data1);
           const slice = data1.slice(this.state.offset, this.state.offset + this.state.perPage)
        
           const postData = slice.map(announce => 
@@ -97,6 +98,7 @@ handlePageClick = (e) => {
 
 componentDidMount() {
   this.receivedData()
+
 }
   
 

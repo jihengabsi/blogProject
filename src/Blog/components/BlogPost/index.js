@@ -50,7 +50,8 @@ export default class BlogPost extends React.Component  {
                 <div className="blogHeader">
                   <br></br>
                     <h1 className="postTitle">{announce.body.titre} </h1>
-                    <h1 className="postTitle">{this.state.name} </h1>
+                    {/* <h1 className="postTitle">{this.state.name} </h1> */}
+                    <h1 className="postTitle">{announce.body.rubriqueId} </h1>
                     <span className="postedBy">{new Date(announce.body.date_cr).toISOString().replace(/T/, ' ').replace(/\..+/, '') } </span>
                 </div>
                  
