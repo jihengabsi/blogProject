@@ -12,7 +12,7 @@ import Layout from '../../components/Layout';
 
 const Post = (props) => {
 
-    console.log(props);
+
 
 
   return(

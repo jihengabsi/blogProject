@@ -14,13 +14,17 @@ import AllPostsRubrique from 'Blog/components/AllPostsRubrique';
 **/
 
 const Rubrique = (props) => {
+
+  console.log(props);
   return(
       <div>
           <br></br><br></br><br></br><br></br><br></br>
 
+          
+
     <Layout >
         
-        <AllPostsRubrique/> 
+        <AllPostsRubrique  {...props}></AllPostsRubrique>
     </Layout>
   
              
