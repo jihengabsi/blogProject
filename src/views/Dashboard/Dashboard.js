@@ -23,6 +23,29 @@ import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js"
 class Dashboard extends React.Component  {
   
   componentDidMount() {
+    axios.get(`http://localhost:3000/api/users/`)
+    .then(res => {
+      const users = res.data;
+      var type=[0,0,0,0];
+      users.forEach(element =>{
+  if(element.body.type=="Client"||element.body.type=="client"){
+    type[0]++;
+
+  }
+  else if(element.body.type=="Prospect"||element.body.type=="prospect"){
+    type[1]++;
+    
+  }
+  else{
+    type[2]++;
+  }
+  type[3]++;
+
+})   
+  this.setState({type})
+    })
+    
+
     axios.get(`http://localhost:3000/api/announces/`)
       .then(res => {
         const announces = res.data;
@@ -67,7 +90,9 @@ class Dashboard extends React.Component  {
     super();
     this.state = {
     announces: [],
-   month:[]
+   month:[],
+   users:[],
+   type:[]
   
     }; 
       
@@ -78,91 +103,7 @@ class Dashboard extends React.Component  {
 
       <div>
       <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
-          {/* <Card>
-          <CardHeader color="success">
-            <Chart
-                width={'100%'}
-                height={'100%'}
-                chartType="LineChart"
-                loader={<div>Loading Chart</div>}
-                data={[
-                    [{ type: 'date', label: 'Day' },'views',],
-                    [new Date(2020, 6, 14), 240],
-                    [new Date(2020, 6, 15), 310],
-                    [new Date(2020, 6, 16),326],
-                    [new Date(2020, 6, 17),268],
-                    [new Date(2020, 6, 18),409],
-                    [new Date(2020, 6, 19),589],
-                    [new Date(2020, 6, 20),287],
-                  
-                ]}
-                options={{
-                    hAxis: {
-                    title: 'Jours',
-                    format: 'd/M',
-                    gridlines: {color: 'none'},
-                    },
-                    vAxis: {
-                    title: 'Views',
-                    
-                    },
-                }}
-                rootProps={{ 'data-testid': '1' }}
-                />
-  
-            </CardHeader>
-            
-            <CardBody>
-         
-              <h4 className={classes.cardTitle}>Vues cette semaine</h4>
-              <p className={classes.cardCategory}>
-                <span className={classes.successText}>
-                  <ArrowUpward className={classes.upArrowCardCategory} /> 347
-                </span>{" "}
-                vues par jour en moyenne.
-              </p>
-            </CardBody>
-        
-          </Card> */}
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
-          {/* <Card>
-          <CardHeader color="warning">
-            <Chart
-                width={'100%'}
-                height={'100%'}
-                chartType="PieChart"
-                loader={<div>Loading Chart</div>}
-                data={[
-                    ['Navigateur', 'Utilisateurs'],
-                    ['Chrome', 706],
-                    ['Firefox', 266],
-                    ['Edge', 45],
-                    ['Opera', 50],
-                    ['Safari', 109],
-                    ['Autres', 15]
-                ]}
-                
-                rootProps={{ 'data-testid': '1' }}
-                />
-  
-            </CardHeader>
-            
-            <CardBody>
-              <h4 className={classes.cardTitle}>Navigateurs Utilisés</h4>
-              <p className={classes.cardCategory}>
-                <span className={classes.successText}>
-                  <ArrowUpward className={classes.upArrowCardCategory} /> 59%
-                </span>{" "}
-                utilisent Google Chrome.
-              </p>
-            </CardBody>
-        
-          </Card> */}
-        </GridItem>
-        {/* { data=this.state.month.map()} */}
-        <GridItem xs={12} sm={12} md={12}>
+      <GridItem xs={12} sm={12} md={12}>
           <Card>
           <CardHeader color="info">
             <Chart
@@ -214,6 +155,90 @@ class Dashboard extends React.Component  {
           
           </Card>
         </GridItem>
+      <GridItem xs={12} sm={12} md={12}>
+          <Card>
+          <CardHeader color="warning">
+            <Chart
+                width={'100%'}
+                height={'100%'}
+                chartType="PieChart"
+                loader={<div>Loading Chart</div>}
+                data={[
+                    ['Type compte', 'Nombre'],
+                    ['Client', this.state.type[0]],
+                    ['Prospect', this.state.type[1]],
+                    ['Autre', this.state.type[2]],
+                    
+                ]}
+                
+                rootProps={{ 'data-testid': '1' }}
+                />
+  
+            </CardHeader>
+            
+            <CardBody>
+              <h4 className={classes.cardTitle}>Comptes Crées</h4>
+              <p className={classes.cardCategory}>
+                <span className={classes.successText}>
+                  <ArrowUpward className={classes.upArrowCardCategory} /> {this.state.type[3]}
+                </span>{" "}
+                ont crée des comptes.
+              </p>
+            </CardBody>
+        
+          </Card>
+        </GridItem>
+        {/* { data=this.state.month.map()} */}
+       
+        <GridItem xs={12} sm={12} md={6}>
+          {/* <Card>
+          <CardHeader color="success">
+            <Chart
+                width={'100%'}
+                height={'100%'}
+                chartType="LineChart"
+                loader={<div>Loading Chart</div>}
+                data={[
+                    [{ type: 'date', label: 'Day' },'views',],
+                    [new Date(2020, 6, 14), 240],
+                    [new Date(2020, 6, 15), 310],
+                    [new Date(2020, 6, 16),326],
+                    [new Date(2020, 6, 17),268],
+                    [new Date(2020, 6, 18),409],
+                    [new Date(2020, 6, 19),589],
+                    [new Date(2020, 6, 20),287],
+                  
+                ]}
+                options={{
+                    hAxis: {
+                    title: 'Jours',
+                    format: 'd/M',
+                    gridlines: {color: 'none'},
+                    },
+                    vAxis: {
+                    title: 'Views',
+                    
+                    },
+                }}
+                rootProps={{ 'data-testid': '1' }}
+                />
+  
+            </CardHeader>
+            
+            <CardBody>
+         
+              <h4 className={classes.cardTitle}>Vues cette semaine</h4>
+              <p className={classes.cardCategory}>
+                <span className={classes.successText}>
+                  <ArrowUpward className={classes.upArrowCardCategory} /> 347
+                </span>{" "}
+                vues par jour en moyenne.
+              </p>
+            </CardBody>
+        
+          </Card> */}
+        </GridItem>
+       
         <GridItem xs={12} sm={12} md={6}>
           {/* <Card>
           <CardHeader color="rose">

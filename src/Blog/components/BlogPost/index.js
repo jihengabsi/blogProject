@@ -62,9 +62,17 @@ export default class BlogPost extends React.Component {
 
 
 
-            <div className="postContent">
+            <div className="postContent" style={{marginLeft:"10%"}}>
 
               <p>{announce.body.description}</p>
+              {(announce.body.files || []).map(url => (
+                      <div style={{marginLeft:"10%"}}>
+ <a href={url}>{url.split('/').pop().split('#')[0].split('?')[0]}</a>
+                      <br></br>
+                    
+                      </div>
+                     
+                    ))}
             </div>
 
           </Card>

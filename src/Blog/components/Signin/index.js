@@ -16,7 +16,7 @@ export default class SignUp extends Component {
         Email: '',
         NTel: '',
         Password: '',
-        Type:'',
+        Type:'Client',
      
       }
     
@@ -93,6 +93,7 @@ export default class SignUp extends Component {
               
                     <select  className="form-control"  value={this.state.Type} 
        onChange={(event)=>this.handleChange(event, "Type")}   style={{width:'50%'}} id="signup" name="signup">
+
     <option value="Client">Client</option>
     <option value="Prospect">Prospect</option>
     <option value="Autre">Autre</option>
