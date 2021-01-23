@@ -59,17 +59,18 @@ export default class AllPosts extends React.Component {
 
             <div style={{ "width": "300px", "height": "400px" }}>
 
-              <Card style={{ overflow: "auto", "width": "100%", "height": "90%", borderColor: "transparent" }}>
+              <Card className='rubcard' style={{ overflow: "auto", "width": "100%", "height": "90%",  }}>
                 <CardImg title={announce.body.titre} top width="50%" height="180px" src={announce.body.image} alt="Post Image" />
                 <CardBody>
                   <CardTitle tag="h5"> {announce.body.titre}</CardTitle>
                   {/* <CardSubtitle tag="h6" className="mb-2 text-muted">{post.postedOn}</CardSubtitle> */}
                   <CardText >{announce.body.description.slice(0, 60)}...</CardText>
 
-                  <NavLink to={'/post/' + announce.id}>
-                    <Button color="danger" >Lire la suite</Button>
+                  
+                </CardBody><NavLink to={'/post/' + announce.id}>
+                  <div className='card__actions'>
+                    <Button color="danger" >Lire la suite</Button></div>
                   </NavLink>
-                </CardBody>
               </Card>
             </div>
           </Col>

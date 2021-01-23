@@ -20,7 +20,8 @@ const Home  = props => {
                 <Logo  />
                 
                 <div className="Home">
-                    <Text /> 
+                    {/* <Text />  */}
+                    <br></br><br></br>
                     
                      <RecentPosts  />   
                     <AllPosts className="RecentPosts"  ></AllPosts>

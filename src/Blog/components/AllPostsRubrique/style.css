@@ -11,8 +11,8 @@
       border-radius: 10px;
   }
   .rubcard:hover {
-    background-color: #aa1a1a;
-    border-color:red;
+    background-color: #ededed;
+    border-color:#dc3545;
 }
 
 .rubriqueTitle {
