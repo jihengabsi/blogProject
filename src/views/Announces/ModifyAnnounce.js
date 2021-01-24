@@ -50,12 +50,13 @@ constructor(props) {
   Description: '',
   Image: '',
   file: [],
-  Url:''
+  Url:'',
+  allFiles:[]
 
       
   }
   this.uploadMultipleFiles = this.uploadMultipleFiles.bind(this)
-  this.uploadFiles = this.uploadFiles.bind(this)
+  // this.uploadFiles = this.uploadFiles.bind(this)
 }
   componentDidMount() {
     axios.get(`http://localhost:3000/api/rubriques/`)
@@ -73,8 +74,10 @@ constructor(props) {
         
         this.setState({ announces });
         const Title=this.state.announces.map(announce =>announce.body.titre);
-
         this.setState({ Title });
+        const allFiles=this.state.announces.map(announce =>announce.body.file);
+        this.setState({ allFiles });
+        
         const Description=this.state.announces.map(announce =>announce.body.description);
         this.setState({ Description });
         const Image=this.state.announces.map(announce =>announce.body.image);
@@ -82,8 +85,8 @@ constructor(props) {
      
       })
   }
-  uploadMultipleFiles(e) {
-    
+  uploadMultipleFiles=async()=> {
+
     const firebaseConfig = {
       apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
       authDomain: "mini-project-incp.firebaseapp.com",
@@ -94,81 +97,81 @@ constructor(props) {
       appId: "1:268706642084:web:257bb963e4417ccd338e31",
       measurementId: "G-KPWHVF4TZF"
     };
-  // Initialize Firebase
+  // Initialize Firebases
+  
   
     firebase.initializeApp(firebaseConfig);
-    this.fileObj.push(e.target.files)
-    for (let i = 0; i < this.fileObj[0].length; i++) {
-  
+    const file = document.querySelector("#file").files;
+    for (let i = 0; i < file.length; i++) {
+  alert("uploading "+file[i].name);
       const ref = firebase.storage().ref();
-     ref.child(this.fileObj[0][i].name).put(this.fileObj[0][i]);
+     await ref.child(file[i].name).put(file[i]).then(()=>{
+      this.fileArray.push( "https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file[i].name+"?alt=media")
   
-      this.fileArray.push( "https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+this.fileObj[0][i].name+"?alt=media")
+     })
+  
     }
     this.setState({ file: this.fileArray })
   }
-  uploadFiles(e) {
   
-    e.preventDefault()
-    console.log(this.state.file)
-  }
 
-  uploadImage() {
-    try {
-    const firebaseConfig = {
-      apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
-      authDomain: "mini-project-incp.firebaseapp.com",
-      databaseURL: "https://mini-project-incp.firebaseio.com",
-      projectId: "mini-project-incp",
-      storageBucket: "mini-project-incp.appspot.com",
-      messagingSenderId: "268706642084",
-      appId: "1:268706642084:web:257bb963e4417ccd338e31",
-      measurementId: "G-KPWHVF4TZF"
-    };
-  // Initialize Firebase
+  uploadImage=async() =>{
+    await this.uploadMultipleFiles().then(()=>{
+     const firebaseConfig = {
+       apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
+       authDomain: "mini-project-incp.firebaseapp.com",
+       databaseURL: "https://mini-project-incp.firebaseio.com",
+       projectId: "mini-project-incp",
+       storageBucket: "mini-project-incp.appspot.com",
+       messagingSenderId: "268706642084",
+       appId: "1:268706642084:web:257bb963e4417ccd338e31",
+       measurementId: "G-KPWHVF4TZF"
+     };
+   // Initialize Firebase
+   
+     // firebase.initializeApp(firebaseConfig);
+     const ref = firebase.storage().ref();
+   
+     const file = document.querySelector("#image").files[0];
+   
+     const task = ref.child(file.name).put(file);
+     alert("uploading image");
+     task.then( () => {
+      return true;
+       
+     });
+    
+    })
   
-    firebase.initializeApp(firebaseConfig);
-    const ref = firebase.storage().ref();
-    const file = document.querySelector("#image").files[0];
-  
-    const task = ref.child(file.name).put(file);
-  
-    task.then( () => {
-        document.getElementById("form").submit();
-    });
-  }
- catch (exception) {
-  this.setState({
-    Url: this.state.Image
-  });
-  
-}
-  
-  }
+ 
+ }
 
   handleChange (evt, field) {
     this.setState({ [field]: evt.target.value });
   
   }
-  removeItem(item){}
-  handleSubmit = event => {
+  removeItem(item){
+
+  }
+  handleSubmit = async (event) => {
    
     event.preventDefault();
+    await this.uploadImage().then(()=>{
     const file_name = document.querySelector("#image").files[0].name;
-
+    console.log(this.state.Description);
     const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";	
     const announce = {
       token:localStorage.getItem('token'),
       id:this.props.message,
       titre:this.state.Title,
-      description: this.state.Descriptions,
-      image: url,
+      description:this.state.Description,
+      image:url,
       rubriqueId:this.state.rubriqueID,
       files:this.state.file 
       
   
     };
-
+    try{ 
     axios.put(`http://localhost:3000/api/announces/put`, announce)
       .then(res => {
         console.log(res);
@@ -179,7 +182,12 @@ constructor(props) {
       }).catch(error=>{
         console.log(error.message);
 
-      })
+      })}
+      catch(error){
+        alert("Announce already added!");
+      }
+    })
+   
    
   }
 
@@ -245,13 +253,13 @@ constructor(props) {
                      
                     )))}
                   <br></br>
-                  <input  type="file" accept=".pdf" name="file" id="file" multiple  onChange={this.uploadMultipleFiles} /*onChange={(event)=>this.handleChange(event, "File")}*/ />
+                  <input  type="file" accept=".pdf" name="file" id="file" multiple   /*onChange={(event)=>this.handleChange(event, "File")}*/ />
                 </GridItem>
               </GridContainer>
               </CardBody>
            
             <CardFooter>
-              <Button type="submit"  onClick={()=>this.uploadImage()} color="danger">Modify announce</Button>
+              <Button type="submit"   color="danger">Modify announce</Button>
             </CardFooter>
             </form>
           </Card>

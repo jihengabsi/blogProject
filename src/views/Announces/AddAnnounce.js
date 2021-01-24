@@ -16,6 +16,7 @@ import axios from 'axios';
 import avatar from "assets/img/faces/marc.jpg";
 import { useHistory } from 'react-router-dom';
 import firebase from 'firebase';
+import { LayersTwoTone } from "@material-ui/icons";
 const styles = {
   cardCategoryWhite: {
     color: "rgba(255,255,255,.62)",
@@ -68,7 +69,8 @@ constructor(props) {
   this.uploadFiles = this.uploadFiles.bind(this)
 }
 
-uploadMultipleFiles(e) {
+uploadMultipleFiles=async()=> {
+
   const firebaseConfig = {
     apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
     authDomain: "mini-project-incp.firebaseapp.com",
@@ -79,16 +81,19 @@ uploadMultipleFiles(e) {
     appId: "1:268706642084:web:257bb963e4417ccd338e31",
     measurementId: "G-KPWHVF4TZF"
   };
-// Initialize Firebase
+// Initialize Firebases
+
 
   firebase.initializeApp(firebaseConfig);
-  this.fileObj.push(e.target.files)
-  for (let i = 0; i < this.fileObj[0].length; i++) {
-
+  const file = document.querySelector("#file").files;
+  for (let i = 0; i < file.length; i++) {
+alert("uploading "+file[i].name);
     const ref = firebase.storage().ref();
-   ref.child(this.fileObj[0][i].name).put(this.fileObj[0][i]);
+   await ref.child(file[i].name).put(file[i]).then(()=>{
+    this.fileArray.push( "https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file[i].name+"?alt=media")
 
-    this.fileArray.push( "https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+this.fileObj[0][i].name+"?alt=media")
+   })
+
   }
   this.setState({ file: this.fileArray })
 }
@@ -98,29 +103,33 @@ uploadFiles(e) {
   e.preventDefault()
   console.log(this.state.file)
 }
- uploadImage() {
-  const firebaseConfig = {
-    apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
-    authDomain: "mini-project-incp.firebaseapp.com",
-    databaseURL: "https://mini-project-incp.firebaseio.com",
-    projectId: "mini-project-incp",
-    storageBucket: "mini-project-incp.appspot.com",
-    messagingSenderId: "268706642084",
-    appId: "1:268706642084:web:257bb963e4417ccd338e31",
-    measurementId: "G-KPWHVF4TZF"
-  };
-// Initialize Firebase
-
-  firebase.initializeApp(firebaseConfig);
-  const ref = firebase.storage().ref();
-
-  const file = document.querySelector("#image").files[0];
-
-  const task = ref.child(file.name).put(file);
-
-  task.then( () => {
-      document.getElementById("form").submit();
-  });
+ uploadImage=async() =>{
+   await this.uploadMultipleFiles().then(()=>{
+    const firebaseConfig = {
+      apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
+      authDomain: "mini-project-incp.firebaseapp.com",
+      databaseURL: "https://mini-project-incp.firebaseio.com",
+      projectId: "mini-project-incp",
+      storageBucket: "mini-project-incp.appspot.com",
+      messagingSenderId: "268706642084",
+      appId: "1:268706642084:web:257bb963e4417ccd338e31",
+      measurementId: "G-KPWHVF4TZF"
+    };
+  // Initialize Firebase
+  
+    // firebase.initializeApp(firebaseConfig);
+    const ref = firebase.storage().ref();
+  
+    const file = document.querySelector("#image").files[0];
+  
+    const task = ref.child(file.name).put(file);
+    alert("uploading image");
+    task.then( () => {
+     return true;
+      
+    });
+   
+   })
  
 
 }
@@ -130,38 +139,43 @@ handleChange (evt, field) {
 
 }
 
-handleSubmit = event => {
+handleSubmit = async (event) => {
   event.preventDefault();
+   await this.uploadImage().then(()=>{
+    const file_name = document.querySelector("#image").files[0].name;
 
-  const file_name = document.querySelector("#image").files[0].name;
-
-  const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";	
-
-    const announce = {
-    titre:this.state.Title,
-    description: this.state.Description,
-    image:url,
-    visib:true,
-    rubriqueId:this.state.rubriqueID,
-    files:this.state.file,
-    visib:false
-
-  };
-try{  axios.post(`http://localhost:3000/api/announces/add`, {announce} )
-.then(res => {
-  console.log(res);
-  console.log(res.data);
-  alert("Announce added successfully!");
-  window.location = "/admin/list";
+    const url="https://firebasestorage.googleapis.com/v0/b/mini-project-incp.appspot.com/o/"+file_name+"?alt=media";	
+  
+      const announce = {
+      titre:this.state.Title,
+      description: this.state.Description,
+      image:url,
+      visib:true,
+      rubriqueId:this.state.rubriqueID,
+      files:this.state.file,
+      visib:false
+  
+    };
  
-}).catch(error=>{
-  console.log(error.message);
-
-})}
-catch(error){
-  alert("Announce already added!");
-}
- 
+  try{ 
+     axios.post(`http://localhost:3000/api/announces/add`, {announce} )
+  .then(res => {
+    console.log(res);
+    console.log(res.data);
+    alert("Announce added successfully!");
+    window.location = "/admin/list";
+   
+  }).catch(error=>{
+    console.log(error.message);
+  
+  })}
+  catch(error){
+    alert("Announce already added!");
+  }
+   
+   })
+   
+  
 }
  render(){
   
@@ -217,13 +231,13 @@ catch(error){
                   <br></br>
                   <InputLabel style={{ color: "#AAAAAA" }}>Upload file</InputLabel>
                   <br></br>
-                   <input  type="file" accept=".pdf" name="file" id="file" multiple  onChange={this.uploadMultipleFiles} /*onChange={(event)=>this.handleChange(event, "File")}*/ />
+                   <input  type="file" accept=".pdf" name="file" id="file" multiple   /*onChange={(event)=>this.handleChange(event, "File")}*/ />
                 </GridItem>
               </GridContainer>
               </CardBody>
            
             <CardFooter>
-              <Button type="submit"  onClick={()=>this.uploadImage()} color="danger">Add announce</Button>
+              <Button type="submit"  color="danger">Add announce</Button>
             </CardFooter>
             </form>
           </Card>

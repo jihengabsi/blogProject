@@ -19,7 +19,9 @@ export default class Loginbox extends Component {
       
      
       }
-    
+      componentDidMount() {
+        localStorage.clear("token");
+      }
       handleChange (evt, field) {
         this.setState({ [field]: evt.target.value });
     

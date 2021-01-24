@@ -34,7 +34,7 @@ ReactDOM.render(
 
   <Router history={hist}>
     <Switch>
-    <Route  path="/signin" component={Signin} />
+    {/* <Route  path="/signin" component={Signin} /> */}
     <Route  path="/admin/signin" component={Login} />
       <Route  path="/blog" component={Client} />
       <Route path="/admin" component={Admin} />

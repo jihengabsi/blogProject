@@ -37,7 +37,9 @@ export default class Navbar extends Component {
 
       axios.get(`http://localhost:3000/api/rubriques/`)
         .then(res => {
-          const Rubriques = res.data;
+
+          const Rubrique = res.data;
+          const Rubriques = Rubrique.filter((rubrique) => rubrique.body.isSub !== true);
           this.setState({ Rubriques });
           console.log(Rubriques);
         })
@@ -61,36 +63,16 @@ render(){
             <li><NavLink to="/blog"><img style={{ height: "50px", marginLeft: "20px" }} src={Logo} alt="logo" /> </NavLink></li>
             <li><a href="/blog">Accueil</a></li>
 
-            <li><a href="#">Nos prestations </a>
-              <ul class="dropdown">
-                <li><a href="#">Etalonnage et vérification </a>
-                <ul style={{marginLeft:"100%"}}>
-                <li><a href="#">Electricité & Magnétisme</a></li>
-                <li><a href="#">Temps & Fréquence</a></li>
-                <li><a href="#">Température</a></li>
-                <li><a href="#">Pesage</a></li>
-                <li><a href="#">Pression</a></li>
-                <li><a href="#">Dimensionnel</a></li>
-                <li><a href="#">Masse</a></li>
-                <li><a href="#">Conseil National d’Accréditation TUNAC</a>
-             
-                </li>
-                
-              </ul>
-                </li>
-                <li><a href="#">Formation</a></li>
-                <li><a href="#">Conseil</a></li>
-
-              </ul>
-            </li>
-            <li><a href="#">Nos rubriques</a>
-              <ul class="dropdown">
-              { this.state.Rubriques.map(rubrique =>
-               <li><a href={"/blog/rubrique/"+rubrique.id}>{rubrique.body.titre}</a></li>
-  
-  ) }
-                             </ul>
-            </li>
+          { this.state.Rubriques.map(rubrique => 
+         <li>  <a href={"/blog/rubrique/"+rubrique.id}>{rubrique.body.titre}</a> 
+         <ul class="dropdown">
+         { rubrique.body.subRubrique.map(subR => 
+         <li>  <a href={"/blog/rubrique/"+subR.id}>{subR.titre}</a> </li>
+         )}
+           </ul>
+           </li>
+          )}
+        
             {/* <li><a href="#">Nos accréditations</a>
               <ul class="dropdown">
                 <li><a href="#">Electricité & Magnétisme</a></li>
@@ -106,14 +88,7 @@ render(){
             <li><a href="/blog/partenaires">Nos partenaires</a></li>
 
             <li><a href="#">Nous contacter</a></li>
-            <li><a href="#">Nous rejoindre</a>
-              <ul class="dropdown">
-                <li><a href="#">Offres d’emploi</a></li>
-                <li><a href="#">Stages de Projet de fin d’étude</a></li>
-                <li><a href="#">Stages d’été</a></li>
-              </ul>
-
-            </li>
+         
             <li>
               <select className="form-control" value={this.state.Lang}
                 onChange={(event) => this.handleChange(event, "Lang")} style={{ width: '100%' }} id="lang" name="lang">
