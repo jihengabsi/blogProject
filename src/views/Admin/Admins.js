@@ -41,7 +41,7 @@ delete= event => {
      
     }).catch(error=>{
 
-      console.log(error.message);
+      alert("Erreur!!!");
     
     })
 }
@@ -60,12 +60,12 @@ handleSubmit = event => {
     .then(res => {
       console.log(res);
       console.log(res.data);
-      alert("Administrator added successfully!");
+      alert("Admin ajouté avec succées!");
       window.location = "/admin/Admin's";
      
     }).catch(error=>{
       console.log(error.message);
-      alert("fail!!");
+      alert("Il faut remplir tous les champs!!!");
     })
 }
   componentDidMount() {
@@ -142,7 +142,7 @@ handleSubmit = event => {
   <Grid fluid>
     <Row>
     <Col  xs >
-<h4 >List of admins <Button   onClick={()=>this.openModal()} color="white"><AddIcon name="add"></AddIcon>Add</Button></h4>
+<h4 >Liste des admins <Button   onClick={()=>this.openModal()} color="white"><AddIcon name="add"></AddIcon>Ajouter</Button></h4>
 
    </Col>
   
@@ -153,10 +153,10 @@ handleSubmit = event => {
     <Row>
     <Table
               tableHeaderColor="gray"
-              tableHead={["Login", "Email", "Phone Number","Actions"]}
+              tableHead={["Login", "Email", "Num de téléphone","Actions"]}
               tableData={this.state.admins.map(admin =>[
         
-               admin.body.login,admin.body.mail, admin.body.phoneNumber ,<Button onClick={()=>this.openModal1(admin.id,admin.body.uid)}  color="danger">Delete</Button>
+               admin.body.login,admin.body.mail, admin.body.phoneNumber ,<Button onClick={()=>this.openModal1(admin.id,admin.body.uid)}  color="danger">Supprimer</Button>
                 
                 ,
                
@@ -177,10 +177,10 @@ handleSubmit = event => {
             contentLabel="Example Modal"
         >
 <form onSubmit={this.delete}>   
-<h2 >Delete an admin</h2>
-<Button  type="submit">Delete</Button>
+<h2 >Supprimer un admin</h2>
+<Button  type="submit">Supprimer</Button>
             
-            <Button  onClick={()=>this.closeModal1()}>Cancel</Button>
+            <Button  onClick={()=>this.closeModal1()}>Annuler</Button>
 </form>
           </Modal>
 <Modal isOpen={this.state.modalIsOpen}
@@ -191,29 +191,30 @@ handleSubmit = event => {
  
  <form onSubmit={this.handleSubmit}>          
          
-          <h2 >Add a new admin</h2>
+          <h2 >Ajouter un admin</h2>
      
           <br></br>
                 <InputLabel style={{ color: "#AAAAAA" }}>Login</InputLabel>
 
                      <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "Login")} />
-                     <InputLabel style={{ color: "#AAAAAA" }}>Email</InputLabel>
+                     <br></br><br></br>                     <InputLabel style={{ color: "#AAAAAA" }}>Email</InputLabel>
 
 <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="Email"   onChange={(event)=>this.handleChange(event, "Email")} />
+<br></br><br></br>
 <InputLabel style={{ color: "#AAAAAA" }}>Role</InputLabel>
 
 <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "Role")} />
-<InputLabel style={{ color: "#AAAAAA" }}>Password</InputLabel>
+<br></br><br></br>
+<InputLabel style={{ color: "#AAAAAA" }}>Mot de passe</InputLabel>
 
 <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="password"   onChange={(event)=>this.handleChange(event, "Password")} />
-<InputLabel style={{ color: "#AAAAAA" }}>Phone Number</InputLabel>
+<br></br><br></br><InputLabel style={{ color: "#AAAAAA" }}>Num de téléphone</InputLabel>
 
 <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "PhoneNumber")} />
            
-            <br></br>
-            <Button  type="submit">Add</Button>
+<br></br><br></br>            <Button  type="submit">Ajouter</Button>
             
-            <Button  onClick={()=>this.closeModal()}>close</Button>
+            <Button  onClick={()=>this.closeModal()}>Annuler</Button>
           </form>
         </Modal>
 </view>        

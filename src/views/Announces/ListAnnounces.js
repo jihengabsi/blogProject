@@ -10,8 +10,8 @@ import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Popper from "@material-ui/core/Popper";
-import Card from "components/Card/Card.js";
-import Card2 from '../../Blog/components/UI/Card/index.js'
+import Card from "../../components/Card/Card";
+import Card2 from "../../components/UI/Card";
 import CardBody from "components/Card/CardBody.js";
 import { Grid, Row, Col } from 'react-flexbox-grid';
 import Button from "components/CustomButtons/Button.js";
@@ -295,7 +295,7 @@ render(){
              </Col>
               <Col xs={6} md={2}>
               <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal1(announce.body.titre,announce.body.description,announce.body.date_cr,announce.body.image,announce.token)} }color="success" >Details</Button></Row>
-          <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal(announce.id)} }  color="info" >Edit</Button></Row>
+          <Row xs><Button  style={{width:"100px"}} onClick={() => {this.openModal(announce.id)} }  color="info" >Editer</Button></Row>
           <Row xs><div style={{width:"100px"}}><HideButton message2={announce.body.visib} message={announce.id}/></div></Row>
               </Col>
               </Row>

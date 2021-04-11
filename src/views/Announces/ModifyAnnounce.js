@@ -154,7 +154,7 @@ constructor(props) {
 
   }
   handleSubmit = async (event) => {
-   
+    try{ 
     event.preventDefault();
     await this.uploadImage().then(()=>{
     const file_name = document.querySelector("#image").files[0].name;
@@ -184,10 +184,13 @@ constructor(props) {
 
       })}
       catch(error){
-        alert("Announce already added!");
+        alert("Erreur!");
       }
     })
-   
+  }
+  catch(error){
+    alert("Il faut remplir tous les champs!");
+  }
    
   }
 
@@ -246,7 +249,7 @@ constructor(props) {
                   { this.state.announces.map(announce =>(announce.body.files || []).map(url => (
                      <div>
  <a href={url}>{url.split('/').pop().split('#')[0].split('?')[0]}</a> 
- <Button type="submit" style={{borderRadius:"100px",height:"22px",marginLeft:"10px",alignItems: "center",fontSize: "7px",fontWeight:"1000px"}}   class="btn btn-danger btn-sm" color="danger">---</Button>
+ {/* <Button type="submit" style={{borderRadius:"100px",height:"22px",marginLeft:"10px",alignItems: "center",fontSize: "7px",fontWeight:"1000px"}}   class="btn btn-danger btn-sm" color="danger">---</Button> */}
  <br></br>
  </div>
                      

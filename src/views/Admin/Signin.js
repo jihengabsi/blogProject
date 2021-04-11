@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './style.css';
-import Card from '../../Blog/components/UI/Card';
+import Card from "../../components/UI/Card";
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
@@ -86,16 +86,12 @@ export default class Loginbox extends Component {
               }}
                 color="danger" >
                 Connexion</Button>
-                <p className="forgot-password text-right">
-                <NavLink to="/blog/reset">Mot de passe oublié?</NavLink>
-              </p>
+             
               {/* <button type="submit" className="btn btn-dark btn-lg btn-block">Login</button> */}
               {/* <p className="forgot-password text-right">
                 Pas de compte? <NavLink to="/blog/signup">S'inscrire.</NavLink>
               </p> */}
-              <h5 className="createacc">
-                Pas de compte? <NavLink to="/blog/signup">S'inscrire.</NavLink>
-              </h5>
+              
             </form>
             
           </Card>

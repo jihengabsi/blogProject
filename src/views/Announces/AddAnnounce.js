@@ -39,7 +39,7 @@ const styles = {
 const useStyles = makeStyles(styles);
 
 // const  classes = useStyles();
-export default class AddAnnounce extends Component  {
+export default class AddRubrique extends Component  {
   fileObj = [];
   fileArray = [];
 
@@ -70,7 +70,7 @@ constructor(props) {
 }
 
 uploadMultipleFiles=async()=> {
-
+  try{ 
   const firebaseConfig = {
     apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
     authDomain: "mini-project-incp.firebaseapp.com",
@@ -97,6 +97,10 @@ alert("uploading "+file[i].name);
   }
   this.setState({ file: this.fileArray })
 }
+catch(error){
+    
+}
+}
 
 uploadFiles(e) {
   
@@ -104,6 +108,7 @@ uploadFiles(e) {
   console.log(this.state.file)
 }
  uploadImage=async() =>{
+  try{ 
    await this.uploadMultipleFiles().then(()=>{
     const firebaseConfig = {
       apiKey: "AIzaSyAZugwF5atKtDonzLoygw2FF9vlijtytnQ",
@@ -130,7 +135,10 @@ uploadFiles(e) {
     });
    
    })
- 
+  }
+  catch(error){
+    
+  }
 
 }
 
@@ -140,6 +148,7 @@ handleChange (evt, field) {
 }
 
 handleSubmit = async (event) => {
+  try{ 
   event.preventDefault();
    await this.uploadImage().then(()=>{
     const file_name = document.querySelector("#image").files[0].name;
@@ -175,7 +184,10 @@ handleSubmit = async (event) => {
    
    })
    
-  
+  }
+  catch(error){
+    alert("Il faut remplir tous les champs!");
+  }
 }
  render(){
   
@@ -188,13 +200,13 @@ handleSubmit = async (event) => {
           <Card>
           <form  id="form" onSubmit={this.handleSubmit}>
             <CardHeader color="danger">
-              <h4 >Add an announce</h4>
+              <h4 >Ajouter une announce</h4>
             </CardHeader>
             <CardBody>
               <GridContainer>
                 <GridItem xs={12} sm={12} md={6}>
                 <br></br>
-                <InputLabel style={{ color: "#AAAAAA" }}>Title</InputLabel>
+                <InputLabel style={{ color: "#AAAAAA" }}>Titre</InputLabel>
                 <br></br>
                      <input style={{width:"240px", border: 'none','border-bottom': '2px solid #AAAAAA ' }} type="text"   onChange={(event)=>this.handleChange(event, "Title")} />
                 </GridItem>
@@ -221,7 +233,7 @@ handleSubmit = async (event) => {
             <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <br></br>
-                  <InputLabel style={{ color: "#AAAAAA" }}>Upload image</InputLabel>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Ajouter une image</InputLabel>
                   <br></br>
                    <input  type="file" name="image" id="image"   />
                 </GridItem>
@@ -229,7 +241,7 @@ handleSubmit = async (event) => {
               <GridContainer>
                 <GridItem xs={12} sm={12} md={12}>
                   <br></br>
-                  <InputLabel style={{ color: "#AAAAAA" }}>Upload file</InputLabel>
+                  <InputLabel style={{ color: "#AAAAAA" }}>Ajouter des fichiers</InputLabel>
                   <br></br>
                    <input  type="file" accept=".pdf" name="file" id="file" multiple   /*onChange={(event)=>this.handleChange(event, "File")}*/ />
                 </GridItem>
@@ -237,7 +249,7 @@ handleSubmit = async (event) => {
               </CardBody>
            
             <CardFooter>
-              <Button type="submit"  color="danger">Add announce</Button>
+              <Button type="submit"  color="danger">Ajouter</Button>
             </CardFooter>
             </form>
           </Card>

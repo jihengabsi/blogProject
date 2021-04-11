@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import './style.css'
-import Card from '../UI/Card';
+import Card from "../UI/Card";
 import { Grid } from 'react-flexbox-grid';
 import { NavLink } from 'react-router-dom';
-import Footer from '../../components/Footer';
+import Footer from '../Footer/Footer';
 import axios from 'axios';
 import { Button } from 'reactstrap';
 

@@ -81,13 +81,13 @@ class HideControl extends React.Component {
   function HideButton(props) {
     return (
 
-        <Button   style={{ width: '100%' }}  onClick={props.onClick} type="button" color="warning">Hide</Button>
+        <Button   style={{ width: '100%' }}  onClick={props.onClick} type="button" color="warning">Cacher</Button>
     );
   }
   
   function UnhideButton(props) {
     return (
-        <Button style={{ width: '100%' }}  onClick={props.onClick} type="button" color= "danger">Unhide</Button>
+        <Button style={{ width: '100%' }}  onClick={props.onClick} type="button" color= "danger">Afficher</Button>
     );
   }
   

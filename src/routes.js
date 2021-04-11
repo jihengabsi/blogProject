@@ -21,10 +21,11 @@ import Add from "@material-ui/icons/Add";
 import ExitToApp from"@material-ui/icons/ExitToApp";
 import Person from "@material-ui/icons/Person";
 import List from "@material-ui/icons/List";
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import AddAnnounce from "views/Announces/AddAnnounce.js";
-
+import AddRubrique from "views/Rubriques/Rubriques";
 import ListAnnounces from "views/Announces/ListAnnounces.js";
 import Typography from "views/Admin/Admins.js";
 // core components/views for RTL layout
@@ -39,7 +40,7 @@ const dashboardRoutes = [
   },
   {
     path: "/add",
-    name: "Add announce",
+    name: "Ajouter une announce",
     rtlName: "ملف تعريفي للمستخدم",
     icon: Add,
     component: AddAnnounce,
@@ -47,10 +48,18 @@ const dashboardRoutes = [
   },
   {
     path: "/list",
-    name: "List of announces",
+    name: "Liste des announces",
     rtlName: "قائمة الجدول",
     icon: List,
     component: ListAnnounces,
+    layout: "/admin",
+  },
+  {
+    path: "/rubList",
+    name: "Liste des rubriques",
+    rtlName: "ملف تعريفي للمستخدم",
+    icon: ViewModuleIcon,
+    component: AddRubrique,
     layout: "/admin",
   },
   {

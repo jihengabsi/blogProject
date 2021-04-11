@@ -1,6 +1,5 @@
 import React from 'react';
 import './style.css';
-import Footer from '../../components/Footer';
 /**
 * @author
 * @function Layout
